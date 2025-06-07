@@ -14,30 +14,35 @@ import PageNotFound from "./module/layout/PageNotFound";
 import WelcomePage from "./module/welcome/WelcomPage";
 import HeroEncyclopediaPage from "./module/encyclopedia/HeroEncyclopediaPage";
 import FateEncyclopediaPage from "./module/encyclopedia/FateEncyclopediaPage";
+import PersonalDataPage from "./module/personal/PersonalDataPage";
+import { PersonalDataProvider } from "./module/personal/personalDataContext";
 
 dayjs.locale("zh-cn");
 
 const App = () => {
   return (
     <ConfigProvider locale={zhCN}>
-      <Router>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/welcome" element={<WelcomePage />} />
-            <Route
-              path="/encyclopedia/hero"
-              element={<HeroEncyclopediaPage />}
-            />
-            <Route
-              path="/encyclopedia/fate"
-              element={<FateEncyclopediaPage />}
-            />
-          </Route>
+      <PersonalDataProvider>
+        <Router>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/welcome" element={<WelcomePage />} />
+              <Route
+                path="/encyclopedia/hero"
+                element={<HeroEncyclopediaPage />}
+              />
+              <Route
+                path="/encyclopedia/fate"
+                element={<FateEncyclopediaPage />}
+              />
+              <Route path="/personal" element={<PersonalDataPage />} />
+            </Route>
 
-          <Route path="/" element={<Navigate to="/welcome" replace />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </Router>
+            <Route path="/" element={<Navigate to="/welcome" replace />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </Router>
+      </PersonalDataProvider>
     </ConfigProvider>
   );
 };

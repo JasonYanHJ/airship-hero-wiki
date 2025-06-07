@@ -1051,8 +1051,12 @@ const heros = [
 
 export const HERO_NAMES = heros.map((h) => h.name);
 
+export function getAwakeningIncrement(hero: Hero) {
+  return AWAKENING_TYPES_DATA[hero.awakening][hero.initialRate - 1];
+}
+
 export function getAwakeningDisplayString(hero: Hero) {
-  const increment = AWAKENING_TYPES_DATA[hero.awakening][hero.initialRate - 1];
+  const increment = getAwakeningIncrement(hero);
   return `${hero.awakening}+${increment}${
     hero.awakening !== "攻击速度" ? "%" : ""
   }`;
