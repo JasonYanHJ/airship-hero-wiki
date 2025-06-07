@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.2.2 - 英雄图鉴补充初始攻击数据",
+  },
+  {
     children: "v0.2.1 - 缘分图鉴支持英雄搜索",
   },
   {
