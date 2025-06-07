@@ -21,6 +21,8 @@ const Layout = () => {
 
   return (
     <StyledProLayout
+      // 使用HashRouter时的功能适配
+      location={{ pathname: window.location.hash.slice(1) }}
       title="飞艇Wiki"
       route={route}
       menuItemRender={(item, dom) => (

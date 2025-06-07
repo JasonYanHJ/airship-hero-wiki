@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.2.3 - 修复页头不与标签页保持一致的bug",
+  },
+  {
     children: "v0.2.2 - 英雄图鉴补充初始攻击数据",
   },
   {
