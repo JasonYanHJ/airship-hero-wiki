@@ -3,12 +3,15 @@ import { Hero } from "../../assets/types";
 import heros from "../../assets/heros";
 import { AWAKENING_TYPES_DATA } from "../../assets/consts";
 import { StarFilled } from "@ant-design/icons";
+import useTableSearch from "../../utils/antd-table-utils/useTableSearch";
 
 const HeroEncyclopediaPage = () => {
+  const createColumnSearchProps = useTableSearch();
   const columns: ProColumnType<Hero>[] = [
     {
       title: "名称",
       dataIndex: "name",
+      ...createColumnSearchProps("name"),
     },
     {
       title: "初始星级",
