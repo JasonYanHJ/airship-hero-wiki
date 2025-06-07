@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.2.5 - 修复缘分图鉴名称截断导致的显示问题",
+  },
+  {
     children: "v0.2.4 - 缘分图鉴支持按提升量排序",
   },
   {

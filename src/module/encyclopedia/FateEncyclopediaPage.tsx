@@ -5,7 +5,7 @@ import useTableSearch from "../../utils/antd-table-utils/useTableSearch";
 import createFixValuesFilterProps from "../../utils/antd-table-utils/createFixValuesFilterProps";
 import styled from "styled-components";
 import { fates } from "../../assets/fates";
-import { Space, Tag } from "antd";
+import { Space, Tag, Typography } from "antd";
 import heros, {
   getAwakeningDisplayString,
   HERO_NAMES,
@@ -32,13 +32,21 @@ const FateEncyclopediaPage = () => {
       title: "名称",
       dataIndex: "name",
       width: "20%",
-      minWidth: 100,
-      ellipsis: true,
       ...createColumnSearchProps("name"),
+      render(_dom, entity) {
+        return (
+          <Typography.Text
+            style={{ width: "clamp(90px, 20vw, 180px)" }}
+            ellipsis={{ tooltip: entity.name }}
+          >
+            {entity.name}
+          </Typography.Text>
+        );
+      },
     },
     {
       title: "每级提升",
-      width: 120,
+      minWidth: 120,
       render(_dom, entity) {
         return `${entity.type} +${entity.incresePerLevel}%`;
       },
