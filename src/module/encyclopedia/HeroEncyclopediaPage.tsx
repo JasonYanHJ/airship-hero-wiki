@@ -44,15 +44,13 @@ const HeroEncyclopediaPage = () => {
           .fill(undefined)
           .map((_, index) => <StarFilled key={index} />);
       },
-      ...createFixValuesFilterProps(
-        "initialRate",
-        [1, 2, 3],
-        [1, 2, 3].map((v) =>
+      ...createFixValuesFilterProps("initialRate", [1, 2, 3], {
+        texts: [1, 2, 3].map((v) =>
           new Array(v)
             .fill(undefined)
             .map((_, index) => <StarFilled key={index} />)
-        )
-      ),
+        ),
+      }),
     },
     {
       title: "属性",
