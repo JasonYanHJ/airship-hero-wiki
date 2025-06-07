@@ -1,13 +1,23 @@
 import {
   ModalForm,
   ProFormDependency,
+  ProFormInstance,
   ProFormSlider,
 } from "@ant-design/pro-components";
-import { Button, Divider, message, Modal, Space, Tabs, Typography } from "antd";
-import heros from "../../../assets/heros";
+import {
+  Button,
+  Divider,
+  InputNumber,
+  message,
+  Modal,
+  Space,
+  Tabs,
+  Typography,
+} from "antd";
+import heros, { HERO_NAMES } from "../../../assets/heros";
 import { StarFilled, StarOutlined } from "@ant-design/icons";
 import { groupBy } from "lodash";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { ELEMENT_TYPES } from "../../../assets/consts";
 import { Hero } from "../../../assets/types";
 import {
@@ -91,7 +101,55 @@ const RateSlider: React.FC<{ hero: Hero }> = ({ hero }) => {
   );
 };
 
+const SetAllTool: React.FC<{
+  setAll: (rate: number) => void;
+  resetAll: () => void;
+}> = ({ setAll, resetAll }) => {
+  const [rate, setRate] = useState(10);
+  return (
+    <Space>
+      <Space.Compact>
+        <InputNumber
+          min={3}
+          max={10}
+          value={rate}
+          onChange={(value) => value && setRate(value)}
+          style={{ width: 90 }}
+          addonAfter="星"
+        />
+        <Button
+          type="primary"
+          onClick={() =>
+            Modal.confirm({
+              title: `确认全部设为${
+                rate <= 5 ? `${rate}星` : `觉醒${rate - 5}星`
+              }？`,
+              content:
+                "提示：你可以选择一个现在拥有英雄最多的星级，将所有英雄全部设置为该星级，再逐个调整其他英雄的星级。",
+              onOk: () => setAll(rate),
+            })
+          }
+        >
+          批量设置
+        </Button>
+      </Space.Compact>
+      <Button
+        onClick={() =>
+          Modal.confirm({
+            title: `确认重置？`,
+            content: "将重置为上一次录入后的结果",
+            onOk: () => resetAll(),
+          })
+        }
+      >
+        重置
+      </Button>
+    </Space>
+  );
+};
+
 const RateDataModalForm = () => {
+  const formRef = useRef<ProFormInstance>();
   const [currentTab, setCurrentTab] =
     useState<(typeof ELEMENT_TYPES)[number]>("火");
   const { personalHeroRateData, setPersonalHeroRateData } = usePersonalData();
@@ -109,6 +167,7 @@ const RateDataModalForm = () => {
 
   return (
     <ModalForm
+      formRef={formRef}
       initialValues={personalHeroRateData}
       trigger={<Button type="primary">录入数据</Button>}
       modalProps={{ forceRender: true }}
@@ -148,6 +207,14 @@ const RateDataModalForm = () => {
         });
       }}
     >
+      <SetAllTool
+        setAll={(rate) =>
+          formRef.current?.setFieldsValue(
+            Object.fromEntries(HERO_NAMES.map((name) => [name, rate]))
+          )
+        }
+        resetAll={() => formRef.current?.resetFields()}
+      />
       <Tabs
         activeKey={currentTab}
         onChange={(key) => setCurrentTab(key as (typeof ELEMENT_TYPES)[number])}

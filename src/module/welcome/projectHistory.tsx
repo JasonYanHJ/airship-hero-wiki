@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.3.1 - 星级录入中添加批量设置与重置功能",
+  },
+  {
     children:
       "v0.3.0 - 使用浏览器本地存储实现英雄星级数据录入功能 | 2025-06-08",
   },
