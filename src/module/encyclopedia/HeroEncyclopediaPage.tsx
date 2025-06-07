@@ -53,6 +53,12 @@ const HeroEncyclopediaPage = () => {
       }),
     },
     {
+      title: "初始攻击",
+      dataIndex: ["initialData", "attack"],
+      minWidth: 60,
+      sorter: (a, b) => a.initialData.attack - b.initialData.attack,
+    },
+    {
       title: "属性",
       dataIndex: "element",
       minWidth: 70,

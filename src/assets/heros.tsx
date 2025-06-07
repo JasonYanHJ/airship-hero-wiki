@@ -5,6 +5,9 @@ const heros = [
   {
     name: "莫心",
     initialRate: 1,
+    initialData: {
+      attack: 30,
+    },
     element: "火",
     job: "坦克",
     awakening: "防御",
@@ -13,6 +16,9 @@ const heros = [
   {
     name: "阿尔比",
     initialRate: 3,
+    initialData: {
+      attack: 50,
+    },
     element: "火",
     job: "坦克",
     awakening: "攻击",
@@ -21,6 +27,9 @@ const heros = [
   {
     name: "玫瑰琳",
     initialRate: 3,
+    initialData: {
+      attack: 35,
+    },
     element: "火",
     job: "坦克",
     awakening: "防御",
@@ -29,6 +38,9 @@ const heros = [
   {
     name: "纳林",
     initialRate: 3,
+    initialData: {
+      attack: 70,
+    },
     element: "火",
     job: "近战",
     awakening: "攻击",
@@ -37,6 +49,9 @@ const heros = [
   {
     name: "扎克",
     initialRate: 2,
+    initialData: {
+      attack: 55,
+    },
     element: "火",
     job: "近战",
     awakening: "防御",
@@ -45,6 +60,9 @@ const heros = [
   {
     name: "维克",
     initialRate: 2,
+    initialData: {
+      attack: 60,
+    },
     element: "火",
     job: "近战",
     awakening: "攻击",
@@ -53,6 +71,9 @@ const heros = [
   {
     name: "露露",
     initialRate: 3,
+    initialData: {
+      attack: 60,
+    },
     element: "火",
     job: "近战",
     awakening: "穿透",
@@ -61,6 +82,9 @@ const heros = [
   {
     name: "巴赫一号",
     initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
     element: "火",
     job: "近战",
     awakening: "生命",
@@ -69,6 +93,9 @@ const heros = [
   {
     name: "克特",
     initialRate: 3,
+    initialData: {
+      attack: 90,
+    },
     element: "火",
     job: "近战",
     awakening: "攻击",
@@ -77,6 +104,9 @@ const heros = [
   {
     name: "亨利",
     initialRate: 3,
+    initialData: {
+      attack: 100,
+    },
     element: "火",
     job: "近战",
     awakening: "攻击",
@@ -85,6 +115,9 @@ const heros = [
   {
     name: "炎之盾",
     initialRate: 3,
+    initialData: {
+      attack: 120,
+    },
     element: "火",
     job: "近战",
     awakening: "生命",
@@ -93,6 +126,9 @@ const heros = [
   {
     name: "米兰达",
     initialRate: 3,
+    initialData: {
+      attack: 70,
+    },
     element: "火",
     job: "远程",
     awakening: "生命",
@@ -101,6 +137,9 @@ const heros = [
   {
     name: "梅",
     initialRate: 1,
+    initialData: {
+      attack: 50,
+    },
     element: "火",
     job: "远程",
     awakening: "穿透",
@@ -109,6 +148,9 @@ const heros = [
   {
     name: "劳伦特",
     initialRate: 2,
+    initialData: {
+      attack: 55,
+    },
     element: "火",
     job: "远程",
     awakening: "穿透",
@@ -117,6 +159,9 @@ const heros = [
   {
     name: "萨曼达",
     initialRate: 3,
+    initialData: {
+      attack: 60,
+    },
     element: "火",
     job: "远程",
     awakening: "攻击",
@@ -125,6 +170,9 @@ const heros = [
   {
     name: "比比",
     initialRate: 3,
+    initialData: {
+      attack: 65,
+    },
     element: "火",
     job: "远程",
     awakening: "攻击",
@@ -133,6 +181,9 @@ const heros = [
   {
     name: "阿卡妮",
     initialRate: 3,
+    initialData: {
+      attack: 75,
+    },
     element: "火",
     job: "远程",
     awakening: "暴击伤害",
@@ -141,6 +192,9 @@ const heros = [
   {
     name: "法比安",
     initialRate: 3,
+    initialData: {
+      attack: 35,
+    },
     element: "火",
     job: "辅助",
     awakening: "暴击率",
@@ -149,6 +203,9 @@ const heros = [
   {
     name: "格罗丽亚",
     initialRate: 3,
+    initialData: {
+      attack: 20,
+    },
     element: "火",
     job: "辅助",
     awakening: "攻击速度",
@@ -157,6 +214,9 @@ const heros = [
   {
     name: "樱花",
     initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
     element: "火",
     job: "辅助",
     awakening: "暴击伤害",
@@ -165,6 +225,9 @@ const heros = [
   {
     name: "阿勒格罗",
     initialRate: 3,
+    initialData: {
+      attack: 50,
+    },
     element: "火",
     job: "辅助",
     awakening: "暴击抵抗率",
@@ -173,6 +236,9 @@ const heros = [
   {
     name: "泡泡糖",
     initialRate: 3,
+    initialData: {
+      attack: 55,
+    },
     element: "火",
     job: "辅助",
     awakening: "穿透",
@@ -181,6 +247,9 @@ const heros = [
   {
     name: "艾莉诺",
     initialRate: 3,
+    initialData: {
+      attack: 30,
+    },
     element: "水",
     job: "坦克",
     awakening: "防御",
@@ -189,6 +258,9 @@ const heros = [
   {
     name: "贝尔纳多",
     initialRate: 2,
+    initialData: {
+      attack: 40,
+    },
     element: "水",
     job: "坦克",
     awakening: "生命",
@@ -197,6 +269,9 @@ const heros = [
   {
     name: "香草",
     initialRate: 3,
+    initialData: {
+      attack: 20,
+    },
     element: "水",
     job: "坦克",
     awakening: "生命",
@@ -205,6 +280,9 @@ const heros = [
   {
     name: "苏沃",
     initialRate: 3,
+    initialData: {
+      attack: 70,
+    },
     element: "水",
     job: "近战",
     awakening: "攻击",
@@ -213,6 +291,9 @@ const heros = [
   {
     name: "马塞洛",
     initialRate: 2,
+    initialData: {
+      attack: 55,
+    },
     element: "水",
     job: "近战",
     awakening: "生命",
@@ -221,6 +302,9 @@ const heros = [
   {
     name: "德雷克",
     initialRate: 3,
+    initialData: {
+      attack: 60,
+    },
     element: "水",
     job: "近战",
     awakening: "暴击率",
@@ -229,6 +313,9 @@ const heros = [
   {
     name: "伊戈尔",
     initialRate: 3,
+    initialData: {
+      attack: 60,
+    },
     element: "水",
     job: "近战",
     awakening: "攻击",
@@ -237,6 +324,9 @@ const heros = [
   {
     name: "水星",
     initialRate: 3,
+    initialData: {
+      attack: 65,
+    },
     element: "水",
     job: "近战",
     awakening: "攻击",
@@ -245,6 +335,9 @@ const heros = [
   {
     name: "巴赫二号",
     initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
     element: "水",
     job: "近战",
     awakening: "生命",
@@ -253,6 +346,9 @@ const heros = [
   {
     name: "洁斯",
     initialRate: 3,
+    initialData: {
+      attack: 60,
+    },
     element: "水",
     job: "近战",
     awakening: "暴击抵抗率",
@@ -261,6 +357,9 @@ const heros = [
   {
     name: "让路易",
     initialRate: 3,
+    initialData: {
+      attack: 140,
+    },
     element: "水",
     job: "近战",
     awakening: "攻击速度",
@@ -269,6 +368,9 @@ const heros = [
   {
     name: "水门狱",
     initialRate: 3,
+    initialData: {
+      attack: 144,
+    },
     element: "水",
     job: "近战",
     awakening: "防御",
@@ -277,6 +379,9 @@ const heros = [
   {
     name: "雪儿",
     initialRate: 3,
+    initialData: {
+      attack: 65,
+    },
     element: "水",
     job: "远程",
     awakening: "生命",
@@ -285,6 +390,9 @@ const heros = [
   {
     name: "波浪",
     initialRate: 1,
+    initialData: {
+      attack: 50,
+    },
     element: "水",
     job: "远程",
     awakening: "穿透",
@@ -293,6 +401,9 @@ const heros = [
   {
     name: "达娜",
     initialRate: 2,
+    initialData: {
+      attack: 50,
+    },
     element: "水",
     job: "远程",
     awakening: "暴击伤害",
@@ -301,6 +412,9 @@ const heros = [
   {
     name: "彩肖尔",
     initialRate: 3,
+    initialData: {
+      attack: 65,
+    },
     element: "水",
     job: "远程",
     awakening: "攻击速度",
@@ -309,6 +423,9 @@ const heros = [
   {
     name: "墨熙",
     initialRate: 3,
+    initialData: {
+      attack: 175,
+    },
     element: "水",
     job: "远程",
     awakening: "攻击",
@@ -317,6 +434,9 @@ const heros = [
   {
     name: "猎犬",
     initialRate: 3,
+    initialData: {
+      attack: 160,
+    },
     element: "水",
     job: "远程",
     awakening: "生命",
@@ -325,6 +445,9 @@ const heros = [
   {
     name: "莫里斯",
     initialRate: 1,
+    initialData: {
+      attack: 25,
+    },
     element: "水",
     job: "辅助",
     awakening: "生命",
@@ -333,6 +456,9 @@ const heros = [
   {
     name: "法蒂玛",
     initialRate: 3,
+    initialData: {
+      attack: 30,
+    },
     element: "水",
     job: "辅助",
     awakening: "暴击抵抗率",
@@ -341,6 +467,9 @@ const heros = [
   {
     name: "西亚信",
     initialRate: 3,
+    initialData: {
+      attack: 43,
+    },
     element: "水",
     job: "辅助",
     awakening: "暴击率",
@@ -349,6 +478,9 @@ const heros = [
   {
     name: "艾莉娅",
     initialRate: 3,
+    initialData: {
+      attack: 50,
+    },
     element: "水",
     job: "辅助",
     awakening: "生命",
@@ -357,6 +489,9 @@ const heros = [
   {
     name: "纳姆维尔",
     initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
     element: "水",
     job: "辅助",
     awakening: "防御",
@@ -365,6 +500,9 @@ const heros = [
   {
     name: "苏菲",
     initialRate: 3,
+    initialData: {
+      attack: 60,
+    },
     element: "水",
     job: "辅助",
     awakening: "生命",
@@ -373,6 +511,9 @@ const heros = [
   {
     name: "杰克",
     initialRate: 3,
+    initialData: {
+      attack: 20,
+    },
     element: "土",
     job: "坦克",
     awakening: "防御",
@@ -381,6 +522,9 @@ const heros = [
   {
     name: "班杰明",
     initialRate: 2,
+    initialData: {
+      attack: 25,
+    },
     element: "土",
     job: "坦克",
     awakening: "生命",
@@ -389,6 +533,9 @@ const heros = [
   {
     name: "芬舍尔",
     initialRate: 3,
+    initialData: {
+      attack: 30,
+    },
     element: "土",
     job: "坦克",
     awakening: "防御",
@@ -397,6 +544,9 @@ const heros = [
   {
     name: "科拉汉得",
     initialRate: 3,
+    initialData: {
+      attack: 25,
+    },
     element: "土",
     job: "坦克",
     awakening: "防御",
@@ -405,6 +555,9 @@ const heros = [
   {
     name: "克莉丝汀",
     initialRate: 3,
+    initialData: {
+      attack: 65,
+    },
     element: "土",
     job: "近战",
     awakening: "穿透",
@@ -413,6 +566,9 @@ const heros = [
   {
     name: "虎狼",
     initialRate: 1,
+    initialData: {
+      attack: 50,
+    },
     element: "土",
     job: "近战",
     awakening: "攻击",
@@ -421,6 +577,9 @@ const heros = [
   {
     name: "拉希德",
     initialRate: 3,
+    initialData: {
+      attack: 70,
+    },
     element: "土",
     job: "近战",
     awakening: "攻击速度",
@@ -429,6 +588,9 @@ const heros = [
   {
     name: "猎奥坎",
     initialRate: 3,
+    initialData: {
+      attack: 65,
+    },
     element: "土",
     job: "近战",
     awakening: "攻击",
@@ -437,6 +599,9 @@ const heros = [
   {
     name: "伊森",
     initialRate: 3,
+    initialData: {
+      attack: 55,
+    },
     element: "土",
     job: "近战",
     awakening: "穿透",
@@ -445,6 +610,9 @@ const heros = [
   {
     name: "巴赫三号",
     initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
     element: "土",
     job: "近战",
     awakening: "生命",
@@ -453,6 +621,9 @@ const heros = [
   {
     name: "米莉",
     initialRate: 3,
+    initialData: {
+      attack: 75,
+    },
     element: "土",
     job: "近战",
     awakening: "攻击",
@@ -461,6 +632,9 @@ const heros = [
   {
     name: "尖牙",
     initialRate: 3,
+    initialData: {
+      attack: 100,
+    },
     element: "土",
     job: "近战",
     awakening: "攻击",
@@ -469,6 +643,9 @@ const heros = [
   {
     name: "吕布",
     initialRate: 3,
+    initialData: {
+      attack: 145,
+    },
     element: "土",
     job: "近战",
     awakening: "攻击",
@@ -477,6 +654,9 @@ const heros = [
   {
     name: "貂蝉",
     initialRate: 3,
+    initialData: {
+      attack: 110,
+    },
     element: "土",
     job: "近战",
     awakening: "生命",
@@ -485,6 +665,9 @@ const heros = [
   {
     name: "拉姆塞斯",
     initialRate: 2,
+    initialData: {
+      attack: 55,
+    },
     element: "土",
     job: "远程",
     awakening: "暴击伤害",
@@ -493,6 +676,9 @@ const heros = [
   {
     name: "卡罗",
     initialRate: 1,
+    initialData: {
+      attack: 50,
+    },
     element: "土",
     job: "远程",
     awakening: "暴击伤害",
@@ -501,6 +687,9 @@ const heros = [
   {
     name: "威尔伯",
     initialRate: 3,
+    initialData: {
+      attack: 55,
+    },
     element: "土",
     job: "远程",
     awakening: "暴击率",
@@ -509,6 +698,9 @@ const heros = [
   {
     name: "戴登",
     initialRate: 3,
+    initialData: {
+      attack: 60,
+    },
     element: "土",
     job: "远程",
     awakening: "攻击",
@@ -517,6 +709,9 @@ const heros = [
   {
     name: "卡雅",
     initialRate: 3,
+    initialData: {
+      attack: 120,
+    },
     element: "土",
     job: "远程",
     awakening: "攻击",
@@ -525,6 +720,9 @@ const heros = [
   {
     name: "默鲁",
     initialRate: 2,
+    initialData: {
+      attack: 30,
+    },
     element: "土",
     job: "辅助",
     awakening: "防御",
@@ -533,6 +731,9 @@ const heros = [
   {
     name: "安娜",
     initialRate: 3,
+    initialData: {
+      attack: 50,
+    },
     element: "土",
     job: "辅助",
     awakening: "攻击",
@@ -541,6 +742,9 @@ const heros = [
   {
     name: "百合",
     initialRate: 3,
+    initialData: {
+      attack: 35,
+    },
     element: "土",
     job: "辅助",
     awakening: "生命",
@@ -549,6 +753,9 @@ const heros = [
   {
     name: "璐儿",
     initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
     element: "土",
     job: "辅助",
     awakening: "暴击抵抗率",
@@ -557,6 +764,9 @@ const heros = [
   {
     name: "黎露",
     initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
     element: "土",
     job: "辅助",
     awakening: "穿透",
@@ -565,6 +775,9 @@ const heros = [
   {
     name: "土灵现",
     initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
     element: "土",
     job: "辅助",
     awakening: "穿透",
@@ -573,6 +786,9 @@ const heros = [
   {
     name: "奥蕾利亚",
     initialRate: 3,
+    initialData: {
+      attack: 25,
+    },
     element: "风",
     job: "坦克",
     awakening: "生命",
@@ -581,6 +797,9 @@ const heros = [
   {
     name: "西尔维亚",
     initialRate: 2,
+    initialData: {
+      attack: 40,
+    },
     element: "风",
     job: "坦克",
     awakening: "生命",
@@ -589,6 +808,9 @@ const heros = [
   {
     name: "雷克斯",
     initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
     element: "风",
     job: "坦克",
     awakening: "生命",
@@ -597,6 +819,9 @@ const heros = [
   {
     name: "霜夜",
     initialRate: 3,
+    initialData: {
+      attack: 25,
+    },
     element: "风",
     job: "坦克",
     awakening: "穿透",
@@ -605,6 +830,9 @@ const heros = [
   {
     name: "尤依",
     initialRate: 1,
+    initialData: {
+      attack: 60,
+    },
     element: "风",
     job: "近战",
     awakening: "攻击速度",
@@ -613,6 +841,9 @@ const heros = [
   {
     name: "巴欧",
     initialRate: 1,
+    initialData: {
+      attack: 55,
+    },
     element: "风",
     job: "近战",
     awakening: "攻击",
@@ -621,6 +852,9 @@ const heros = [
   {
     name: "克努特",
     initialRate: 3,
+    initialData: {
+      attack: 65,
+    },
     element: "风",
     job: "近战",
     awakening: "攻击",
@@ -629,6 +863,9 @@ const heros = [
   {
     name: "路德威",
     initialRate: 3,
+    initialData: {
+      attack: 70,
+    },
     element: "风",
     job: "近战",
     awakening: "攻击",
@@ -637,6 +874,9 @@ const heros = [
   {
     name: "巴赫四号",
     initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
     element: "风",
     job: "近战",
     awakening: "生命",
@@ -645,6 +885,9 @@ const heros = [
   {
     name: "面珑",
     initialRate: 3,
+    initialData: {
+      attack: 70,
+    },
     element: "风",
     job: "近战",
     awakening: "防御",
@@ -653,6 +896,9 @@ const heros = [
   {
     name: "薇笑",
     initialRate: 3,
+    initialData: {
+      attack: 175,
+    },
     element: "风",
     job: "近战",
     awakening: "暴击伤害",
@@ -661,6 +907,9 @@ const heros = [
   {
     name: "孙策",
     initialRate: 3,
+    initialData: {
+      attack: 150,
+    },
     element: "风",
     job: "近战",
     awakening: "暴击伤害",
@@ -669,6 +918,9 @@ const heros = [
   {
     name: "赛琳",
     initialRate: 3,
+    initialData: {
+      attack: 65,
+    },
     element: "风",
     job: "远程",
     awakening: "攻击速度",
@@ -677,6 +929,9 @@ const heros = [
   {
     name: "芙萝拉",
     initialRate: 2,
+    initialData: {
+      attack: 55,
+    },
     element: "风",
     job: "远程",
     awakening: "攻击",
@@ -685,6 +940,9 @@ const heros = [
   {
     name: "PQ",
     initialRate: 3,
+    initialData: {
+      attack: 60,
+    },
     element: "风",
     job: "远程",
     awakening: "穿透",
@@ -693,6 +951,9 @@ const heros = [
   {
     name: "紫丁香",
     initialRate: 3,
+    initialData: {
+      attack: 70,
+    },
     element: "风",
     job: "远程",
     awakening: "穿透",
@@ -701,6 +962,9 @@ const heros = [
   {
     name: "米克",
     initialRate: 3,
+    initialData: {
+      attack: 65,
+    },
     element: "风",
     job: "远程",
     awakening: "攻击",
@@ -709,6 +973,9 @@ const heros = [
   {
     name: "柯妮",
     initialRate: 3,
+    initialData: {
+      attack: 60,
+    },
     element: "风",
     job: "远程",
     awakening: "攻击速度",
@@ -717,6 +984,9 @@ const heros = [
   {
     name: "阿圭尔",
     initialRate: 3,
+    initialData: {
+      attack: 70,
+    },
     element: "风",
     job: "远程",
     awakening: "暴击率",
@@ -725,6 +995,9 @@ const heros = [
   {
     name: "风息幕",
     initialRate: 3,
+    initialData: {
+      attack: 175,
+    },
     element: "风",
     job: "远程",
     awakening: "暴击伤害",
@@ -733,6 +1006,9 @@ const heros = [
   {
     name: "大乔",
     initialRate: 3,
+    initialData: {
+      attack: 200,
+    },
     element: "风",
     job: "远程",
     awakening: "攻击",
@@ -741,6 +1017,9 @@ const heros = [
   {
     name: "碧翠丝",
     initialRate: 2,
+    initialData: {
+      attack: 35,
+    },
     element: "风",
     job: "辅助",
     awakening: "攻击",
@@ -749,6 +1028,9 @@ const heros = [
   {
     name: "善花",
     initialRate: 3,
+    initialData: {
+      attack: 35,
+    },
     element: "风",
     job: "辅助",
     awakening: "暴击伤害",
@@ -757,6 +1039,9 @@ const heros = [
   {
     name: "笑笑",
     initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
     element: "风",
     job: "辅助",
     awakening: "生命",

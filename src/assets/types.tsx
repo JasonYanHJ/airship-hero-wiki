@@ -10,6 +10,9 @@ import { HERO_NAMES } from "./heros";
 export type Hero = {
   name: string;
   initialRate: 1 | 2 | 3;
+  initialData: {
+    attack: number;
+  };
   element: (typeof ELEMENT_TYPES)[number];
   job: (typeof JOB_TYPES)[number];
   awakening: keyof typeof AWAKENING_TYPES_DATA;
