@@ -64,6 +64,21 @@ const WelcomePage = () => {
               <li>设置每页展示条数(仅PC端)</li>
             </ul>
           </li>
+          <li>
+            <Title level={4}>个人数据-英雄星级</Title>
+            <ul>
+              <Text strong>基本功能：</Text>
+              <li>汇总英雄的养成数据</li>
+              <li>汇总英雄的觉醒持有效果</li>
+              <Text strong>数据录入：</Text>
+              <li>使用滑动条录入英雄的星级数据</li>
+              <li>录入顺序与游戏中英雄图鉴的展示顺序保持一致</li>
+              <li>数据保存在设备的浏览器本地，无需重复录入</li>
+              <li>
+                录入数据保存时，提供汇总信息，方便与游戏中实际信息核对，确保录入正确
+              </li>
+            </ul>
+          </li>
         </ul>
       </Paragraph>
 
@@ -81,7 +96,7 @@ const WelcomePage = () => {
             <Title level={4}>缘分相关</Title>
             <ul>
               <li>添加缘分图鉴 ✅ 🎉</li>
-              <li>开发个人数据保存功能，主要是角色的星级</li>
+              <li>开发个人数据保存功能，主要是角色的星级 ✅ 🎉</li>
               <li>添加缘分优先级计算工具</li>
             </ul>
           </li>

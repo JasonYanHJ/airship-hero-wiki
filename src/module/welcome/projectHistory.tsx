@@ -2,6 +2,10 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children:
+      "v0.3.0 - 使用浏览器本地存储实现英雄星级数据录入功能 | 2025-06-08",
+  },
+  {
     children: "v0.2.6 - 优化贡献者列表显示",
   },
   {
