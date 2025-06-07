@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.2.6 - 优化贡献者列表显示",
+  },
+  {
     children: "v0.2.5 - 修复缘分图鉴名称截断导致的显示问题",
   },
   {
