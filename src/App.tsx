@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import PageNotFound from "./module/layout/PageNotFound";
 import WelcomePage from "./module/welcome/WelcomPage";
+import HeroEncyclopediaPage from "./module/encyclopedia/HeroEncyclopediaPage";
 
 dayjs.locale("zh-cn");
 
@@ -22,6 +23,10 @@ const App = () => {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/welcome" element={<WelcomePage />} />
+            <Route
+              path="/encyclopedia/hero"
+              element={<HeroEncyclopediaPage />}
+            />
           </Route>
 
           <Route path="/" element={<Navigate to="/welcome" replace />} />
