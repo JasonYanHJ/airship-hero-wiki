@@ -43,10 +43,7 @@ const useTableSearch = () => {
     dataIndex: string | string[]
   ) => Pick<
     ProColumnType<unknown>,
-    | "filterDropdown"
-    | "filterIcon"
-    | "onFilter"
-    | "onFilterDropdownVisibleChange"
+    "filterDropdown" | "filterIcon" | "onFilter" | "filterDropdownProps"
   > = useCallback(
     (_dataIndex) => {
       const dataIndex = Array.isArray(_dataIndex) ? _dataIndex : [_dataIndex];
@@ -118,10 +115,12 @@ const useTableSearch = () => {
             ?.toString()
             .toLowerCase()
             .includes((value as string).toLowerCase()),
-        onFilterDropdownVisibleChange: (visible) => {
-          if (visible) {
-            setTimeout(() => searchInput.current?.select(), 100);
-          }
+        filterDropdownProps: {
+          onOpenChange: (open) => {
+            if (open) {
+              setTimeout(() => searchInput.current?.select(), 100);
+            }
+          },
         },
       };
     },
