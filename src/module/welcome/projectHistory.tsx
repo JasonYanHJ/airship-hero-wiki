@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.2.4 - 缘分图鉴支持按提升量排序",
+  },
+  {
     children: "v0.2.3 - 修复页头不与标签页保持一致的bug",
   },
   {

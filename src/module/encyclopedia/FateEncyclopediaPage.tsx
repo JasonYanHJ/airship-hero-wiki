@@ -43,6 +43,7 @@ const FateEncyclopediaPage = () => {
         return `${entity.type} +${entity.incresePerLevel}%`;
       },
       ...createFixValuesFilterProps("type", FATE_TYPES),
+      sorter: (a, b) => a.incresePerLevel - b.incresePerLevel,
     },
     {
       title: "英雄",
