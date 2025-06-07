@@ -761,6 +761,6 @@ const heros: Hero[] = [
     awakening: "生命",
     discovery_all: "攻击",
   },
-];
+] as const;
 
 export default heros;

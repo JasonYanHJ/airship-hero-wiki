@@ -7,7 +7,7 @@ import Layout from "./module/layout/Layout";
 import {
   Navigate,
   Route,
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
 } from "react-router-dom";
 import PageNotFound from "./module/layout/PageNotFound";
