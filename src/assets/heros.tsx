@@ -1,6 +1,7 @@
+import { AWAKENING_TYPES_DATA } from "./consts";
 import { Hero } from "./types";
 
-const heros: Hero[] = [
+const heros = [
   {
     name: "莫心",
     initialRate: 1,
@@ -761,6 +762,13 @@ const heros: Hero[] = [
     awakening: "生命",
     discovery_all: "攻击",
   },
-] as const;
+] as const satisfies Hero[];
+
+export function getAwakeningDisplayString(hero: Hero) {
+  const increment = AWAKENING_TYPES_DATA[hero.awakening][hero.initialRate - 1];
+  return `${hero.awakening}+${increment}${
+    hero.awakening !== "攻击速度" ? "%" : ""
+  }`;
+}
 
 export default heros;

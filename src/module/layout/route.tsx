@@ -15,6 +15,11 @@ const route: GetProp<ProLayoutProps, "route"> = {
       name: "英雄图鉴",
       icon: <BookOutlined />,
     },
+    {
+      path: "/encyclopedia/fate",
+      name: "缘分图鉴",
+      icon: <BookOutlined />,
+    },
   ],
 };
 

@@ -1,9 +1,8 @@
 import { ProColumnType, ProTable } from "@ant-design/pro-components";
 import { Hero } from "../../assets/types";
-import heros from "../../assets/heros";
+import heros, { getAwakeningDisplayString } from "../../assets/heros";
 import {
   AWAKENING_TYPES,
-  AWAKENING_TYPES_DATA,
   DISCOVERY_TYPES,
   ELEMENT_TYPES,
   JOB_TYPES,
@@ -71,11 +70,7 @@ const HeroEncyclopediaPage = () => {
       title: "每级觉醒提升",
       minWidth: 100,
       render(_dom, entity) {
-        const increment =
-          AWAKENING_TYPES_DATA[entity.awakening][entity.initialRate - 1];
-        return `${entity.awakening} +${increment}${
-          entity.awakening !== "攻击速度" ? "%" : ""
-        }`;
+        return getAwakeningDisplayString(entity);
       },
       ...createFixValuesFilterProps("awakening", AWAKENING_TYPES),
     },

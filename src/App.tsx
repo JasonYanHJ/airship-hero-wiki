@@ -13,6 +13,7 @@ import {
 import PageNotFound from "./module/layout/PageNotFound";
 import WelcomePage from "./module/welcome/WelcomPage";
 import HeroEncyclopediaPage from "./module/encyclopedia/HeroEncyclopediaPage";
+import FateEncyclopediaPage from "./module/encyclopedia/FateEncyclopediaPage";
 
 dayjs.locale("zh-cn");
 
@@ -26,6 +27,10 @@ const App = () => {
             <Route
               path="/encyclopedia/hero"
               element={<HeroEncyclopediaPage />}
+            />
+            <Route
+              path="/encyclopedia/fate"
+              element={<FateEncyclopediaPage />}
             />
           </Route>
 
