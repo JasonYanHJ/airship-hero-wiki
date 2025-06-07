@@ -2,6 +2,12 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.2.1 - 缘分图鉴支持英雄搜索",
+  },
+  {
+    children: "v0.2.0 - 添加缘分图鉴",
+  },
+  {
     children: "v0.1.4 - 添加欢迎界面",
   },
   {

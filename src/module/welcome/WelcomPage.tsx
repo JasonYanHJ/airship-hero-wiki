@@ -3,8 +3,13 @@ import { projectHistory } from "./projectHistory";
 import { contributorHistory } from "./contributorHistory";
 import mashuImg from "./assets/avatar_mashu.png";
 import unionImg from "./assets/union.jpg";
+import styled from "styled-components";
 
 const { Title, Paragraph, Text } = Typography;
+
+const StyledListItemMeta = styled(List.Item.Meta)`
+  align-items: center !important;
+`;
 
 const WelcomePage = () => {
   return (
@@ -37,10 +42,29 @@ const WelcomePage = () => {
                 <Text strong>列功能：</Text>
                 <li>能够按名称搜索英雄</li>
                 <li>能够按各类数据筛选英雄</li>
+              </ul>
+            </li>
+            <li>
+              <Title level={4}>缘分图鉴</Title>
+              <ul>
+                <Text strong>基本功能：</Text>
+                <li>
+                  展示缘分的名称、每级提升的属性、需要的英雄、以及所需英雄的觉醒数据
+                </li>
+                <Text strong>列功能：</Text>
+                <li>能够按名称搜索缘分</li>
+                <li>能够按各类数据筛选缘分</li>
+              </ul>
+            </li>
+            <li>
+              <Title level={4}>表格通用功能</Title>
+              <ul>
                 <Text strong>右上角工具栏：</Text>
                 <li>刷新：离线版暂未开发</li>
-                <li>调整列的宽度</li>
+                <li>调整每行的显示高度</li>
                 <li>调整列的显示以及展示顺序</li>
+                <Text strong>右下脚页码栏：</Text>
+                <li>设置每页展示条数(仅PC端)</li>
               </ul>
             </li>
           </ul>
@@ -51,17 +75,15 @@ const WelcomePage = () => {
           <blockquote>
             <ul>
               <b>期待大家帮忙贡献：</b>
-              <li>缘分图鉴相关数据录入</li>
-              <li>
-                英雄图鉴扩充更多数据（初始攻击、满星满发现时的加成数据等）
-              </li>
+              <li>现有功能的更多相关数据录入</li>
+              <li>如果有其他功能idea，准备idea需要的相关数据</li>
             </ul>
           </blockquote>
           <ul>
             <li>
               <Title level={4}>缘分相关</Title>
               <ul>
-                <li>添加缘分图鉴</li>
+                <li>添加缘分图鉴 ✅ 🎉</li>
                 <li>开发个人数据保存功能，主要是角色的星级</li>
                 <li>添加缘分优先级计算工具</li>
               </ul>
@@ -111,7 +133,7 @@ const WelcomePage = () => {
             dataSource={contributorHistory}
             renderItem={(item) => (
               <List.Item>
-                <List.Item.Meta
+                <StyledListItemMeta
                   avatar={<Avatar src={item.avatar} />}
                   title={item.name}
                   description={item.description}
