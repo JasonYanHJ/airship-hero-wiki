@@ -1,9 +1,52 @@
-body {
-  padding: 0;
-  margin: 0;
+/* 重置CSS，避免浏览器自带的用户代理样式表影响样式 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-#root {
-  min-height: 100vh;
-  overflow: auto;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
 }
