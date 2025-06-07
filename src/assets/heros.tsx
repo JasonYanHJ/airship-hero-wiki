@@ -764,6 +764,8 @@ const heros = [
   },
 ] as const satisfies Hero[];
 
+export const HERO_NAMES = heros.map((h) => h.name);
+
 export function getAwakeningDisplayString(hero: Hero) {
   const increment = AWAKENING_TYPES_DATA[hero.awakening][hero.initialRate - 1];
   return `${hero.awakening}+${increment}${

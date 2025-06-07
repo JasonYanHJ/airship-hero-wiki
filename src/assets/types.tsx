@@ -5,7 +5,7 @@ import {
   FATE_TYPES,
   JOB_TYPES,
 } from "./consts";
-import heros from "./heros";
+import { HERO_NAMES } from "./heros";
 
 export type Hero = {
   name: string;
@@ -20,5 +20,5 @@ export type Fate = {
   name: string;
   type: (typeof FATE_TYPES)[number];
   incresePerLevel: number;
-  heros: (typeof heros)[number]["name"][];
+  heros: typeof HERO_NAMES;
 };

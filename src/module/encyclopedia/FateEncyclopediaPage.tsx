@@ -6,7 +6,10 @@ import createFixValuesFilterProps from "../../utils/antd-table-utils/createFixVa
 import styled from "styled-components";
 import { fates } from "../../assets/fates";
 import { Space, Tag } from "antd";
-import heros, { getAwakeningDisplayString } from "../../assets/heros";
+import heros, {
+  getAwakeningDisplayString,
+  HERO_NAMES,
+} from "../../assets/heros";
 
 const StyledProTable = styled(ProTable<Fate>)`
   // 内容过长时允许左右滑动
@@ -58,6 +61,13 @@ const FateEncyclopediaPage = () => {
           </Space>
         );
       },
+      ...createFixValuesFilterProps("heros", HERO_NAMES, {
+        filterSearch: true,
+        cmp: (itemValue, selectedValue) =>
+          (itemValue as Fate["heros"]).includes(
+            selectedValue as Fate["heros"][number]
+          ),
+      }),
     },
   ];
 
