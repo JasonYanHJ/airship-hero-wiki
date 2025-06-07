@@ -7,6 +7,13 @@ const StyledProLayout = styled(ProLayout)`
   .ant-layout-sider.ant-pro-sider {
     background-color: white;
   }
+
+  // 手机端减少两侧内边距
+  @media only screen and (max-width: 768px) {
+    .ant-pro-page-container-children-container {
+      padding-inline: 12px;
+    }
+  }
 `;
 
 const Layout = () => {
