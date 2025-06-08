@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import {
+  calculateFateRelatedData,
   calculateRateRelatedData,
   PersonalHeroRateData,
 } from "./hero-rate/rateDataService";
@@ -10,7 +11,10 @@ export type PersonalInputData = {
 
 export type PersonalDataContextType = PersonalInputData & {
   setPersonalHeroRateData: (data: PersonalHeroRateData) => void;
-  calculatedData: ReturnType<typeof calculateRateRelatedData>;
+  calculatedData: {
+    rateRalated: ReturnType<typeof calculateRateRelatedData>;
+    fateRalated: ReturnType<typeof calculateFateRelatedData>;
+  };
 };
 
 export const PersonalDataContext = createContext<PersonalDataContextType>(

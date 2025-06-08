@@ -1,8 +1,15 @@
-import { AWAKENING_TYPES, AWAKENING_TYPES_DATA } from "../../../assets/consts";
+import { min } from "lodash";
+import {
+  AWAKENING_TYPES,
+  AWAKENING_TYPES_DATA,
+  FATE_TYPES,
+} from "../../../assets/consts";
+import { fates } from "../../../assets/fates";
 import heros, {
   getAwakeningIncrement,
   HERO_NAMES,
 } from "../../../assets/heros";
+import { FateWithRate, HeroWithRate } from "../../../assets/types";
 
 export type PersonalHeroRateData = Record<(typeof HERO_NAMES)[number], number>;
 
@@ -74,14 +81,16 @@ export function validatePersonalHeroRateData(data: unknown) {
   }
 }
 
-export function calculateRateRelatedData(
+export function getHerosWithRate(
   personalHeroRateData: PersonalHeroRateData
-) {
-  const herosWithRate = heros.map((hero) => ({
+): HeroWithRate[] {
+  return heros.map((hero) => ({
     ...hero,
     rate: personalHeroRateData[hero.name],
   }));
+}
 
+export function calculateRateRelatedData(herosWithRate: HeroWithRate[]) {
   const awakenHerosCount = herosWithRate.filter(
     (hero) => hero.rate >= 6
   ).length;
@@ -117,4 +126,37 @@ export function calculateRateRelatedData(
     rate3HerosCount,
     awakeningData,
   };
+}
+
+export function getFatesWithRate(
+  herosWithRate: HeroWithRate[]
+): FateWithRate[] {
+  return fates
+    .map((fate) => ({
+      ...fate,
+      heros: fate.heros.map(
+        (name) => herosWithRate.find((hero) => hero.name === name)!
+      ),
+    }))
+    .map((fate) => ({
+      ...fate,
+      rate: min(fate.heros.map((hero) => hero.rate))!,
+    }));
+}
+
+export function calculateFateRelatedData(fatesWithRate: FateWithRate[]) {
+  const maxFateCount = fatesWithRate.filter((fate) => fate.rate === 10).length;
+
+  const fateRateEffectData = Object.fromEntries(
+    FATE_TYPES.map((type) => [
+      type,
+      fatesWithRate
+        .filter((fate) => fate.type === type)
+        .map((fate) => (100 + fate.incresePerLevel * fate.rate) / 100)
+        .reduce((a, b) => a * b, 100)
+        .toFixed(2),
+    ])
+  );
+
+  return { maxFateCount, fateRateEffectData };
 }

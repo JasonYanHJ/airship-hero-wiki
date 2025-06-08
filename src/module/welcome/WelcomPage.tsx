@@ -82,6 +82,7 @@ const WelcomePage = () => {
                 <Text strong>基本功能：</Text>
                 <li>汇总英雄的养成数据</li>
                 <li>汇总英雄的觉醒持有效果</li>
+                <li>汇总英雄的缘分达成效果</li>
                 <Text strong>数据录入：</Text>
                 <li>使用滑动条录入英雄的星级数据</li>
                 <li>录入顺序与游戏中英雄图鉴的展示顺序保持一致</li>

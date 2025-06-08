@@ -18,10 +18,17 @@ export type Hero = {
   awakening: keyof typeof AWAKENING_TYPES_DATA;
   discovery_all: (typeof DISCOVERY_TYPES)[number];
 };
+export type HeroWithRate = Hero & {
+  rate: number;
+};
 
 export type Fate = {
   name: string;
   type: (typeof FATE_TYPES)[number];
   incresePerLevel: number;
   heros: typeof HERO_NAMES;
+};
+export type FateWithRate = Omit<Fate, "heros"> & {
+  rate: number;
+  heros: HeroWithRate[];
 };

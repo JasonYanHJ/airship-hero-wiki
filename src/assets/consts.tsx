@@ -19,7 +19,7 @@ export const DISCOVERY_TYPES = [
   "生命",
   "防御",
 ] as const;
-export const FATE_TYPES = ["攻击", "穿透", "生命", "防御"] as const;
+export const FATE_TYPES = ["攻击", "生命", "防御", "穿透"] as const;
 export const ELEMENT_TAG_COLOR = {
   火: "magenta",
   水: "blue",

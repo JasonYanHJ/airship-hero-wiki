@@ -1,6 +1,9 @@
-import { ReactNode, useCallback, useState } from "react";
+import { ReactNode, useCallback, useMemo, useState } from "react";
 import {
+  calculateFateRelatedData,
   calculateRateRelatedData,
+  getFatesWithRate,
+  getHerosWithRate,
   loadPersonalHeroRateData,
   PersonalHeroRateData,
   savePersonalHeroRateData,
@@ -17,10 +20,28 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
     savePersonalHeroRateData(data);
   }, []);
 
+  const herosWithRate = useMemo(() => getHerosWithRate(rateData), [rateData]);
+  const fatesWithRate = useMemo(
+    () => getFatesWithRate(herosWithRate),
+    [herosWithRate]
+  );
+
+  const rateRalated = useMemo(
+    () => calculateRateRelatedData(herosWithRate),
+    [herosWithRate]
+  );
+  const fateRalated = useMemo(
+    () => calculateFateRelatedData(fatesWithRate),
+    [fatesWithRate]
+  );
+
   const values: PersonalDataContextType = {
     personalHeroRateData: rateData,
     setPersonalHeroRateData,
-    calculatedData: calculateRateRelatedData(rateData),
+    calculatedData: {
+      rateRalated,
+      fateRalated,
+    },
   };
   return (
     <PersonalDataContext.Provider value={values}>

@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.3.3 - 英雄星级数据额外展示缘分相关数据",
+  },
+  {
     children: "v0.3.2 - 个人数据支持数据迁移功能",
   },
   {

@@ -22,6 +22,7 @@ import { ELEMENT_TYPES } from "../../../assets/consts";
 import { Hero } from "../../../assets/types";
 import {
   calculateRateRelatedData,
+  getHerosWithRate,
   getNormalizedPersonalHeroRateData,
 } from "./rateDataService";
 import { usePersonalData } from "../usePersonalData";
@@ -175,7 +176,8 @@ const RateDataModalForm = () => {
       onFinish={async (values) => {
         return new Promise<boolean>((resolve) => {
           const normalizedData = getNormalizedPersonalHeroRateData(values);
-          const relatedData = calculateRateRelatedData(normalizedData);
+          const herosWithRate = getHerosWithRate(normalizedData);
+          const relatedData = calculateRateRelatedData(herosWithRate);
           Modal.confirm({
             title: "确认录入？",
             content: (
