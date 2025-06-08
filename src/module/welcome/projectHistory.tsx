@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.5.0 - 缘分自查表支持查看多级提升时的优先级 | 2025-06-09",
+  },
+  {
     children: "v0.4.3 - 优化缘分优先级的计算方式",
   },
   {
