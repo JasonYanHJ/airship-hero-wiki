@@ -14,7 +14,12 @@ import useTableSearch from "../../../utils/antd-table-utils/useTableSearch";
 import createFixValuesFilterProps from "../../../utils/antd-table-utils/createFixValuesFilterProps";
 import { HERO_NAMES } from "../../../assets/heros";
 
-const StyledProTable = createStyledProTable<FateRateUpPriorityData>();
+// 添加names便于列搜索功能实现
+type DataSourceType = FateRateUpPriorityData & {
+  names: string;
+};
+
+const StyledProTable = createStyledProTable<DataSourceType>();
 
 const FateToolTable = () => {
   const {
@@ -24,7 +29,12 @@ const FateToolTable = () => {
   } = usePersonalData();
   const createColumnSearchProps = useTableSearch();
 
-  const columns: ProColumnType<FateRateUpPriorityData>[] = [
+  const dataSource: DataSourceType[] = fatePriority.map((f) => ({
+    ...f,
+    names: f.targets.map((t) => t.name).join(),
+  }));
+
+  const columns: ProColumnType<DataSourceType>[] = [
     {
       title: " 伤害提升/觉醒石",
       dataIndex: "priority",
@@ -38,11 +48,13 @@ const FateToolTable = () => {
     },
     {
       title: "缘分",
-      dataIndex: "name",
+      dataIndex: "targets",
       align: "center",
-      ...createColumnSearchProps("name"),
+      ...createColumnSearchProps("names"),
       render(_dom, entity) {
-        return entity.name.map((n) => <Tag key={n}>{n}</Tag>);
+        return entity.targets.map((target) => (
+          <Tag key={target.name}>{target.name}</Tag>
+        ));
       },
     },
     {
@@ -77,9 +89,9 @@ const FateToolTable = () => {
       render(_dom, entity) {
         return (
           <Space direction="vertical">
-            {Object.entries(entity.fateRateUpEffect).map(([type, effect]) => (
+            {entity.fateRateUpEffect.map(({ type, increment }) => (
               <Tag color={TYPE_TAG_COLOR[type]} key={type}>
-                {type}*{(effect * 100).toFixed(2)}%
+                {type}*{(increment * 100).toFixed(2)}%
               </Tag>
             ))}
           </Space>
@@ -87,9 +99,9 @@ const FateToolTable = () => {
       },
       ...createFixValuesFilterProps("fateRateUpEffect", FATE_TYPES, {
         cmp: (itemValue, selectedValue) =>
-          Object.keys(
-            itemValue as FateRateUpPriorityData["fateRateUpEffect"]
-          ).includes(selectedValue as string),
+          (itemValue as FateRateUpPriorityData["fateRateUpEffect"])
+            .map((effect) => effect.type)
+            .includes(selectedValue as string),
       }),
     },
     {
@@ -100,9 +112,9 @@ const FateToolTable = () => {
       render(_dom, entity) {
         return (
           <Space direction="vertical">
-            {Object.entries(entity.heroRateUpEffect).map(([type, effect]) => (
+            {entity.heroRateUpEffect.map(({ type, increment }) => (
               <Tag color={TYPE_TAG_COLOR[type]} key={type}>
-                {type}+{effect}%
+                {type}+{increment}%
               </Tag>
             ))}
           </Space>
@@ -110,9 +122,9 @@ const FateToolTable = () => {
       },
       ...createFixValuesFilterProps("heroRateUpEffect", AWAKENING_TYPES, {
         cmp: (itemValue, selectedValue) =>
-          Object.keys(
-            itemValue as FateRateUpPriorityData["heroRateUpEffect"]
-          ).includes(selectedValue as string),
+          (itemValue as FateRateUpPriorityData["heroRateUpEffect"])
+            .map((effect) => effect.type)
+            .includes(selectedValue as string),
       }),
     },
     {
@@ -136,10 +148,10 @@ const FateToolTable = () => {
 
   return (
     <StyledProTable
-      rowKey="name"
+      rowKey="names"
       sortDirections={["descend", "ascend"]}
       search={false}
-      dataSource={fatePriority}
+      dataSource={dataSource}
       columns={columns}
       toolBarRender={() => [
         <InputNumber
