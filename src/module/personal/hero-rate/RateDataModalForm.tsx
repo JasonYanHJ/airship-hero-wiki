@@ -167,6 +167,7 @@ const RateDataModalForm = () => {
 
   return (
     <ModalForm
+      key={JSON.stringify(personalHeroRateData)}
       formRef={formRef}
       initialValues={personalHeroRateData}
       trigger={<Button type="primary">录入数据</Button>}

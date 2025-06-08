@@ -4,8 +4,11 @@ import {
   PersonalHeroRateData,
 } from "./hero-rate/rateDataService";
 
-export type PersonalDataContextType = {
+export type PersonalInputData = {
   personalHeroRateData: PersonalHeroRateData;
+};
+
+export type PersonalDataContextType = PersonalInputData & {
   setPersonalHeroRateData: (data: PersonalHeroRateData) => void;
   calculatedData: ReturnType<typeof calculateRateRelatedData>;
 };
