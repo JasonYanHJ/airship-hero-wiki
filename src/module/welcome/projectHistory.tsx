@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.3.4 - 缘分数据勘误",
+  },
+  {
     children: "v0.3.3 - 英雄星级数据额外展示缘分相关数据",
   },
   {

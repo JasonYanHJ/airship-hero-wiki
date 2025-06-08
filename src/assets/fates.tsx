@@ -22,7 +22,7 @@ export const fates = [
   {
     name: "守护泰莎的盾牌",
     type: "防御",
-    incresePerLevel: 2,
+    incresePerLevel: 1,
     heros: ["艾莉诺", "奥蕾利亚"],
   },
   {
@@ -58,13 +58,13 @@ export const fates = [
   {
     name: "森林的主人们",
     type: "生命",
-    incresePerLevel: 3,
+    incresePerLevel: 1.5,
     heros: ["芙萝拉", "碧翠丝", "班杰明"],
   },
   {
     name: "太阳的后代",
     type: "生命",
-    incresePerLevel: 3,
+    incresePerLevel: 2.5,
     heros: ["拉希德", "萨曼达", "拉姆塞斯"],
   },
   {
@@ -94,7 +94,7 @@ export const fates = [
   {
     name: "花之精灵",
     type: "防御",
-    incresePerLevel: 4,
+    incresePerLevel: 2,
     heros: ["樱花", "紫丁香", "百合", "西亚信"],
   },
   {
@@ -118,7 +118,7 @@ export const fates = [
   {
     name: "冰冷的心脏",
     type: "生命",
-    incresePerLevel: 4,
+    incresePerLevel: 1.2,
     heros: ["巴赫一号", "巴赫二号", "巴赫三号", "巴赫四号"],
   },
   {
