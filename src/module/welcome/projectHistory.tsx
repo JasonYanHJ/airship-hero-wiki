@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.4.2 - 修复一些显示问题",
+  },
+  {
     children: "v0.4.1 - 优化体验：点击表格列排序时优先降序",
   },
   {
@@ -56,6 +59,5 @@ export const projectHistory: TimelineItemProps[] = [
   {
     children: "v0.1.1 - 英雄图鉴支持按名称搜索功能",
   },
-  // 不加label时antd的时间线展示有错位
-  { label: " ", children: "v0.1.0 - 添加英雄图鉴展示 | 2025-06-07" },
+  { children: "v0.1.0 - 添加英雄图鉴展示 | 2025-06-07" },
 ];

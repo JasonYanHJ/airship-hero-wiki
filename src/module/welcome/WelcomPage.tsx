@@ -22,7 +22,7 @@ const WelcomePage = () => {
         <Paragraph>
           <blockquote>
             起源：“飞艇Wiki”的开发者在游戏飞升97大关后，开始着力于补英雄缘分提升伤害，但苦恼补缘分的优先级，于是制作了一个Excel表格用于计算不同缘分的收益与消耗，并将表格分享给了群友
-            <del> 作为工会忘记指挥作战的谢罪（划掉）</del>
+            <del> 作为公会忘记指挥作战的谢罪（划掉）</del>
             。但可恶的群友竟然表示填开发者制作的Excel表太麻烦了！？是可忍孰不可忍！于是愤怒的开发者一个滑铲，便有了“飞艇Wiki”。
           </blockquote>
         </Paragraph>
@@ -206,18 +206,11 @@ const WelcomePage = () => {
         />
 
         <Title level={3}>版本历史</Title>
-        <Paragraph>
-          <div
-            style={{
-              width: 16,
-              overflow: "visible",
-              whiteSpace: "nowrap",
-              marginTop: 24,
-            }}
-          >
-            <Timeline mode="left" items={projectHistory} />
-          </div>
-        </Paragraph>
+        <Timeline
+          mode="left"
+          style={{ marginTop: "1.5rem" }}
+          items={projectHistory}
+        />
       </Card>
     </PageContainer>
   );
