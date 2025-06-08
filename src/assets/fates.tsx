@@ -176,7 +176,7 @@ export const fates = [
     heros: ["芙萝拉", "碧翠丝", "尤依"],
   },
   {
-    name: "大帝之姿",
+    name: "大地之姿",
     type: "攻击",
     incresePerLevel: 3,
     heros: ["璐儿", "拉姆塞斯", "班杰明"],
@@ -299,7 +299,7 @@ export const fates = [
     name: "三国无双",
     type: "攻击",
     incresePerLevel: 4,
-    heros: ["吕布", "貂蝉", "大乔"],
+    heros: ["吕布", "貂蝉", "大乔", "孙策"],
   },
   {
     name: "灵珠转世",

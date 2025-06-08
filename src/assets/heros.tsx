@@ -81,7 +81,7 @@ const heros = [
   },
   {
     name: "巴赫一号",
-    initialRate: 3,
+    initialRate: 1,
     initialData: {
       attack: 40,
     },
@@ -334,7 +334,7 @@ const heros = [
   },
   {
     name: "巴赫二号",
-    initialRate: 3,
+    initialRate: 1,
     initialData: {
       attack: 40,
     },
@@ -609,7 +609,7 @@ const heros = [
   },
   {
     name: "巴赫三号",
-    initialRate: 3,
+    initialRate: 1,
     initialData: {
       attack: 40,
     },
@@ -873,7 +873,7 @@ const heros = [
   },
   {
     name: "巴赫四号",
-    initialRate: 3,
+    initialRate: 1,
     initialData: {
       attack: 40,
     },
