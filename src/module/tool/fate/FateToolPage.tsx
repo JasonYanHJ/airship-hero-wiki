@@ -1,7 +1,10 @@
 import { PageContainer, ProColumnType } from "@ant-design/pro-components";
 import { usePersonalData } from "../../personal/usePersonalData";
-import { FateRateUpPriorityData } from "./fateRateUpPriorityDateService";
-import { InputNumber, Space, Tag, Tooltip } from "antd";
+import {
+  FateRateUpPriorityData,
+  MAX_FATE_STEP,
+} from "./fateRateUpPriorityDateService";
+import { InputNumber, Select, Space, Tag, Tooltip } from "antd";
 import {
   AWAKENING_TYPES,
   ELEMENT_TAG_COLOR,
@@ -13,13 +16,19 @@ import { QuestionCircleOutlined } from "@ant-design/icons";
 import useTableSearch from "../../../utils/antd-table-utils/useTableSearch";
 import createFixValuesFilterProps from "../../../utils/antd-table-utils/createFixValuesFilterProps";
 import { HERO_NAMES } from "../../../assets/heros";
+import { useState } from "react";
+import styled from "styled-components";
 
 // 添加names便于列搜索功能实现
 type DataSourceType = FateRateUpPriorityData & {
   names: string;
 };
 
-const StyledProTable = createStyledProTable<DataSourceType>();
+const StyledProTable = styled(createStyledProTable<DataSourceType>())`
+  .ant-pro-table-list-toolbar-right > div {
+    flex-wrap: wrap;
+  }
+`;
 
 const FateToolTable = () => {
   const {
@@ -29,10 +38,14 @@ const FateToolTable = () => {
   } = usePersonalData();
   const createColumnSearchProps = useTableSearch();
 
-  const dataSource: DataSourceType[] = fatePriority.map((f) => ({
-    ...f,
-    names: f.targets.map((t) => t.name).join(),
-  }));
+  const [combinationCount, setCombinationCount] = useState(1);
+
+  const dataSource: DataSourceType[] = fatePriority
+    .find((f) => f.type === combinationCount)!
+    .data.map((f) => ({
+      ...f,
+      names: f.targets.map((t) => `${t.name}*${t.targetRate - t.rate}`).join(),
+    }));
 
   const columns: ProColumnType<DataSourceType>[] = [
     {
@@ -47,14 +60,25 @@ const FateToolTable = () => {
       defaultSortOrder: "descend",
     },
     {
+      title: "觉醒石消耗",
+      dataIndex: "awakeningStonesCost",
+      minWidth: 80,
+      align: "center",
+      sorter: (a, b) => a.awakeningStonesCost - b.awakeningStonesCost,
+    },
+    {
       title: "缘分",
       dataIndex: "targets",
       align: "center",
       ...createColumnSearchProps("names"),
       render(_dom, entity) {
-        return entity.targets.map((target) => (
-          <Tag key={target.name}>{target.name}</Tag>
-        ));
+        return (
+          <Space direction="vertical">
+            {entity.targets.map((target) => (
+              <Tag key={target.name}>{target.name}</Tag>
+            ))}
+          </Space>
+        );
       },
     },
     {
@@ -137,13 +161,6 @@ const FateToolTable = () => {
       },
       sorter: (a, b) => a.damageEffect - b.damageEffect,
     },
-    {
-      title: "觉醒石消耗",
-      dataIndex: "awakeningStonesCost",
-      minWidth: 80,
-      align: "center",
-      sorter: (a, b) => a.awakeningStonesCost - b.awakeningStonesCost,
-    },
   ];
 
   return (
@@ -170,6 +187,14 @@ const FateToolTable = () => {
           onChange={(value) =>
             value && value >= 100 && setPersonalCriticalDamageData(value)
           }
+        />,
+        <Select
+          value={combinationCount}
+          onChange={setCombinationCount}
+          options={new Array(MAX_FATE_STEP).fill(undefined).map((_, index) => ({
+            label: `提升${index + 1}组`,
+            value: index + 1,
+          }))}
         />,
       ]}
     />

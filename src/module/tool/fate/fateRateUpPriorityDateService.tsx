@@ -2,6 +2,8 @@ import { groupBy, sum, sumBy } from "lodash";
 import { getAwakeningIncrement } from "../../../assets/heros";
 import { FateWithRate, HeroWithRate } from "../../../assets/types";
 
+export const MAX_FATE_STEP = 5;
+
 type TargetFate = FateWithRate & {
   targetRate: number;
 };
@@ -26,16 +28,61 @@ export function calculateFateRateUpPriorityData(
   fatesWitheRate: FateWithRate[],
   awakeningAttack: number,
   criticalDamage: number
-): FateRateUpPriorityData[] {
-  const targetsList: TargetFate[][] = fatesWitheRate.map((fate) => [
-    {
+): { data: FateRateUpPriorityData[]; type: number }[] {
+  const notMaxTargetsList: TargetFate[] = fatesWitheRate
+    .filter((fate) => fate.rate !== 10)
+    .map((fate) => ({
       ...fate,
       targetRate: fate.rate + 1,
-    },
-  ]);
-  return targetsList.map((targets) =>
-    generateDataByTargets(targets, awakeningAttack, criticalDamage)
-  );
+    }));
+  const stepsPriorityData = new Array(MAX_FATE_STEP)
+    .fill(undefined)
+    .map((_, index) => {
+      const step = index + 1;
+      const nStepCombinations = generateCombinations(
+        notMaxTargetsList,
+        step,
+        heroRelateValidator
+      );
+      // 合并targets中重复出现的缘分，将其targetRate设为对应数量。同时过滤掉超过等级上限的组合方案。
+      const nStepTargetsList: TargetFate[][] = nStepCombinations
+        .map((steps) =>
+          steps.reduce((list, cur) => {
+            if (list.length === 0) {
+              list.push(cur);
+              return list;
+            }
+
+            const lastItem = list[list.length - 1];
+            if (lastItem.name === cur.name) {
+              list[list.length - 1] = {
+                ...lastItem,
+                targetRate: lastItem.targetRate + 1,
+              };
+              return list;
+            } else {
+              list.push(cur);
+              return list;
+            }
+          }, [] as TargetFate[])
+        )
+        .filter((targets) =>
+          targets.every((target) => target.targetRate <= 10)
+        );
+      // 根据targets方案计算对应的消耗与收益
+      const nStepPriorityData = nStepTargetsList
+        .map((targets) =>
+          generateDataByTargets(targets, awakeningAttack, criticalDamage)
+        )
+        .sort((a, b) => b.priority - a.priority);
+
+      return {
+        type: step,
+        data: nStepPriorityData,
+      };
+    });
+
+  return stepsPriorityData;
 }
 
 export function generateDataByTargets(
@@ -135,4 +182,49 @@ export function generateDataByTargets(
     awakeningStonesCost,
     priority,
   };
+}
+
+// 挑选的新缘分组合中的英雄必须和已选的有关
+function heroRelateValidator(list: TargetFate[], item: TargetFate) {
+  if (list.length === 0) return true;
+
+  const chosenHeroNames = list.flatMap((t) => t.heros).map((h) => h.name);
+  return item.heros
+    .map((h) => h.name)
+    .some((name) => chosenHeroNames.includes(name));
+}
+
+// 生成从list中挑选n个元素的所有"合法"组合(元素先后顺序无关), 由choiceValidator检查挑选方法的合法性
+function generateCombinations<T>(
+  list: T[],
+  n: number,
+  choiceValidator: (list: T[], item: T) => boolean = () => true
+) {
+  const result: T[][] = [];
+  const current: T[] = [];
+
+  // 回溯法
+  function backtrack(start: number) {
+    // 如果当前组合长度等于n，添加到结果中
+    if (current.length === n) {
+      result.push([...current]);
+      return;
+    }
+
+    // 从start位置开始遍历
+    for (let i = start; i < list.length; i++) {
+      // 剪枝：如果剩余元素不足以完成组合，提前结束
+      if (list.length - i < n - current.length) break;
+
+      // 当组合方式不符合要求时，跳过这个选择
+      if (!choiceValidator(current, list[i])) continue;
+
+      current.push(list[i]);
+      backtrack(i + 1);
+      current.pop();
+    }
+  }
+
+  backtrack(0);
+  return result;
 }
