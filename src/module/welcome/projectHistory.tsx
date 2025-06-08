@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.4.3 - 优化缘分优先级的计算方式",
+  },
+  {
     children: "v0.4.2 - 英雄数据勘误",
   },
   {

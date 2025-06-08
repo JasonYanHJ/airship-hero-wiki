@@ -60,7 +60,8 @@ export function calculateFateRateUpPriorityData(
       herosToRateUp.map((hero) => hero.toRateUp * 5)
     );
 
-    const priority = (damageEffect * 100 - 100) / awakeningStonesCost;
+    const priority =
+      Math.pow(damageEffect, 1 / awakeningStonesCost) * 100 - 100;
 
     return {
       name: [fate.name as (typeof FATE_NAMES)[number]],
