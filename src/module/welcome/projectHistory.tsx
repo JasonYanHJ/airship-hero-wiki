@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.3.2 - 个人数据支持数据迁移功能",
+  },
+  {
     children: "v0.3.1 - 星级录入中添加批量设置与重置功能",
   },
   {

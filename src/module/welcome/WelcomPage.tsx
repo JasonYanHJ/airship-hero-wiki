@@ -69,6 +69,14 @@ const WelcomePage = () => {
               </ul>
             </li>
             <li>
+              <Title level={4}>个人数据</Title>
+              <ul>
+                <Text strong>数据迁移：</Text>
+                <li>导出：将保存在浏览器本地的个人数据复制到剪切板</li>
+                <li>导入：将导出的数据粘贴的输入框后，能够导入数据</li>
+              </ul>
+            </li>
+            <li>
               <Title level={4}>个人数据-英雄星级</Title>
               <ul>
                 <Text strong>基本功能：</Text>
