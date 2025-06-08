@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.4.0 - 添加补缘分自查表",
+  },
+  {
     children: "v0.3.4 - 缘分数据勘误",
   },
   {
