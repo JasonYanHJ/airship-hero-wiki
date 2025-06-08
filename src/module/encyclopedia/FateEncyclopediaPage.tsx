@@ -71,6 +71,7 @@ const FateEncyclopediaPage = () => {
   return (
     <PageContainer>
       <StyledProTable
+        sortDirections={["descend", "ascend"]}
         dataSource={fates}
         rowKey="name"
         columns={columns}

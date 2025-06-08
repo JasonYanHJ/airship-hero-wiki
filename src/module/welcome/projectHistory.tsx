@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.4.1 - 优化体验：点击表格列排序时优先降序",
+  },
+  {
     children: "v0.4.0 - 添加补缘分自查表",
   },
   {

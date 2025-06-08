@@ -137,6 +137,7 @@ const FateToolTable = () => {
   return (
     <StyledProTable
       rowKey="name"
+      sortDirections={["descend", "ascend"]}
       search={false}
       dataSource={fatePriority}
       columns={columns}

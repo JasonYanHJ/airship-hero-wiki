@@ -77,6 +77,7 @@ const HeroEncyclopediaPage = () => {
   return (
     <PageContainer>
       <StyledProTable
+        sortDirections={["descend", "ascend"]}
         dataSource={heros}
         rowKey="name"
         columns={columns}
