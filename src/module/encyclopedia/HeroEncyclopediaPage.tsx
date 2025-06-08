@@ -1,8 +1,4 @@
-import {
-  PageContainer,
-  ProColumnType,
-  ProTable,
-} from "@ant-design/pro-components";
+import { PageContainer, ProColumnType } from "@ant-design/pro-components";
 import { Hero } from "../../assets/types";
 import heros, { getAwakeningDisplayString } from "../../assets/heros";
 import {
@@ -14,21 +10,9 @@ import {
 import { StarFilled } from "@ant-design/icons";
 import useTableSearch from "../../utils/antd-table-utils/useTableSearch";
 import createFixValuesFilterProps from "../../utils/antd-table-utils/createFixValuesFilterProps";
-import styled from "styled-components";
+import createStyledProTable from "../../utils/antd-table-utils/createStyledProTable";
 
-const StyledProTable = styled(ProTable<Hero>)`
-  // 内容过长时允许左右滑动
-  .ant-table-wrapper {
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-  @media only screen and (max-width: 768px) {
-    // 手机端减少两侧内边距
-    .ant-pro-card .ant-pro-card-body {
-      padding-inline: 12px;
-    }
-  }
-`;
+const StyledProTable = createStyledProTable<Hero>();
 
 const HeroEncyclopediaPage = () => {
   const createColumnSearchProps = useTableSearch();
