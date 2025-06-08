@@ -16,6 +16,7 @@ import HeroEncyclopediaPage from "./module/encyclopedia/HeroEncyclopediaPage";
 import FateEncyclopediaPage from "./module/encyclopedia/FateEncyclopediaPage";
 import PersonalDataPage from "./module/personal/PersonalDataPage";
 import { PersonalDataProvider } from "./module/personal/personalDataContext";
+import FateToolPage from "./module/tool/fate/FateToolPage";
 
 dayjs.locale("zh-cn");
 
@@ -35,6 +36,7 @@ const App = () => {
                 path="/encyclopedia/fate"
                 element={<FateEncyclopediaPage />}
               />
+              <Route path="/tool/fate" element={<FateToolPage />} />
               <Route path="/personal" element={<PersonalDataPage />} />
             </Route>
 

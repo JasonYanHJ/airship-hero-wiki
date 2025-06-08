@@ -1,4 +1,9 @@
-import { BookOutlined, SmileFilled, UserOutlined } from "@ant-design/icons";
+import {
+  BookOutlined,
+  SearchOutlined,
+  SmileFilled,
+  UserOutlined,
+} from "@ant-design/icons";
 import { ProLayoutProps } from "@ant-design/pro-components";
 import { GetProp } from "antd";
 
@@ -19,6 +24,11 @@ const route: GetProp<ProLayoutProps, "route"> = {
       path: "/encyclopedia/fate",
       name: "缘分图鉴",
       icon: <BookOutlined />,
+    },
+    {
+      path: "/tool/fate",
+      name: "补缘分自查表",
+      icon: <SearchOutlined />,
     },
     {
       path: "/personal",

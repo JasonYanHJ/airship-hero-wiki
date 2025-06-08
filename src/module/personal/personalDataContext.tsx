@@ -12,6 +12,12 @@ import {
   PersonalDataContext,
   PersonalDataContextType,
 } from "./usePersonalData";
+import { calculateFateRateUpPriorityData } from "../tool/fate/fateRateUpPriorityDateService";
+import {
+  loadPersonalCriticalDamageData,
+  PersonalCriticalDamageData,
+  savePersonalCriticalDamageData,
+} from "../tool/fate/criticalDamageDataService";
 
 export function PersonalDataProvider({ children }: { children: ReactNode }) {
   const [rateData, setRateData] = useState(loadPersonalHeroRateData);
@@ -19,6 +25,17 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
     setRateData(data);
     savePersonalHeroRateData(data);
   }, []);
+
+  const [criticalDamage, setCriticalDamage] = useState(
+    loadPersonalCriticalDamageData
+  );
+  const setPersonalCriticalDamageData = useCallback(
+    (data: PersonalCriticalDamageData) => {
+      setCriticalDamage(data);
+      savePersonalCriticalDamageData(data);
+    },
+    []
+  );
 
   const herosWithRate = useMemo(() => getHerosWithRate(rateData), [rateData]);
   const fatesWithRate = useMemo(
@@ -34,13 +51,25 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
     () => calculateFateRelatedData(fatesWithRate),
     [fatesWithRate]
   );
+  const fatePriority = useMemo(
+    () =>
+      calculateFateRateUpPriorityData(
+        fatesWithRate,
+        rateRalated.awakeningData.攻击,
+        criticalDamage
+      ),
+    [criticalDamage, fatesWithRate, rateRalated.awakeningData.攻击]
+  );
 
   const values: PersonalDataContextType = {
     personalHeroRateData: rateData,
     setPersonalHeroRateData,
+    personalCriticalDamageData: criticalDamage,
+    setPersonalCriticalDamageData,
     calculatedData: {
       rateRalated,
       fateRalated,
+      fatePriority,
     },
   };
   return (

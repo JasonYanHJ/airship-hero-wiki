@@ -26,3 +26,9 @@ export const ELEMENT_TAG_COLOR = {
   土: "gold",
   风: "green",
 };
+export const TYPE_TAG_COLOR: { [key: string]: string } = {
+  攻击: "magenta",
+  暴击伤害: "blue",
+  穿透: "gold",
+  攻击速度: "green",
+};

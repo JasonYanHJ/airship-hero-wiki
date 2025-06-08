@@ -4,6 +4,9 @@ import { Button, Input, message, Space, Tabs, Typography } from "antd";
 import { PersonalInputData, usePersonalData } from "./usePersonalData";
 import { useMemo, useState } from "react";
 import { validatePersonalHeroRateData } from "./hero-rate/rateDataService";
+import { validatePersonalCriticalDamageData } from "../tool/fate/criticalDamageDataService";
+
+// 添加新的个人数据种类后，需要在此文件修改三处：数据验证、数据设置、数据获取
 
 function parsePersonalData(dataString: string): PersonalInputData | undefined {
   try {
@@ -12,6 +15,11 @@ function parsePersonalData(dataString: string): PersonalInputData | undefined {
       validatePersonalHeroRateData(data?.personalHeroRateData);
     } catch (err) {
       throw Error(`英雄星级数据错误 ${err instanceof Error && err.message}`);
+    }
+    try {
+      validatePersonalCriticalDamageData(data?.personalCriticalDamageData);
+    } catch (err) {
+      throw Error(`英雄爆伤数据错误 ${err instanceof Error && err.message}`);
     }
     return data;
   } catch (err) {
@@ -26,7 +34,8 @@ function parsePersonalData(dataString: string): PersonalInputData | undefined {
 }
 
 const MigrateToPanel = () => {
-  const { setPersonalHeroRateData } = usePersonalData();
+  const { setPersonalHeroRateData, setPersonalCriticalDamageData } =
+    usePersonalData();
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -40,6 +49,7 @@ const MigrateToPanel = () => {
       }
 
       setPersonalHeroRateData(personalData.personalHeroRateData);
+      setPersonalCriticalDamageData(personalData.personalCriticalDamageData);
 
       message.success("导入成功");
       setLoading(false);
@@ -66,10 +76,11 @@ const MigrateToPanel = () => {
 };
 
 const MigrateFromPanel = () => {
-  const { personalHeroRateData } = usePersonalData();
+  const { personalHeroRateData, personalCriticalDamageData } =
+    usePersonalData();
   const dataString = useMemo(
-    () => JSON.stringify({ personalHeroRateData }),
-    [personalHeroRateData]
+    () => JSON.stringify({ personalHeroRateData, personalCriticalDamageData }),
+    [personalCriticalDamageData, personalHeroRateData]
   );
 
   const handleCopy = async () => {

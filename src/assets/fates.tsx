@@ -314,3 +314,5 @@ export const fates = [
     heros: ["炎之盾", "水门狱", "土灵现", "风息幕"],
   },
 ] as const satisfies Fate[];
+
+export const FATE_NAMES = fates.map((f) => f.name);
