@@ -1,10 +1,11 @@
+import { PageContainer } from "@ant-design/pro-components";
 import RateDataCard from "./hero-rate/RateDataCard";
 
 const PersonalDataPage = () => {
   return (
-    <div>
+    <PageContainer>
       <RateDataCard />
-    </div>
+    </PageContainer>
   );
 };
 

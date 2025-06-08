@@ -1,4 +1,8 @@
-import { ProColumnType, ProTable } from "@ant-design/pro-components";
+import {
+  PageContainer,
+  ProColumnType,
+  ProTable,
+} from "@ant-design/pro-components";
 import { Fate } from "../../assets/types";
 import { ELEMENT_TAG_COLOR, FATE_TYPES } from "../../assets/consts";
 import useTableSearch from "../../utils/antd-table-utils/useTableSearch";
@@ -81,12 +85,14 @@ const FateEncyclopediaPage = () => {
   ];
 
   return (
-    <StyledProTable
-      dataSource={fates}
-      rowKey="name"
-      columns={columns}
-      search={false}
-    />
+    <PageContainer>
+      <StyledProTable
+        dataSource={fates}
+        rowKey="name"
+        columns={columns}
+        search={false}
+      />
+    </PageContainer>
   );
 };
 

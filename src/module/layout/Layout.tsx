@@ -1,4 +1,4 @@
-import { PageContainer, ProLayout } from "@ant-design/pro-components";
+import { ProLayout } from "@ant-design/pro-components";
 import route from "./route";
 import { Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -29,9 +29,7 @@ const Layout = () => {
         <div onClick={() => item.path && navigate(item.path)}>{dom}</div>
       )}
     >
-      <PageContainer>
-        <Outlet />
-      </PageContainer>
+      <Outlet />
     </StyledProLayout>
   );
 };

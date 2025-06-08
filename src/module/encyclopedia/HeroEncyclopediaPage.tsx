@@ -1,4 +1,8 @@
-import { ProColumnType, ProTable } from "@ant-design/pro-components";
+import {
+  PageContainer,
+  ProColumnType,
+  ProTable,
+} from "@ant-design/pro-components";
 import { Hero } from "../../assets/types";
 import heros, { getAwakeningDisplayString } from "../../assets/heros";
 import {
@@ -87,12 +91,14 @@ const HeroEncyclopediaPage = () => {
   ];
 
   return (
-    <StyledProTable
-      dataSource={heros}
-      rowKey="name"
-      columns={columns}
-      search={false}
-    />
+    <PageContainer>
+      <StyledProTable
+        dataSource={heros}
+        rowKey="name"
+        columns={columns}
+        search={false}
+      />
+    </PageContainer>
   );
 };
 
