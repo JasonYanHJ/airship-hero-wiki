@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.5.8 - 优化缘分自查表展示逻辑",
+  },
+  {
     children: "v0.5.7 - 优化个人数据界面显示",
   },
   {

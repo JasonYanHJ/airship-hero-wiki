@@ -1,9 +1,6 @@
 import { PageContainer, ProColumnType } from "@ant-design/pro-components";
 import { usePersonalData } from "../../personal/usePersonalData";
-import {
-  FateRateUpPriorityData,
-  MAX_FATE_STEP,
-} from "./fateRateUpPriorityDateService";
+import { FateRateUpPriorityData } from "./fateRateUpPriorityDateService";
 import { InputNumber, Select, Space, Tag, Tooltip } from "antd";
 import {
   AWAKENING_TYPES,
@@ -38,18 +35,19 @@ const FateToolTable = () => {
   } = usePersonalData();
   const createColumnSearchProps = useTableSearch();
 
-  const [combinationCount, setCombinationCount] = useState(1);
+  const [stoneCost, setStoneCost] = useState(5);
 
   const dataSource: DataSourceType[] = fatePriority
-    .find((f) => f.type === combinationCount)!
-    .data.map((f) => ({
+    .filter((f) => f.awakeningStonesCost === stoneCost)
+    .map((f) => ({
       ...f,
       names: f.targets.map((t) => `${t.name}*${t.targetRate - t.rate}`).join(),
     }));
 
   const columns: ProColumnType<DataSourceType>[] = [
     {
-      title: " 伤害提升/觉醒石",
+      key: "priority",
+      title: "每5颗觉醒石伤害提升",
       dataIndex: "priority",
       minWidth: 100,
       align: "center",
@@ -58,13 +56,6 @@ const FateToolTable = () => {
       },
       sorter: (a, b) => a.priority - b.priority,
       defaultSortOrder: "descend",
-    },
-    {
-      title: "觉醒石消耗",
-      dataIndex: "awakeningStonesCost",
-      minWidth: 80,
-      align: "center",
-      sorter: (a, b) => a.awakeningStonesCost - b.awakeningStonesCost,
     },
     {
       title: "缘分",
@@ -152,6 +143,7 @@ const FateToolTable = () => {
       }),
     },
     {
+      key: "damageEffect",
       title: "伤害(攻击*爆伤)提升",
       dataIndex: "damageEffect",
       align: "center",
@@ -160,6 +152,12 @@ const FateToolTable = () => {
         return `${(entity.damageEffect * 100).toFixed(2)}%`;
       },
       sorter: (a, b) => a.damageEffect - b.damageEffect,
+    },
+    {
+      title: "觉醒石消耗",
+      dataIndex: "awakeningStonesCost",
+      minWidth: 60,
+      align: "center",
     },
   ];
 
@@ -170,6 +168,12 @@ const FateToolTable = () => {
       search={false}
       dataSource={dataSource}
       columns={columns}
+      columnsState={{
+        defaultValue: {
+          priority: { disable: true },
+          damageEffect: { show: false },
+        },
+      }}
       toolBarRender={() => [
         <InputNumber
           style={{ width: 280 }}
@@ -189,11 +193,11 @@ const FateToolTable = () => {
           }
         />,
         <Select
-          value={combinationCount}
-          onChange={setCombinationCount}
-          options={new Array(MAX_FATE_STEP).fill(undefined).map((_, index) => ({
-            label: `提升${index + 1}组`,
-            value: index + 1,
+          value={stoneCost}
+          onChange={setStoneCost}
+          options={new Array(6).fill(undefined).map((_, index) => ({
+            label: `消耗${(index + 1) * 5}觉醒石`,
+            value: (index + 1) * 5,
           }))}
         />,
       ]}

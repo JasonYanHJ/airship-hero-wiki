@@ -28,7 +28,7 @@ export function calculateFateRateUpPriorityData(
   fatesWitheRate: FateWithRate[],
   awakeningAttack: number,
   criticalDamage: number
-): { data: FateRateUpPriorityData[]; type: number }[] {
+): FateRateUpPriorityData[] {
   const notMaxTargetsList: TargetFate[] = fatesWitheRate
     .filter((fate) => fate.rate !== 10)
     .map((fate) => ({
@@ -37,7 +37,7 @@ export function calculateFateRateUpPriorityData(
     }));
   const stepsPriorityData = new Array(MAX_FATE_STEP)
     .fill(undefined)
-    .map((_, index) => {
+    .flatMap((_, index) => {
       const step = index + 1;
 
       // nStep中所有可能的组合情况，使用`generateCombinations`生成组合情况，再对只是顺序不一致的组合情况去重
@@ -97,10 +97,7 @@ export function calculateFateRateUpPriorityData(
         // 组合情况只考虑最优的100种
         .slice(0, 100);
 
-      return {
-        type: step,
-        data: nStepPriorityData,
-      };
+      return nStepPriorityData;
     });
 
   return stepsPriorityData;
@@ -193,7 +190,8 @@ export function generateDataByTargets(
     herosToRateUp.map((hero) => hero.toRateUp * 5)
   );
 
-  const priority = Math.pow(damageEffect, 1 / awakeningStonesCost) * 100 - 100;
+  const priority =
+    Math.pow(damageEffect, 1 / (awakeningStonesCost / 5)) * 100 - 100;
 
   return {
     targets,
