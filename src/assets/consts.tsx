@@ -1,15 +1,15 @@
 export const ELEMENT_TYPES = ["火", "水", "土", "风"] as const;
 export const JOB_TYPES = ["坦克", "近战", "远程", "辅助"] as const;
 export const RATE_UP_TYPES = [
+  "魔石获得量",
+  "魔力获得量",
+  "金属获得量",
   "攻击",
   "攻击速度",
   "穿透",
   "暴击率",
   "暴击伤害",
   "暴击抵抗率",
-  "魔石获得量",
-  "魔力获得量",
-  "金属获得量",
   "跳过关卡的概率",
   "生命",
   "防御",
@@ -45,4 +45,7 @@ export const TYPE_TAG_COLOR: { [key: string]: string } = {
   暴击伤害: "blue",
   穿透: "gold",
   攻击速度: "green",
+  魔石获得量: "purple",
+  魔力获得量: "cyan",
+  金属获得量: "cyan",
 };

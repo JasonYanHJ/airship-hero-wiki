@@ -6,12 +6,14 @@ import {
   DISCOVERY_TYPES,
   ELEMENT_TYPES,
   JOB_TYPES,
+  RATE_UP_TYPES,
+  TYPE_TAG_COLOR,
 } from "../../assets/consts";
 import { StarFilled } from "@ant-design/icons";
 import useTableSearch from "../../utils/antd-table-utils/useTableSearch";
 import createFixValuesFilterProps from "../../utils/antd-table-utils/createFixValuesFilterProps";
 import createStyledProTable from "../../utils/antd-table-utils/createStyledProTable";
-import { Space } from "antd";
+import { Space, Tag } from "antd";
 
 const StyledProTable = createStyledProTable<Hero>();
 
@@ -72,6 +74,34 @@ const HeroEncyclopediaPage = () => {
       dataIndex: "discovery_all",
       minWidth: 100,
       ...createFixValuesFilterProps("discovery_all", DISCOVERY_TYPES),
+    },
+    {
+      title: "晋升效果",
+      dataIndex: "rateUpEffects",
+      minWidth: 100,
+      render(_dom, entity) {
+        return (
+          <Space direction="vertical">
+            {entity.rateUpEffects.map(({ type, increment }, index) => (
+              <Tag color={TYPE_TAG_COLOR[type]} key={index}>
+                {type}+{increment}%
+              </Tag>
+            ))}
+          </Space>
+        );
+      },
+      ...createFixValuesFilterProps("rateUpEffects", RATE_UP_TYPES, {
+        cmp(itemValue, selectedValue) {
+          return (
+            itemValue as {
+              type: (typeof RATE_UP_TYPES)[number];
+              increment: number;
+            }[]
+          )
+            .map((item) => item.type)
+            .includes(selectedValue as (typeof RATE_UP_TYPES)[number]);
+        },
+      }),
     },
     {
       title: "别名",
