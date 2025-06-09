@@ -11,6 +11,7 @@ import { StarFilled } from "@ant-design/icons";
 import useTableSearch from "../../utils/antd-table-utils/useTableSearch";
 import createFixValuesFilterProps from "../../utils/antd-table-utils/createFixValuesFilterProps";
 import createStyledProTable from "../../utils/antd-table-utils/createStyledProTable";
+import { Space } from "antd";
 
 const StyledProTable = createStyledProTable<Hero>();
 
@@ -71,6 +72,30 @@ const HeroEncyclopediaPage = () => {
       dataIndex: "discovery_all",
       minWidth: 100,
       ...createFixValuesFilterProps("discovery_all", DISCOVERY_TYPES),
+    },
+    {
+      title: "别名",
+      dataIndex: "alias",
+      minWidth: 80,
+      render(_dom, entity) {
+        return (
+          <Space>
+            {entity.alias.map((name) => (
+              <span key={name}>{name}</span>
+            ))}
+          </Space>
+        );
+      },
+      ...createFixValuesFilterProps(
+        "alias",
+        heros.flatMap((h) => h.alias),
+        {
+          filterSearch: true,
+          cmp(itemValue, selectedValue) {
+            return (itemValue as string[]).includes(selectedValue as string);
+          },
+        }
+      ),
     },
   ];
 
