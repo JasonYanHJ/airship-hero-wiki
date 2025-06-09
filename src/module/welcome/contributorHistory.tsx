@@ -1,12 +1,18 @@
 import fenliImg from "./assets/avatar_fenli.jpg";
 import dongdongdetuoImg from "./assets/avatar_dongdongdetuo.jpg";
 import yanyanaImg from "./assets/avatar_yanyana.jpg";
+import ffImg from "./assets/avatar_ff.jpg";
 
 export const contributorHistory: {
   name: string;
   avatar: string;
   description: string;
 }[] = [
+  {
+    name: "F.F",
+    avatar: ffImg,
+    description: "帮助录入英雄图鉴的晋升效果数据 🎉 | 2025-06-09",
+  },
   {
     name: "妍妍啊",
     avatar: yanyanaImg,

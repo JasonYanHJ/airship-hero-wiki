@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.5.4 - 英雄图鉴添加晋升效果展示",
+  },
+  {
     children: "v0.5.3 - 英雄图鉴添加别名展示",
   },
   {
