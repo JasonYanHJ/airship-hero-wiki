@@ -164,7 +164,8 @@ export function generateDataByTargets(
       targets.map((t) => ({
         type: t.type,
         increment: Math.pow(
-          (t.incresePerLevel + 100) / 100,
+          (t.incresePerLevel * t.targetRate + 100) /
+            (100 + t.incresePerLevel * t.rate),
           t.targetRate - t.rate
         ),
       })),
