@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.5.3 - 英雄图鉴添加别名展示",
+  },
+  {
     children: "v0.5.2 - 优化缘分提升收益计算公式",
   },
   {
