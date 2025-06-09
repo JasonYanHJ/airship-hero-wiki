@@ -33,7 +33,9 @@ const HeroEncyclopediaPage = () => {
       render(value) {
         return new Array(value)
           .fill(undefined)
-          .map((_, index) => <StarFilled key={index} />);
+          .map((_, index) => (
+            <StarFilled key={index} style={{ color: "rgb(241 194 56)" }} />
+          ));
       },
       ...createFixValuesFilterProps("initialRate", [1, 2, 3], {
         texts: [1, 2, 3].map((v) =>
@@ -65,7 +67,16 @@ const HeroEncyclopediaPage = () => {
       title: "每级觉醒提升",
       minWidth: 100,
       render(_dom, entity) {
-        return getAwakeningDisplayString(entity);
+        return (
+          <Space direction="vertical">
+            <Tag
+              color={TYPE_TAG_COLOR[entity.awakening]}
+              key={entity.awakening}
+            >
+              {getAwakeningDisplayString(entity)}
+            </Tag>
+          </Space>
+        );
       },
       ...createFixValuesFilterProps("awakening", AWAKENING_TYPES),
     },
@@ -73,6 +84,18 @@ const HeroEncyclopediaPage = () => {
       title: "全体发现",
       dataIndex: "discovery_all",
       minWidth: 100,
+      render(_dom, entity) {
+        return (
+          <Space direction="vertical">
+            <Tag
+              color={TYPE_TAG_COLOR[entity.discovery_all]}
+              key={entity.discovery_all}
+            >
+              {entity.discovery_all}
+            </Tag>
+          </Space>
+        );
+      },
       ...createFixValuesFilterProps("discovery_all", DISCOVERY_TYPES),
     },
     {
