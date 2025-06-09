@@ -1,8 +1,9 @@
-import { min } from "lodash";
+import { min, sum } from "lodash";
 import {
   AWAKENING_TYPES,
   AWAKENING_TYPES_DATA,
   FATE_TYPES,
+  RATE_UP_TYPES,
 } from "../../../assets/consts";
 import { fates } from "../../../assets/fates";
 import heros, {
@@ -119,12 +120,28 @@ export function calculateRateRelatedData(herosWithRate: HeroWithRate[]) {
     ])
   ) as Record<keyof typeof AWAKENING_TYPES_DATA, number>;
 
+  const rateUpEffectData = Object.fromEntries(
+    RATE_UP_TYPES.map((type) => [
+      type,
+      (["暴击率", "暴击伤害", "暴击抵抗率", "跳过关卡的概率"].includes(type)
+        ? 0
+        : 100) +
+        sum(
+          herosWithRate
+            .flatMap((hero) => hero.rateUpEffects.slice(0, hero.rate))
+            .filter((effect) => effect.type === type)
+            .map((effect) => effect.increment)
+        ),
+    ])
+  );
+
   return {
     awakenHerosCount,
     rate5HerosCount,
     rate4HerosCount,
     rate3HerosCount,
     awakeningData,
+    rateUpEffectData,
   };
 }
 
