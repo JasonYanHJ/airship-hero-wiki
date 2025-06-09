@@ -10,6 +10,9 @@ const StyledProLayout = styled(ProLayout)`
 
   // 手机端减少两侧内边距
   @media only screen and (max-width: 768px) {
+    .ant-page-header {
+      padding-inline: 24px;
+    }
     .ant-pro-page-container-children-container {
       padding-inline: 12px;
     }
