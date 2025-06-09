@@ -4,6 +4,7 @@ import { Hero } from "./types";
 const heros = [
   {
     name: "莫心",
+    alias: [],
     initialRate: 1,
     initialData: {
       attack: 30,
@@ -15,6 +16,7 @@ const heros = [
   },
   {
     name: "阿尔比",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 50,
@@ -26,6 +28,7 @@ const heros = [
   },
   {
     name: "玫瑰琳",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 35,
@@ -37,6 +40,7 @@ const heros = [
   },
   {
     name: "纳林",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 70,
@@ -48,6 +52,7 @@ const heros = [
   },
   {
     name: "扎克",
+    alias: [],
     initialRate: 2,
     initialData: {
       attack: 55,
@@ -59,6 +64,7 @@ const heros = [
   },
   {
     name: "维克",
+    alias: [],
     initialRate: 2,
     initialData: {
       attack: 60,
@@ -70,6 +76,7 @@ const heros = [
   },
   {
     name: "露露",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 60,
@@ -81,6 +88,7 @@ const heros = [
   },
   {
     name: "巴赫一号",
+    alias: ["火迈巴赫"],
     initialRate: 1,
     initialData: {
       attack: 40,
@@ -92,6 +100,7 @@ const heros = [
   },
   {
     name: "克特",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 90,
@@ -103,6 +112,7 @@ const heros = [
   },
   {
     name: "亨利",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 100,
@@ -114,6 +124,7 @@ const heros = [
   },
   {
     name: "炎之盾",
+    alias: ["火哪吒"],
     initialRate: 3,
     initialData: {
       attack: 120,
@@ -125,6 +136,7 @@ const heros = [
   },
   {
     name: "米兰达",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 70,
@@ -136,6 +148,7 @@ const heros = [
   },
   {
     name: "梅",
+    alias: [],
     initialRate: 1,
     initialData: {
       attack: 50,
@@ -147,6 +160,7 @@ const heros = [
   },
   {
     name: "劳伦特",
+    alias: [],
     initialRate: 2,
     initialData: {
       attack: 55,
@@ -158,6 +172,7 @@ const heros = [
   },
   {
     name: "萨曼达",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 60,
@@ -169,6 +184,7 @@ const heros = [
   },
   {
     name: "比比",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 65,
@@ -180,6 +196,7 @@ const heros = [
   },
   {
     name: "阿卡妮",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 75,
@@ -191,6 +208,7 @@ const heros = [
   },
   {
     name: "法比安",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 35,
@@ -202,6 +220,7 @@ const heros = [
   },
   {
     name: "格罗丽亚",
+    alias: ["火旗"],
     initialRate: 3,
     initialData: {
       attack: 20,
@@ -213,6 +232,7 @@ const heros = [
   },
   {
     name: "樱花",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 40,
@@ -224,6 +244,7 @@ const heros = [
   },
   {
     name: "阿勒格罗",
+    alias: ["章鱼"],
     initialRate: 3,
     initialData: {
       attack: 50,
@@ -235,6 +256,7 @@ const heros = [
   },
   {
     name: "泡泡糖",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 55,
@@ -246,6 +268,7 @@ const heros = [
   },
   {
     name: "艾莉诺",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 30,
@@ -257,6 +280,7 @@ const heros = [
   },
   {
     name: "贝尔纳多",
+    alias: ["白熊"],
     initialRate: 2,
     initialData: {
       attack: 40,
@@ -268,6 +292,7 @@ const heros = [
   },
   {
     name: "香草",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 20,
@@ -279,6 +304,7 @@ const heros = [
   },
   {
     name: "苏沃",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 70,
@@ -290,6 +316,7 @@ const heros = [
   },
   {
     name: "马塞洛",
+    alias: [],
     initialRate: 2,
     initialData: {
       attack: 55,
@@ -301,6 +328,7 @@ const heros = [
   },
   {
     name: "德雷克",
+    alias: ["海盗"],
     initialRate: 3,
     initialData: {
       attack: 60,
@@ -312,6 +340,7 @@ const heros = [
   },
   {
     name: "伊戈尔",
+    alias: ["水斧"],
     initialRate: 3,
     initialData: {
       attack: 60,
@@ -323,6 +352,7 @@ const heros = [
   },
   {
     name: "水星",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 65,
@@ -334,6 +364,7 @@ const heros = [
   },
   {
     name: "巴赫二号",
+    alias: ["水迈巴赫"],
     initialRate: 1,
     initialData: {
       attack: 40,
@@ -345,6 +376,7 @@ const heros = [
   },
   {
     name: "洁斯",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 60,
@@ -356,6 +388,7 @@ const heros = [
   },
   {
     name: "让路易",
+    alias: ["路易"],
     initialRate: 3,
     initialData: {
       attack: 140,
@@ -367,6 +400,7 @@ const heros = [
   },
   {
     name: "水门狱",
+    alias: ["水哪吒"],
     initialRate: 3,
     initialData: {
       attack: 144,
@@ -378,6 +412,7 @@ const heros = [
   },
   {
     name: "雪儿",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 65,
@@ -389,6 +424,7 @@ const heros = [
   },
   {
     name: "波浪",
+    alias: [],
     initialRate: 1,
     initialData: {
       attack: 50,
@@ -400,6 +436,7 @@ const heros = [
   },
   {
     name: "达娜",
+    alias: [],
     initialRate: 2,
     initialData: {
       attack: 50,
@@ -411,6 +448,7 @@ const heros = [
   },
   {
     name: "彩肖尔",
+    alias: ["白猫"],
     initialRate: 3,
     initialData: {
       attack: 65,
@@ -422,6 +460,7 @@ const heros = [
   },
   {
     name: "墨熙",
+    alias: ["毛笔人"],
     initialRate: 3,
     initialData: {
       attack: 175,
@@ -433,6 +472,7 @@ const heros = [
   },
   {
     name: "猎犬",
+    alias: ["牢犬"],
     initialRate: 3,
     initialData: {
       attack: 160,
@@ -444,6 +484,7 @@ const heros = [
   },
   {
     name: "莫里斯",
+    alias: [],
     initialRate: 1,
     initialData: {
       attack: 25,
@@ -455,6 +496,7 @@ const heros = [
   },
   {
     name: "法蒂玛",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 30,
@@ -466,6 +508,7 @@ const heros = [
   },
   {
     name: "西亚信",
+    alias: ["少爷"],
     initialRate: 3,
     initialData: {
       attack: 43,
@@ -477,6 +520,7 @@ const heros = [
   },
   {
     name: "艾莉娅",
+    alias: ["人鱼"],
     initialRate: 3,
     initialData: {
       attack: 50,
@@ -488,6 +532,7 @@ const heros = [
   },
   {
     name: "纳姆维尔",
+    alias: ["新水辅"],
     initialRate: 3,
     initialData: {
       attack: 40,
@@ -499,6 +544,7 @@ const heros = [
   },
   {
     name: "苏菲",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 60,
@@ -510,6 +556,7 @@ const heros = [
   },
   {
     name: "杰克",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 20,
@@ -521,6 +568,7 @@ const heros = [
   },
   {
     name: "班杰明",
+    alias: [],
     initialRate: 2,
     initialData: {
       attack: 25,
@@ -532,6 +580,7 @@ const heros = [
   },
   {
     name: "芬舍尔",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 30,
@@ -543,6 +592,7 @@ const heros = [
   },
   {
     name: "科拉汉得",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 25,
@@ -554,6 +604,7 @@ const heros = [
   },
   {
     name: "克莉丝汀",
+    alias: ["土剑"],
     initialRate: 3,
     initialData: {
       attack: 65,
@@ -565,6 +616,7 @@ const heros = [
   },
   {
     name: "虎狼",
+    alias: [],
     initialRate: 1,
     initialData: {
       attack: 50,
@@ -576,6 +628,7 @@ const heros = [
   },
   {
     name: "拉希德",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 70,
@@ -587,6 +640,7 @@ const heros = [
   },
   {
     name: "猎奥坎",
+    alias: ["牢坎"],
     initialRate: 3,
     initialData: {
       attack: 65,
@@ -598,6 +652,7 @@ const heros = [
   },
   {
     name: "伊森",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 55,
@@ -609,6 +664,7 @@ const heros = [
   },
   {
     name: "巴赫三号",
+    alias: ["土迈巴赫"],
     initialRate: 1,
     initialData: {
       attack: 40,
@@ -620,6 +676,7 @@ const heros = [
   },
   {
     name: "米莉",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 75,
@@ -631,6 +688,7 @@ const heros = [
   },
   {
     name: "尖牙",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 100,
@@ -642,6 +700,7 @@ const heros = [
   },
   {
     name: "吕布",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 145,
@@ -653,6 +712,7 @@ const heros = [
   },
   {
     name: "貂蝉",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 110,
@@ -664,6 +724,7 @@ const heros = [
   },
   {
     name: "拉姆塞斯",
+    alias: [],
     initialRate: 2,
     initialData: {
       attack: 55,
@@ -675,6 +736,7 @@ const heros = [
   },
   {
     name: "卡罗",
+    alias: [],
     initialRate: 1,
     initialData: {
       attack: 50,
@@ -686,6 +748,7 @@ const heros = [
   },
   {
     name: "威尔伯",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 55,
@@ -697,6 +760,7 @@ const heros = [
   },
   {
     name: "戴登",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 60,
@@ -708,6 +772,7 @@ const heros = [
   },
   {
     name: "卡雅",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 120,
@@ -719,6 +784,7 @@ const heros = [
   },
   {
     name: "默鲁",
+    alias: [],
     initialRate: 2,
     initialData: {
       attack: 30,
@@ -730,6 +796,7 @@ const heros = [
   },
   {
     name: "安娜",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 50,
@@ -741,6 +808,7 @@ const heros = [
   },
   {
     name: "百合",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 35,
@@ -752,6 +820,7 @@ const heros = [
   },
   {
     name: "璐儿",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 40,
@@ -763,6 +832,7 @@ const heros = [
   },
   {
     name: "黎露",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 40,
@@ -774,6 +844,7 @@ const heros = [
   },
   {
     name: "土灵现",
+    alias: ["土哪吒"],
     initialRate: 3,
     initialData: {
       attack: 40,
@@ -785,6 +856,7 @@ const heros = [
   },
   {
     name: "奥蕾利亚",
+    alias: ["风盾"],
     initialRate: 3,
     initialData: {
       attack: 25,
@@ -796,6 +868,7 @@ const heros = [
   },
   {
     name: "西尔维亚",
+    alias: [],
     initialRate: 2,
     initialData: {
       attack: 40,
@@ -807,6 +880,7 @@ const heros = [
   },
   {
     name: "雷克斯",
+    alias: ["厨子"],
     initialRate: 3,
     initialData: {
       attack: 40,
@@ -818,6 +892,7 @@ const heros = [
   },
   {
     name: "霜夜",
+    alias: ["东东"],
     initialRate: 3,
     initialData: {
       attack: 25,
@@ -829,6 +904,7 @@ const heros = [
   },
   {
     name: "尤依",
+    alias: ["ue"],
     initialRate: 1,
     initialData: {
       attack: 60,
@@ -840,6 +916,7 @@ const heros = [
   },
   {
     name: "巴欧",
+    alias: [],
     initialRate: 1,
     initialData: {
       attack: 55,
@@ -851,6 +928,7 @@ const heros = [
   },
   {
     name: "克努特",
+    alias: ["风拳"],
     initialRate: 3,
     initialData: {
       attack: 65,
@@ -862,6 +940,7 @@ const heros = [
   },
   {
     name: "路德威",
+    alias: ["风斧"],
     initialRate: 3,
     initialData: {
       attack: 70,
@@ -873,6 +952,7 @@ const heros = [
   },
   {
     name: "巴赫四号",
+    alias: ["风迈巴赫"],
     initialRate: 1,
     initialData: {
       attack: 40,
@@ -884,6 +964,7 @@ const heros = [
   },
   {
     name: "面珑",
+    alias: ["面龙"],
     initialRate: 3,
     initialData: {
       attack: 70,
@@ -895,6 +976,7 @@ const heros = [
   },
   {
     name: "薇笑",
+    alias: ["微笑"],
     initialRate: 3,
     initialData: {
       attack: 175,
@@ -906,6 +988,7 @@ const heros = [
   },
   {
     name: "孙策",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 150,
@@ -917,6 +1000,7 @@ const heros = [
   },
   {
     name: "赛琳",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 65,
@@ -928,6 +1012,7 @@ const heros = [
   },
   {
     name: "芙萝拉",
+    alias: [],
     initialRate: 2,
     initialData: {
       attack: 55,
@@ -939,6 +1024,7 @@ const heros = [
   },
   {
     name: "PQ",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 60,
@@ -950,6 +1036,7 @@ const heros = [
   },
   {
     name: "紫丁香",
+    alias: ["香香"],
     initialRate: 3,
     initialData: {
       attack: 70,
@@ -961,6 +1048,7 @@ const heros = [
   },
   {
     name: "米克",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 65,
@@ -972,6 +1060,7 @@ const heros = [
   },
   {
     name: "柯妮",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 60,
@@ -983,6 +1072,7 @@ const heros = [
   },
   {
     name: "阿圭尔",
+    alias: ["圭圭", "龟龟"],
     initialRate: 3,
     initialData: {
       attack: 70,
@@ -994,6 +1084,7 @@ const heros = [
   },
   {
     name: "风息幕",
+    alias: ["风哪吒"],
     initialRate: 3,
     initialData: {
       attack: 175,
@@ -1005,6 +1096,7 @@ const heros = [
   },
   {
     name: "大乔",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 200,
@@ -1016,6 +1108,7 @@ const heros = [
   },
   {
     name: "碧翠丝",
+    alias: [],
     initialRate: 2,
     initialData: {
       attack: 35,
@@ -1027,6 +1120,7 @@ const heros = [
   },
   {
     name: "善花",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 35,
@@ -1038,6 +1132,7 @@ const heros = [
   },
   {
     name: "笑笑",
+    alias: [],
     initialRate: 3,
     initialData: {
       attack: 40,

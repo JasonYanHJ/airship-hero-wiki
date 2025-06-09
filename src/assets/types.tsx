@@ -9,6 +9,7 @@ import { HERO_NAMES } from "./heros";
 
 export type Hero = {
   name: string;
+  alias: string[];
   initialRate: 1 | 2 | 3;
   initialData: {
     attack: number;
