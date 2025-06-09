@@ -39,11 +39,30 @@ export function calculateFateRateUpPriorityData(
     .fill(undefined)
     .map((_, index) => {
       const step = index + 1;
-      const nStepCombinations = generateCombinations(
-        notMaxTargetsList,
-        step,
-        heroRelateValidator
-      );
+
+      // nStep中所有可能的组合情况，使用`generateCombinations`生成组合情况，再对只是顺序不一致的组合情况去重
+      const nStepCombinations = [
+        ...new Set(
+          generateCombinations(
+            notMaxTargetsList,
+            step,
+            heroRelateValidator
+          ).map((c) =>
+            c
+              .map((t) => t.name)
+              .sort((a, b) => (a < b ? 1 : -1))
+              .join("_")
+          )
+        ),
+      ]
+        .map((namesStr) => namesStr.split("_"))
+        .map((names) =>
+          names.map((name) => {
+            const fate = fatesWitheRate.find((f) => f.name === name)!;
+            return { ...fate, targetRate: fate.rate + 1 };
+          })
+        );
+
       // 合并targets中重复出现的缘分，将其targetRate设为对应数量。同时过滤掉超过等级上限的组合方案。
       const nStepTargetsList: TargetFate[][] = nStepCombinations
         .map((steps) =>
@@ -74,7 +93,9 @@ export function calculateFateRateUpPriorityData(
         .map((targets) =>
           generateDataByTargets(targets, awakeningAttack, criticalDamage)
         )
-        .sort((a, b) => b.priority - a.priority);
+        .sort((a, b) => b.priority - a.priority)
+        // 组合情况只考虑最优的100种
+        .slice(0, 100);
 
       return {
         type: step,
@@ -184,17 +205,21 @@ export function generateDataByTargets(
   };
 }
 
-// 挑选的新缘分组合中的英雄必须和已选的有关
+// 挑选的新缘分组合中的英雄必须和已选的有关，且缘分不出现重复
 function heroRelateValidator(list: TargetFate[], item: TargetFate) {
   if (list.length === 0) return true;
 
   const chosenHeroNames = list.flatMap((t) => t.heros).map((h) => h.name);
-  return item.heros
-    .map((h) => h.name)
-    .some((name) => chosenHeroNames.includes(name));
+  const chosenNames = list.flatMap((t) => t.name);
+  return (
+    item.heros
+      .map((h) => h.name)
+      .some((name) => chosenHeroNames.includes(name)) &&
+    !chosenNames.includes(item.name)
+  );
 }
 
-// 生成从list中挑选n个元素的所有"合法"组合(元素先后顺序无关), 由choiceValidator检查挑选方法的合法性
+// 生成从list中挑选n个元素的所有"合法"组合, 由choiceValidator检查挑选方法的合法性
 function generateCombinations<T>(
   list: T[],
   n: number,
@@ -204,7 +229,7 @@ function generateCombinations<T>(
   const current: T[] = [];
 
   // 回溯法
-  function backtrack(start: number) {
+  function backtrack(start: number = 0) {
     // 如果当前组合长度等于n，添加到结果中
     if (current.length === n) {
       result.push([...current]);
@@ -220,7 +245,7 @@ function generateCombinations<T>(
       if (!choiceValidator(current, list[i])) continue;
 
       current.push(list[i]);
-      backtrack(i + 1);
+      backtrack();
       current.pop();
     }
   }

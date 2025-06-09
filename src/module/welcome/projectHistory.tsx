@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.5.1 - 修复缘分排列组合有遗漏的bug",
+  },
+  {
     children: "v0.5.0 - 缘分自查表支持查看多级提升时的优先级 | 2025-06-09",
   },
   {
