@@ -9,6 +9,13 @@ const heros = [
     initialData: {
       attack: 30,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 2 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "金属获得量", increment: 10 },
+      { type: "生命", increment: 3 },
+    ],
     element: "火",
     job: "坦克",
     awakening: "防御",
@@ -21,6 +28,13 @@ const heros = [
     initialData: {
       attack: 50,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "暴击抵抗率", increment: 1 },
+      { type: "金属获得量", increment: 10 },
+    ],
     element: "火",
     job: "坦克",
     awakening: "攻击",
@@ -33,6 +47,13 @@ const heros = [
     initialData: {
       attack: 35,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "火",
     job: "坦克",
     awakening: "防御",
@@ -45,6 +66,13 @@ const heros = [
     initialData: {
       attack: 70,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击伤害", increment: 5 },
+    ],
     element: "火",
     job: "近战",
     awakening: "攻击",
@@ -57,6 +85,13 @@ const heros = [
     initialData: {
       attack: 55,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 3 },
+      { type: "穿透", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "火",
     job: "近战",
     awakening: "防御",
@@ -69,6 +104,13 @@ const heros = [
     initialData: {
       attack: 60,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 3 },
+      { type: "穿透", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "火",
     job: "近战",
     awakening: "攻击",
@@ -81,6 +123,13 @@ const heros = [
     initialData: {
       attack: 60,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击速度", increment: 3 },
+    ],
     element: "火",
     job: "近战",
     awakening: "穿透",
@@ -93,6 +142,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "火",
     job: "近战",
     awakening: "生命",
@@ -105,6 +161,13 @@ const heros = [
     initialData: {
       attack: 90,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "暴击抵抗率", increment: 1 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "火",
     job: "近战",
     awakening: "攻击",
@@ -117,6 +180,13 @@ const heros = [
     initialData: {
       attack: 100,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "火",
     job: "近战",
     awakening: "攻击",
@@ -129,6 +199,13 @@ const heros = [
     initialData: {
       attack: 120,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "穿透", increment: 5 },
+      { type: "生命", increment: 5 },
+      { type: "穿透", increment: 5 },
+      { type: "生命", increment: 5 },
+    ],
     element: "火",
     job: "近战",
     awakening: "生命",
@@ -141,6 +218,13 @@ const heros = [
     initialData: {
       attack: 70,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击率", increment: 1 },
+    ],
     element: "火",
     job: "远程",
     awakening: "生命",
@@ -153,6 +237,13 @@ const heros = [
     initialData: {
       attack: 50,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 3 },
+    ],
     element: "火",
     job: "远程",
     awakening: "穿透",
@@ -165,6 +256,13 @@ const heros = [
     initialData: {
       attack: 55,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 3 },
+      { type: "穿透", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "火",
     job: "远程",
     awakening: "穿透",
@@ -177,6 +275,13 @@ const heros = [
     initialData: {
       attack: 60,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "火",
     job: "远程",
     awakening: "攻击",
@@ -189,6 +294,13 @@ const heros = [
     initialData: {
       attack: 65,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "火",
     job: "远程",
     awakening: "攻击",
@@ -201,6 +313,13 @@ const heros = [
     initialData: {
       attack: 75,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击伤害", increment: 5 },
+    ],
     element: "火",
     job: "远程",
     awakening: "暴击伤害",
@@ -213,6 +332,13 @@ const heros = [
     initialData: {
       attack: 35,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "攻击", increment: 5 },
+      { type: "跳过关卡的概率", increment: 1 },
+    ],
     element: "火",
     job: "辅助",
     awakening: "暴击率",
@@ -225,6 +351,13 @@ const heros = [
     initialData: {
       attack: 20,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "攻击", increment: 5 },
+      { type: "攻击速度", increment: 3 },
+    ],
     element: "火",
     job: "辅助",
     awakening: "攻击速度",
@@ -237,6 +370,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "火",
     job: "辅助",
     awakening: "暴击伤害",
@@ -249,6 +389,13 @@ const heros = [
     initialData: {
       attack: 50,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "火",
     job: "辅助",
     awakening: "暴击抵抗率",
@@ -261,6 +408,13 @@ const heros = [
     initialData: {
       attack: 55,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "火",
     job: "辅助",
     awakening: "穿透",
@@ -273,6 +427,13 @@ const heros = [
     initialData: {
       attack: 30,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "暴击抵抗率", increment: 1 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "水",
     job: "坦克",
     awakening: "防御",
@@ -285,6 +446,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "水",
     job: "坦克",
     awakening: "生命",
@@ -297,6 +465,13 @@ const heros = [
     initialData: {
       attack: 20,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "水",
     job: "坦克",
     awakening: "生命",
@@ -309,6 +484,13 @@ const heros = [
     initialData: {
       attack: 70,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击速度", increment: 3 },
+    ],
     element: "水",
     job: "近战",
     awakening: "攻击",
@@ -321,6 +503,13 @@ const heros = [
     initialData: {
       attack: 55,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 3 },
+      { type: "穿透", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "水",
     job: "近战",
     awakening: "生命",
@@ -333,6 +522,13 @@ const heros = [
     initialData: {
       attack: 60,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击伤害", increment: 5 },
+    ],
     element: "水",
     job: "近战",
     awakening: "暴击率",
@@ -345,6 +541,13 @@ const heros = [
     initialData: {
       attack: 60,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "水",
     job: "近战",
     awakening: "攻击",
@@ -357,6 +560,13 @@ const heros = [
     initialData: {
       attack: 65,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "水",
     job: "近战",
     awakening: "攻击",
@@ -369,6 +579,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "水",
     job: "近战",
     awakening: "生命",
@@ -381,6 +598,13 @@ const heros = [
     initialData: {
       attack: 60,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "水",
     job: "近战",
     awakening: "暴击抵抗率",
@@ -393,6 +617,13 @@ const heros = [
     initialData: {
       attack: 140,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击率", increment: 1 },
+    ],
     element: "水",
     job: "近战",
     awakening: "攻击速度",
@@ -405,6 +636,13 @@ const heros = [
     initialData: {
       attack: 144,
     },
+    rateUpEffects: [
+      { type: "防御", increment: 5 },
+      { type: "穿透", increment: 5 },
+      { type: "防御", increment: 5 },
+      { type: "穿透", increment: 5 },
+      { type: "防御", increment: 5 },
+    ],
     element: "水",
     job: "近战",
     awakening: "防御",
@@ -417,6 +655,13 @@ const heros = [
     initialData: {
       attack: 65,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击率", increment: 1 },
+    ],
     element: "水",
     job: "远程",
     awakening: "生命",
@@ -429,6 +674,13 @@ const heros = [
     initialData: {
       attack: 50,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 3 },
+    ],
     element: "水",
     job: "远程",
     awakening: "穿透",
@@ -441,6 +693,13 @@ const heros = [
     initialData: {
       attack: 50,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 3 },
+      { type: "穿透", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "水",
     job: "远程",
     awakening: "暴击伤害",
@@ -453,6 +712,13 @@ const heros = [
     initialData: {
       attack: 65,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "水",
     job: "远程",
     awakening: "攻击速度",
@@ -465,6 +731,13 @@ const heros = [
     initialData: {
       attack: 175,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "水",
     job: "远程",
     awakening: "攻击",
@@ -477,6 +750,13 @@ const heros = [
     initialData: {
       attack: 160,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "水",
     job: "远程",
     awakening: "生命",
@@ -489,6 +769,13 @@ const heros = [
     initialData: {
       attack: 25,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 2 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "魔力获得量", increment: 10 },
+    ],
     element: "水",
     job: "辅助",
     awakening: "生命",
@@ -501,6 +788,13 @@ const heros = [
     initialData: {
       attack: 30,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "攻击", increment: 5 },
+      { type: "跳过关卡的概率", increment: 1 },
+    ],
     element: "水",
     job: "辅助",
     awakening: "暴击抵抗率",
@@ -513,6 +807,13 @@ const heros = [
     initialData: {
       attack: 43,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "水",
     job: "辅助",
     awakening: "暴击率",
@@ -525,6 +826,13 @@ const heros = [
     initialData: {
       attack: 50,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击伤害", increment: 5 },
+    ],
     element: "水",
     job: "辅助",
     awakening: "生命",
@@ -537,6 +845,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "穿透", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "暴击抵抗率", increment: 1 },
+    ],
     element: "水",
     job: "辅助",
     awakening: "防御",
@@ -549,6 +864,13 @@ const heros = [
     initialData: {
       attack: 60,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "穿透", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "穿透", increment: 3 },
+      { type: "魔力获得量", increment: 10 },
+    ],
     element: "水",
     job: "辅助",
     awakening: "生命",
@@ -561,6 +883,13 @@ const heros = [
     initialData: {
       attack: 20,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "暴击抵抗率", increment: 1 },
+      { type: "金属获得量", increment: 10 },
+    ],
     element: "土",
     job: "坦克",
     awakening: "防御",
@@ -573,6 +902,13 @@ const heros = [
     initialData: {
       attack: 25,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "土",
     job: "坦克",
     awakening: "生命",
@@ -585,6 +921,13 @@ const heros = [
     initialData: {
       attack: 30,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "土",
     job: "坦克",
     awakening: "防御",
@@ -597,6 +940,13 @@ const heros = [
     initialData: {
       attack: 25,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击速度", increment: 3 },
+    ],
     element: "土",
     job: "坦克",
     awakening: "防御",
@@ -609,6 +959,13 @@ const heros = [
     initialData: {
       attack: 65,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击速度", increment: 3 },
+    ],
     element: "土",
     job: "近战",
     awakening: "穿透",
@@ -621,6 +978,13 @@ const heros = [
     initialData: {
       attack: 50,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "穿透", increment: 2 },
+      { type: "攻击", increment: 3 },
+    ],
     element: "土",
     job: "近战",
     awakening: "攻击",
@@ -633,6 +997,13 @@ const heros = [
     initialData: {
       attack: 70,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击伤害", increment: 5 },
+    ],
     element: "土",
     job: "近战",
     awakening: "攻击速度",
@@ -645,6 +1016,13 @@ const heros = [
     initialData: {
       attack: 65,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "土",
     job: "近战",
     awakening: "攻击",
@@ -657,6 +1035,13 @@ const heros = [
     initialData: {
       attack: 55,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "土",
     job: "近战",
     awakening: "穿透",
@@ -669,6 +1054,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "土",
     job: "近战",
     awakening: "生命",
@@ -681,6 +1073,13 @@ const heros = [
     initialData: {
       attack: 75,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "暴击抵抗率", increment: 1 },
+      { type: "金属获得量", increment: 10 },
+    ],
     element: "土",
     job: "近战",
     awakening: "攻击",
@@ -693,6 +1092,13 @@ const heros = [
     initialData: {
       attack: 100,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "土",
     job: "近战",
     awakening: "攻击",
@@ -705,6 +1111,13 @@ const heros = [
     initialData: {
       attack: 145,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击伤害", increment: 5 },
+    ],
     element: "土",
     job: "近战",
     awakening: "攻击",
@@ -717,6 +1130,13 @@ const heros = [
     initialData: {
       attack: 110,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "土",
     job: "近战",
     awakening: "生命",
@@ -729,6 +1149,13 @@ const heros = [
     initialData: {
       attack: 55,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 3 },
+      { type: "穿透", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "土",
     job: "远程",
     awakening: "暴击伤害",
@@ -741,6 +1168,13 @@ const heros = [
     initialData: {
       attack: 50,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 3 },
+    ],
     element: "土",
     job: "远程",
     awakening: "暴击伤害",
@@ -753,6 +1187,13 @@ const heros = [
     initialData: {
       attack: 55,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击率", increment: 1 },
+    ],
     element: "土",
     job: "远程",
     awakening: "暴击率",
@@ -765,6 +1206,13 @@ const heros = [
     initialData: {
       attack: 60,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "土",
     job: "远程",
     awakening: "攻击",
@@ -777,6 +1225,13 @@ const heros = [
     initialData: {
       attack: 120,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "土",
     job: "远程",
     awakening: "攻击",
@@ -789,6 +1244,13 @@ const heros = [
     initialData: {
       attack: 30,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 3 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "土",
     job: "辅助",
     awakening: "防御",
@@ -801,6 +1263,13 @@ const heros = [
     initialData: {
       attack: 50,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "攻击", increment: 5 },
+      { type: "跳过关卡的概率", increment: 1 },
+    ],
     element: "土",
     job: "辅助",
     awakening: "攻击",
@@ -813,6 +1282,13 @@ const heros = [
     initialData: {
       attack: 35,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "土",
     job: "辅助",
     awakening: "生命",
@@ -825,6 +1301,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "土",
     job: "辅助",
     awakening: "暴击抵抗率",
@@ -837,6 +1320,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "土",
     job: "辅助",
     awakening: "穿透",
@@ -849,6 +1339,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "土",
     job: "辅助",
     awakening: "穿透",
@@ -861,6 +1358,13 @@ const heros = [
     initialData: {
       attack: 25,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "暴击抵抗率", increment: 1 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "风",
     job: "坦克",
     awakening: "生命",
@@ -873,6 +1377,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "风",
     job: "坦克",
     awakening: "生命",
@@ -885,6 +1396,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "风",
     job: "坦克",
     awakening: "生命",
@@ -897,6 +1415,13 @@ const heros = [
     initialData: {
       attack: 25,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
     element: "风",
     job: "坦克",
     awakening: "穿透",
@@ -909,6 +1434,13 @@ const heros = [
     initialData: {
       attack: 60,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "穿透", increment: 2 },
+      { type: "攻击", increment: 3 },
+    ],
     element: "风",
     job: "近战",
     awakening: "攻击速度",
@@ -921,6 +1453,13 @@ const heros = [
     initialData: {
       attack: 55,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "攻击", increment: 2 },
+      { type: "穿透", increment: 2 },
+      { type: "攻击", increment: 3 },
+    ],
     element: "风",
     job: "近战",
     awakening: "攻击",
@@ -933,6 +1472,13 @@ const heros = [
     initialData: {
       attack: 65,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击伤害", increment: 5 },
+    ],
     element: "风",
     job: "近战",
     awakening: "攻击",
@@ -945,6 +1491,13 @@ const heros = [
     initialData: {
       attack: 70,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "风",
     job: "近战",
     awakening: "攻击",
@@ -957,6 +1510,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 2 },
+      { type: "生命", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "风",
     job: "近战",
     awakening: "生命",
@@ -969,6 +1529,13 @@ const heros = [
     initialData: {
       attack: 70,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击率", increment: 1 },
+    ],
     element: "风",
     job: "近战",
     awakening: "防御",
@@ -981,6 +1548,13 @@ const heros = [
     initialData: {
       attack: 175,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "风",
     job: "近战",
     awakening: "暴击伤害",
@@ -993,6 +1567,13 @@ const heros = [
     initialData: {
       attack: 150,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "风",
     job: "近战",
     awakening: "暴击伤害",
@@ -1005,6 +1586,13 @@ const heros = [
     initialData: {
       attack: 65,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击率", increment: 1 },
+    ],
     element: "风",
     job: "远程",
     awakening: "攻击速度",
@@ -1017,6 +1605,13 @@ const heros = [
     initialData: {
       attack: 55,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 3 },
+      { type: "穿透", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "风",
     job: "远程",
     awakening: "攻击",
@@ -1029,6 +1624,13 @@ const heros = [
     initialData: {
       attack: 60,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击速度", increment: 3 },
+    ],
     element: "风",
     job: "远程",
     awakening: "穿透",
@@ -1041,6 +1643,13 @@ const heros = [
     initialData: {
       attack: 70,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "风",
     job: "远程",
     awakening: "穿透",
@@ -1053,6 +1662,13 @@ const heros = [
     initialData: {
       attack: 65,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "风",
     job: "远程",
     awakening: "攻击",
@@ -1065,6 +1681,13 @@ const heros = [
     initialData: {
       attack: 60,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击速度", increment: 3 },
+    ],
     element: "风",
     job: "远程",
     awakening: "攻击速度",
@@ -1077,6 +1700,13 @@ const heros = [
     initialData: {
       attack: 70,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "暴击抵抗率", increment: 1 },
+      { type: "魔石获得量", increment: 10 },
+    ],
     element: "风",
     job: "远程",
     awakening: "暴击率",
@@ -1089,6 +1719,13 @@ const heros = [
     initialData: {
       attack: 175,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "攻击", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "风",
     job: "远程",
     awakening: "暴击伤害",
@@ -1101,6 +1738,13 @@ const heros = [
     initialData: {
       attack: 200,
     },
+    rateUpEffects: [
+      { type: "防御", increment: 5 },
+      { type: "穿透", increment: 5 },
+      { type: "防御", increment: 5 },
+      { type: "穿透", increment: 5 },
+      { type: "防御", increment: 5 },
+    ],
     element: "风",
     job: "远程",
     awakening: "攻击",
@@ -1113,6 +1757,13 @@ const heros = [
     initialData: {
       attack: 35,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 3 },
+      { type: "魔力获得量", increment: 10 },
+    ],
     element: "风",
     job: "辅助",
     awakening: "攻击",
@@ -1125,6 +1776,13 @@ const heros = [
     initialData: {
       attack: 35,
     },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "攻击", increment: 5 },
+      { type: "跳过关卡的概率", increment: 1 },
+    ],
     element: "风",
     job: "辅助",
     awakening: "暴击伤害",
@@ -1137,6 +1795,13 @@ const heros = [
     initialData: {
       attack: 40,
     },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
     element: "风",
     job: "辅助",
     awakening: "生命",

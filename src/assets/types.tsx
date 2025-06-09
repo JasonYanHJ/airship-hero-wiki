@@ -4,6 +4,7 @@ import {
   ELEMENT_TYPES,
   FATE_TYPES,
   JOB_TYPES,
+  RATE_UP_TYPES,
 } from "./consts";
 import { HERO_NAMES } from "./heros";
 
@@ -14,6 +15,7 @@ export type Hero = {
   initialData: {
     attack: number;
   };
+  rateUpEffects: { type: (typeof RATE_UP_TYPES)[number]; increment: number }[];
   element: (typeof ELEMENT_TYPES)[number];
   job: (typeof JOB_TYPES)[number];
   awakening: keyof typeof AWAKENING_TYPES_DATA;
