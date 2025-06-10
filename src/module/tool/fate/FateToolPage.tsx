@@ -1,6 +1,6 @@
 import { PageContainer, ProColumnType } from "@ant-design/pro-components";
 import { usePersonalData } from "../../personal/usePersonalData";
-import { FateRateUpPriorityData } from "./fateRateUpPriorityDateService";
+import { FateRateUpPriorityData } from "./fateRateUpPriorityDataService";
 import { InputNumber, Select, Space, Tag, Tooltip } from "antd";
 import {
   AWAKENING_TYPES,

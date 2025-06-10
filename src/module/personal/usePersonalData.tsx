@@ -4,7 +4,7 @@ import {
   calculateRateRelatedData,
   PersonalHeroRateData,
 } from "./hero-rate/rateDataService";
-import { calculateFateRateUpPriorityData } from "../tool/fate/fateRateUpPriorityDateService";
+import { calculateFateRateUpPriorityData } from "../tool/fate/fateRateUpPriorityDataService";
 import { PersonalCriticalDamageData } from "../tool/fate/criticalDamageDataService";
 
 export type PersonalInputData = {

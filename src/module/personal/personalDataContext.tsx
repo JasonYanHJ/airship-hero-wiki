@@ -12,7 +12,7 @@ import {
   PersonalDataContext,
   PersonalDataContextType,
 } from "./usePersonalData";
-import { calculateFateRateUpPriorityData } from "../tool/fate/fateRateUpPriorityDateService";
+import { calculateFateRateUpPriorityData } from "../tool/fate/fateRateUpPriorityDataService";
 import {
   loadPersonalCriticalDamageData,
   PersonalCriticalDamageData,
