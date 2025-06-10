@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.5.9 - 缘分组合方案支持考虑重复提升 | 2025-06-10",
+  },
+  {
     children: "v0.5.8 - 优化缘分自查表展示逻辑",
   },
   {

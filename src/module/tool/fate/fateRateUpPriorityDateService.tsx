@@ -63,7 +63,7 @@ export function calculateFateRateUpPriorityData(
           })
         );
 
-      // 合并targets中重复出现的缘分，将其targetRate设为对应数量。同时过滤掉超过等级上限的组合方案。
+      // 合并targets中重复出现的缘分，将其targetRate设为对应数量
       const nStepTargetsList: TargetFate[][] = nStepCombinations
         .map((steps) =>
           steps.reduce((list, cur) => {
@@ -85,17 +85,21 @@ export function calculateFateRateUpPriorityData(
             }
           }, [] as TargetFate[])
         )
+        // 过滤掉超过等级上限的组合方案
         .filter((targets) =>
           targets.every((target) => target.targetRate <= 10)
         );
+
       // 根据targets方案计算对应的消耗与收益
       const nStepPriorityData = nStepTargetsList
         .map((targets) =>
           generateDataByTargets(targets, awakeningAttack, criticalDamage)
         )
+        // 只考虑觉醒石消耗数量小于等于30的所有组合方案
+        .filter((data) => data.awakeningStonesCost <= 30)
         .sort((a, b) => b.priority - a.priority)
-        // 组合情况只考虑最优的100种
-        .slice(0, 100);
+        // 组合情况只考虑最优的50种
+        .slice(0, 50);
 
       return nStepPriorityData;
     });
@@ -204,18 +208,15 @@ export function generateDataByTargets(
   };
 }
 
-// 挑选的新缘分组合中的英雄必须和已选的有关，且缘分不出现重复
+// 挑选的新缘分组合中的英雄必须和已选的有关，可以重复
 function heroRelateValidator(list: TargetFate[], item: TargetFate) {
   if (list.length === 0) return true;
 
   const chosenHeroNames = list.flatMap((t) => t.heros).map((h) => h.name);
-  const chosenNames = list.flatMap((t) => t.name);
-  return (
-    item.heros
-      .map((h) => h.name)
-      .some((name) => chosenHeroNames.includes(name)) &&
-    !chosenNames.includes(item.name)
-  );
+
+  return item.heros
+    .map((h) => h.name)
+    .some((name) => chosenHeroNames.includes(name));
 }
 
 // 生成从list中挑选n个元素的所有"合法"组合, 由choiceValidator检查挑选方法的合法性

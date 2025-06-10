@@ -66,7 +66,12 @@ const FateToolTable = () => {
         return (
           <Space direction="vertical">
             {entity.targets.map((target) => (
-              <Tag key={target.name}>{target.name}</Tag>
+              <Tag key={target.name}>
+                {target.name}
+                {target.targetRate - target.rate > 1
+                  ? `*${target.targetRate - target.rate}`
+                  : ""}
+              </Tag>
             ))}
           </Space>
         );
@@ -83,6 +88,7 @@ const FateToolTable = () => {
             {entity.herosToRateUp.map((hero) => (
               <Tag key={hero.name} color={ELEMENT_TAG_COLOR[hero.element]}>
                 {hero.name}
+                {hero.toRateUp > 1 ? `*${hero.toRateUp}` : ""}
               </Tag>
             ))}
           </Space>
