@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.5.10 - 缘分自查表添加汇总推荐",
+  },
+  {
     children: "v0.5.9 - 缘分组合方案支持考虑重复提升 | 2025-06-10",
   },
   {

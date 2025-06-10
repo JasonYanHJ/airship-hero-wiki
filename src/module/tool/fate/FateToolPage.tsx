@@ -14,7 +14,6 @@ import useTableSearch from "../../../utils/antd-table-utils/useTableSearch";
 import createFixValuesFilterProps from "../../../utils/antd-table-utils/createFixValuesFilterProps";
 import { HERO_NAMES } from "../../../assets/heros";
 import { useState } from "react";
-import styled from "styled-components";
 import FatePrioritySummaryList from "./FatePrioritySummary";
 
 // 添加names便于列搜索功能实现
@@ -22,17 +21,11 @@ type DataSourceType = FateRateUpPriorityData & {
   names: string;
 };
 
-const StyledProTable = styled(createStyledProTable<DataSourceType>())`
-  .ant-pro-table-list-toolbar-right > div {
-    flex-wrap: wrap;
-  }
-`;
+const StyledProTable = createStyledProTable<DataSourceType>();
 
 const FateToolTable = () => {
   const {
     calculatedData: { fatePriority },
-    personalCriticalDamageData,
-    setPersonalCriticalDamageData,
   } = usePersonalData();
   const createColumnSearchProps = useTableSearch();
 
@@ -182,6 +175,25 @@ const FateToolTable = () => {
         },
       }}
       toolBarRender={() => [
+        <Select
+          value={stoneCost}
+          onChange={setStoneCost}
+          options={new Array(6).fill(undefined).map((_, index) => ({
+            label: `消耗${(index + 1) * 5}觉醒石`,
+            value: (index + 1) * 5,
+          }))}
+        />,
+      ]}
+    />
+  );
+};
+
+const FateToolPage = () => {
+  const { personalCriticalDamageData, setPersonalCriticalDamageData } =
+    usePersonalData();
+  return (
+    <PageContainer
+      extra={
         <InputNumber
           style={{ width: 280 }}
           addonBefore={
@@ -198,23 +210,9 @@ const FateToolTable = () => {
           onChange={(value) =>
             value && value >= 100 && setPersonalCriticalDamageData(value)
           }
-        />,
-        <Select
-          value={stoneCost}
-          onChange={setStoneCost}
-          options={new Array(6).fill(undefined).map((_, index) => ({
-            label: `消耗${(index + 1) * 5}觉醒石`,
-            value: (index + 1) * 5,
-          }))}
-        />,
-      ]}
-    />
-  );
-};
-
-const FateToolPage = () => {
-  return (
-    <PageContainer>
+        />
+      }
+    >
       <FatePrioritySummaryList />
       <br />
       <FateToolTable />
