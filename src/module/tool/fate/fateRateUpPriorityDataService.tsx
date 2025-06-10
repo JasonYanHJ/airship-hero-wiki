@@ -164,11 +164,9 @@ export function generateDataByTargets(
     groupBy(
       targets.map((t) => ({
         type: t.type,
-        increment: Math.pow(
+        increment:
           (t.incresePerLevel * t.targetRate + 100) /
-            (100 + t.incresePerLevel * t.rate),
-          t.targetRate - t.rate
-        ),
+          (100 + t.incresePerLevel * t.rate),
       })),
       "type"
     )

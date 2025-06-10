@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.5.11 - 修复缘分收益计算公式错误 | 2025-06-11",
+  },
+  {
     children: "v0.5.10 - 缘分自查表添加汇总推荐",
   },
   {
