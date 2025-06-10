@@ -15,6 +15,7 @@ import createFixValuesFilterProps from "../../../utils/antd-table-utils/createFi
 import { HERO_NAMES } from "../../../assets/heros";
 import { useState } from "react";
 import styled from "styled-components";
+import FatePrioritySummaryList from "./FatePrioritySummary";
 
 // 添加names便于列搜索功能实现
 type DataSourceType = FateRateUpPriorityData & {
@@ -214,6 +215,8 @@ const FateToolTable = () => {
 const FateToolPage = () => {
   return (
     <PageContainer>
+      <FatePrioritySummaryList />
+      <br />
       <FateToolTable />
     </PageContainer>
   );
