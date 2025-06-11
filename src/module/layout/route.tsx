@@ -1,5 +1,6 @@
 import {
   BookOutlined,
+  ScheduleOutlined,
   SearchOutlined,
   SmileFilled,
   UserOutlined,
@@ -24,6 +25,11 @@ const route: GetProp<ProLayoutProps, "route"> = {
       path: "/encyclopedia/fate",
       name: "缘分图鉴",
       icon: <BookOutlined />,
+    },
+    {
+      path: "/tool/jade",
+      name: "玉石寻宝方案",
+      icon: <ScheduleOutlined />,
     },
     {
       path: "/tool/fate",

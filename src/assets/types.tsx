@@ -3,6 +3,7 @@ import {
   DISCOVERY_TYPES,
   ELEMENT_TYPES,
   FATE_TYPES,
+  JADES_TYPE,
   JOB_TYPES,
   RATE_UP_TYPES,
 } from "./consts";
@@ -35,3 +36,9 @@ export type FateWithRate = Omit<Fate, "heros"> & {
   rate: number;
   heros: HeroWithRate[];
 };
+export type JadeChoiceItem = {
+  reward: (typeof JADES_TYPE)[number];
+  amount: number;
+  cost: number;
+};
+export type JadeChoice = [JadeChoiceItem, JadeChoiceItem, JadeChoiceItem];
