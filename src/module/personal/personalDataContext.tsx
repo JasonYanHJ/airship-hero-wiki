@@ -18,6 +18,11 @@ import {
   PersonalCriticalDamageData,
   savePersonalCriticalDamageData,
 } from "../tool/fate/criticalDamageDataService";
+import {
+  loadPersonalJadeChoiceData,
+  PersonalJadeChoiceData,
+  savePersonalJadeChoiceData,
+} from "../tool/jade/jadeChoiceDataService";
 
 export function PersonalDataProvider({ children }: { children: ReactNode }) {
   const [rateData, setRateData] = useState(loadPersonalHeroRateData);
@@ -33,6 +38,17 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
     (data: PersonalCriticalDamageData) => {
       setCriticalDamage(data);
       savePersonalCriticalDamageData(data);
+    },
+    []
+  );
+
+  const [jadeChoiceData, setJadeChoiceData] = useState(
+    loadPersonalJadeChoiceData
+  );
+  const setPersonalJadeChoiceData = useCallback(
+    (data: PersonalJadeChoiceData) => {
+      setJadeChoiceData(data);
+      savePersonalJadeChoiceData(data);
     },
     []
   );
@@ -66,6 +82,8 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
     setPersonalHeroRateData,
     personalCriticalDamageData: criticalDamage,
     setPersonalCriticalDamageData,
+    personalJadeChoiceData: jadeChoiceData,
+    setPersonalJadeChoiceData,
     calculatedData: {
       rateRalated,
       fateRalated,

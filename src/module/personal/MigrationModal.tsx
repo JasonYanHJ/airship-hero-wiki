@@ -5,6 +5,7 @@ import { PersonalInputData, usePersonalData } from "./usePersonalData";
 import { useMemo, useState } from "react";
 import { validatePersonalHeroRateData } from "./hero-rate/rateDataService";
 import { validatePersonalCriticalDamageData } from "../tool/fate/criticalDamageDataService";
+import { validatePersonalJadeChoiceData } from "../tool/jade/jadeChoiceDataService";
 
 // 添加新的个人数据种类后，需要在此文件修改三处：数据验证、数据设置、数据获取
 
@@ -21,6 +22,11 @@ function parsePersonalData(dataString: string): PersonalInputData | undefined {
     } catch (err) {
       throw Error(`英雄爆伤数据错误 ${err instanceof Error && err.message}`);
     }
+    try {
+      validatePersonalJadeChoiceData(data?.personalJadeChoiceData);
+    } catch (err) {
+      throw Error(`玉石方案数据错误 ${err instanceof Error && err.message}`);
+    }
     return data;
   } catch (err) {
     console.log("验证失败", err);
@@ -34,8 +40,11 @@ function parsePersonalData(dataString: string): PersonalInputData | undefined {
 }
 
 const MigrateToPanel = () => {
-  const { setPersonalHeroRateData, setPersonalCriticalDamageData } =
-    usePersonalData();
+  const {
+    setPersonalHeroRateData,
+    setPersonalCriticalDamageData,
+    setPersonalJadeChoiceData,
+  } = usePersonalData();
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -50,6 +59,7 @@ const MigrateToPanel = () => {
 
       setPersonalHeroRateData(personalData.personalHeroRateData);
       setPersonalCriticalDamageData(personalData.personalCriticalDamageData);
+      setPersonalJadeChoiceData(personalData.personalJadeChoiceData);
 
       message.success("导入成功");
       setLoading(false);
@@ -76,11 +86,19 @@ const MigrateToPanel = () => {
 };
 
 const MigrateFromPanel = () => {
-  const { personalHeroRateData, personalCriticalDamageData } =
-    usePersonalData();
+  const {
+    personalHeroRateData,
+    personalCriticalDamageData,
+    personalJadeChoiceData,
+  } = usePersonalData();
   const dataString = useMemo(
-    () => JSON.stringify({ personalHeroRateData, personalCriticalDamageData }),
-    [personalCriticalDamageData, personalHeroRateData]
+    () =>
+      JSON.stringify({
+        personalHeroRateData,
+        personalCriticalDamageData,
+        personalJadeChoiceData,
+      }),
+    [personalCriticalDamageData, personalHeroRateData, personalJadeChoiceData]
   );
 
   const handleCopy = async () => {
