@@ -58,6 +58,15 @@ const WelcomePage = () => {
               </ul>
             </li>
             <li>
+              <Title level={4}>✨玉石寻宝方案✨</Title>
+              <ul>
+                <Text strong>基本功能：</Text>
+                <li>你可以模拟玉石寻宝的方案选择</li>
+                <li>汇总面板会展示目前方案的玉石消耗与收益</li>
+                <li>方案数据保存在浏览器本地，支持数据迁移</li>
+              </ul>
+            </li>
+            <li>
               <Title level={4}>✨补缘分自查表✨</Title>
               <blockquote>
                 注意：该功能需要玩家先前往“个人数据”页面录入自己的游戏进度数据，以及在“缘分自查表”页面填写自己的面板暴击伤害

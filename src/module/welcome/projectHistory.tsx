@@ -11,13 +11,19 @@ export const projectHistory: TimelineItemProps[] = [
     children: "v0.6.0 - 添加玉石寻宝方案展示",
   },
   {
-    children: "v0.5.11 - 修复缘分收益计算公式错误 | 2025-06-11",
+    children: "v0.5.11 - 修复缘分收益计算公式错误",
+  },
+  {
+    children: <span style={{ color: "grey" }}>——— 2025-06-11 ———</span>,
   },
   {
     children: "v0.5.10 - 缘分自查表添加汇总推荐",
   },
   {
-    children: "v0.5.9 - 缘分组合方案支持考虑重复提升 | 2025-06-10",
+    children: "v0.5.9 - 缘分组合方案支持考虑重复提升",
+  },
+  {
+    children: <span style={{ color: "grey" }}>——— 2025-06-10 ———</span>,
   },
   {
     children: "v0.5.8 - 优化缘分自查表展示逻辑",
@@ -44,7 +50,10 @@ export const projectHistory: TimelineItemProps[] = [
     children: "v0.5.1 - 修复缘分排列组合有遗漏的bug",
   },
   {
-    children: "v0.5.0 - 缘分自查表支持查看多级提升时的优先级 | 2025-06-09",
+    children: "v0.5.0 - 缘分自查表支持查看多级提升时的优先级",
+  },
+  {
+    children: <span style={{ color: "grey" }}>——— 2025-06-09 ———</span>,
   },
   {
     children: "v0.4.3 - 优化缘分优先级的计算方式",
@@ -74,8 +83,10 @@ export const projectHistory: TimelineItemProps[] = [
     children: "v0.3.1 - 星级录入中添加批量设置与重置功能",
   },
   {
-    children:
-      "v0.3.0 - 使用浏览器本地存储实现英雄星级数据录入功能 | 2025-06-08",
+    children: "v0.3.0 - 使用浏览器本地存储实现英雄星级数据录入功能",
+  },
+  {
+    children: <span style={{ color: "grey" }}>——— 2025-06-08 ———</span>,
   },
   {
     children: "v0.2.6 - 优化贡献者列表显示",
@@ -110,5 +121,8 @@ export const projectHistory: TimelineItemProps[] = [
   {
     children: "v0.1.1 - 英雄图鉴支持按名称搜索功能",
   },
-  { children: "v0.1.0 - 添加英雄图鉴展示 | 2025-06-07" },
+  { children: "v0.1.0 - 添加英雄图鉴展示" },
+  {
+    children: <span style={{ color: "grey" }}>——— 2025-06-07 ———</span>,
+  },
 ];
