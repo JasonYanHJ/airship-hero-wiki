@@ -23,7 +23,8 @@ function ResponsiveCol({ children }: { children: ReactNode }) {
       sm={{ flex: "50%" }}
       md={{ flex: "50%" }}
       lg={{ flex: "33%" }}
-      xl={{ flex: "25%" }}
+      xl={{ flex: "33%" }}
+      xxl={{ flex: "25%" }}
     >
       {children}
     </Col>
