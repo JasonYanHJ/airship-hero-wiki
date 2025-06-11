@@ -3,7 +3,7 @@ import { usePersonalData } from "../../personal/usePersonalData";
 import { sum } from "lodash";
 import jade_choices from "../../../assets/jade_choices";
 import { DollarCircleOutlined } from "@ant-design/icons";
-import { JADES_TYPE } from "../../../assets/consts";
+import { JADES_TYPE, RESOURCE_TAG_COLOR } from "../../../assets/consts";
 
 const JadeChoiceSummary = () => {
   const {
@@ -58,7 +58,11 @@ const JadeChoiceSummary = () => {
                 rewardsMap.map(
                   ([type, amount]) =>
                     amount > 0 && (
-                      <Tag style={{ marginInlineEnd: 0 }} key={type}>
+                      <Tag
+                        color={RESOURCE_TAG_COLOR[type]}
+                        style={{ marginInlineEnd: 0 }}
+                        key={type}
+                      >
                         {type}
                         {amount > 1 ? `*${amount}` : ""}
                       </Tag>

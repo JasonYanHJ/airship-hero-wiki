@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.6.2 - 优化玉石寻宝方案显示",
+  },
+  {
     children: "v0.6.1 - 玉石寻宝方案支持模拟选择",
   },
   {

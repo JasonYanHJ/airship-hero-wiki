@@ -6,8 +6,9 @@ import styled from "styled-components";
 import { JadeChoiceItem } from "../../../assets/types";
 import { usePersonalData } from "../../personal/usePersonalData";
 import { useCallback } from "react";
-import { cloneDeep } from "lodash";
+import { cloneDeep, sum } from "lodash";
 import JadeChoiceSummary from "./JadeChoiceSummary";
+import { RESOURCE_TAG_COLOR } from "../../../assets/consts";
 
 const StyledCard = styled(Card)`
   .ant-card-body {
@@ -16,7 +17,7 @@ const StyledCard = styled(Card)`
   }
 `;
 const RewardTag: React.FC<{ choice: JadeChoiceItem }> = ({ choice }) => (
-  <Tag style={{ marginInlineEnd: 0 }}>
+  <Tag style={{ marginInlineEnd: 0 }} color={RESOURCE_TAG_COLOR[choice.reward]}>
     {choice.reward}
     {choice.amount > 1 ? `*${choice.amount}` : ""}
   </Tag>
@@ -42,6 +43,12 @@ const JadeCheckBox: React.FC<{
     personalJadeChoiceData: { choices },
     setPersonalJadeChoiceData,
   } = usePersonalData();
+
+  const validUntil =
+    choices.findIndex((c) => sum(c) === 0) < 0
+      ? 61
+      : choices.findIndex((c) => sum(c) === 0);
+
   const handleCheck = useCallback(
     (level: number, index: number, checked: boolean) => {
       setPersonalJadeChoiceData((data) => {
@@ -58,6 +65,7 @@ const JadeCheckBox: React.FC<{
 
   return (
     <Checkbox
+      disabled={level > validUntil}
       checked={Boolean(choices[level][index])}
       onChange={(e) => handleCheck(level, index, e.target.checked)}
     />

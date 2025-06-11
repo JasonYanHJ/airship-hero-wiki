@@ -75,3 +75,11 @@ export const JADES_TYPE = [
   "新年宝箱",
   "随机资源宝箱",
 ] as const;
+export const RESOURCE_TAG_COLOR: { [key: string]: string } = {
+  觉醒石: "purple",
+  镐子: "cyan",
+  钻石: "cyan",
+  "3星灵魂自选": "gold",
+  "3星骑士召集券": "gold",
+  召集券: "gold",
+};
