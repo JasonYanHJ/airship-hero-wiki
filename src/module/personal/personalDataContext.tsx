@@ -1,11 +1,10 @@
-import { ReactNode, useCallback, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import {
   calculateFateRelatedData,
   calculateRateRelatedData,
   getFatesWithRate,
   getHerosWithRate,
   loadPersonalHeroRateData,
-  PersonalHeroRateData,
   savePersonalHeroRateData,
 } from "./hero-rate/rateDataService";
 import {
@@ -15,43 +14,32 @@ import {
 import { calculateFateRateUpPriorityData } from "../tool/fate/fateRateUpPriorityDataService";
 import {
   loadPersonalCriticalDamageData,
-  PersonalCriticalDamageData,
   savePersonalCriticalDamageData,
 } from "../tool/fate/criticalDamageDataService";
 import {
   loadPersonalJadeChoiceData,
-  PersonalJadeChoiceData,
   savePersonalJadeChoiceData,
 } from "../tool/jade/jadeChoiceDataService";
 
 export function PersonalDataProvider({ children }: { children: ReactNode }) {
   const [rateData, setRateData] = useState(loadPersonalHeroRateData);
-  const setPersonalHeroRateData = useCallback((data: PersonalHeroRateData) => {
-    setRateData(data);
-    savePersonalHeroRateData(data);
-  }, []);
+  useEffect(() => {
+    savePersonalHeroRateData(rateData);
+  }, [rateData]);
 
   const [criticalDamage, setCriticalDamage] = useState(
     loadPersonalCriticalDamageData
   );
-  const setPersonalCriticalDamageData = useCallback(
-    (data: PersonalCriticalDamageData) => {
-      setCriticalDamage(data);
-      savePersonalCriticalDamageData(data);
-    },
-    []
-  );
+  useEffect(() => {
+    savePersonalCriticalDamageData(criticalDamage);
+  }, [criticalDamage]);
 
   const [jadeChoiceData, setJadeChoiceData] = useState(
     loadPersonalJadeChoiceData
   );
-  const setPersonalJadeChoiceData = useCallback(
-    (data: PersonalJadeChoiceData) => {
-      setJadeChoiceData(data);
-      savePersonalJadeChoiceData(data);
-    },
-    []
-  );
+  useEffect(() => {
+    savePersonalJadeChoiceData(jadeChoiceData);
+  }, [jadeChoiceData]);
 
   const herosWithRate = useMemo(() => getHerosWithRate(rateData), [rateData]);
   const fatesWithRate = useMemo(
@@ -79,11 +67,11 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
 
   const values: PersonalDataContextType = {
     personalHeroRateData: rateData,
-    setPersonalHeroRateData,
+    setPersonalHeroRateData: setRateData,
     personalCriticalDamageData: criticalDamage,
-    setPersonalCriticalDamageData,
+    setPersonalCriticalDamageData: setCriticalDamage,
     personalJadeChoiceData: jadeChoiceData,
-    setPersonalJadeChoiceData,
+    setPersonalJadeChoiceData: setJadeChoiceData,
     calculatedData: {
       rateRalated,
       fateRalated,

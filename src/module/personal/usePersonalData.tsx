@@ -15,9 +15,15 @@ export type PersonalInputData = {
 };
 
 export type PersonalDataContextType = PersonalInputData & {
-  setPersonalHeroRateData: (data: PersonalHeroRateData) => void;
-  setPersonalCriticalDamageData: (data: PersonalCriticalDamageData) => void;
-  setPersonalJadeChoiceData: (data: PersonalJadeChoiceData) => void;
+  setPersonalHeroRateData: React.Dispatch<
+    React.SetStateAction<PersonalHeroRateData>
+  >;
+  setPersonalCriticalDamageData: React.Dispatch<
+    React.SetStateAction<PersonalCriticalDamageData>
+  >;
+  setPersonalJadeChoiceData: React.Dispatch<
+    React.SetStateAction<PersonalJadeChoiceData>
+  >;
   calculatedData: {
     rateRalated: ReturnType<typeof calculateRateRelatedData>;
     fateRalated: ReturnType<typeof calculateFateRelatedData>;
