@@ -18,6 +18,7 @@ import PersonalDataPage from "./module/personal/PersonalDataPage";
 import { PersonalDataProvider } from "./module/personal/personalDataContext";
 import FateToolPage from "./module/tool/fate/FateToolPage";
 import JadeToolPage from "./module/tool/jade/JadeToolPage";
+import OcrTestPage from "./module/ocr-test/OcrTestPage";
 
 dayjs.locale("zh-cn");
 
@@ -40,6 +41,7 @@ const App = () => {
               <Route path="/tool/jade" element={<JadeToolPage />} />
               <Route path="/tool/fate" element={<FateToolPage />} />
               <Route path="/personal" element={<PersonalDataPage />} />
+              <Route path="/ocr-test" element={<OcrTestPage />} />
             </Route>
 
             <Route path="/" element={<Navigate to="/welcome" replace />} />

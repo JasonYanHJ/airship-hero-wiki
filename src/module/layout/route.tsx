@@ -41,6 +41,10 @@ const route: GetProp<ProLayoutProps, "route"> = {
       name: "个人数据",
       icon: <UserOutlined />,
     },
+    {
+      path: "/ocr-test",
+      name: "OCR测试",
+    },
   ],
 };
 
