@@ -20,7 +20,7 @@ export function savePersonalHeroRateData(data: PersonalHeroRateData) {
 
 export function loadPersonalHeroRateData(): PersonalHeroRateData {
   const data = localStorage.getItem("hero-rate-data");
-  return data ? JSON.parse(data) : getNormalizedPersonalHeroRateData({});
+  return getNormalizedPersonalHeroRateData(data ? JSON.parse(data) : {});
 }
 
 export function hasPersonalHeroRateData() {
