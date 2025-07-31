@@ -319,6 +319,84 @@ export const fates = [
     incresePerLevel: 3,
     heros: ["玛莉", "黄晶", "艾琳娜"],
   },
+  {
+    name: "如火如荼",
+    type: "攻击",
+    incresePerLevel: 2,
+    heros: ["杜莎利斯", "帕拉斯"],
+  },
+  {
+    name: "三分糖！",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["扎克", "克特", "泡泡糖"],
+  },
+  {
+    name: "生命削减",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["洁斯", "面珑", "克莉丝汀"],
+  },
+  {
+    name: "水满则溢",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["西亚信", "法蒂玛", "纳姆维尔"],
+  },
+  {
+    name: "风声萧瑟",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["薇笑", "阿圭尔", "PQ"],
+  },
+  {
+    name: "熊熊烈火",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["萨曼达", "阿勒格罗", "玫瑰琳"],
+  },
+  {
+    name: "抽象派",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["香草", "苏菲", "艾莉娅"],
+  },
+  {
+    name: "蛇蝎美人",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["瓦尔基里", "杜莎利斯", "萨曼达"],
+  },
+  {
+    name: "神明之力",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["瓦尔基里", "帕拉斯", "阿卡妮"],
+  },
+  {
+    name: "周年庆快乐",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["杜莎利斯", "帕拉斯", "瓦尔基里"],
+  },
+  {
+    name: "水土不服",
+    type: "攻击",
+    incresePerLevel: 4,
+    heros: ["苏沃", "雪儿", "威尔伯", "戴登"],
+  },
+  {
+    name: "防御反击",
+    type: "攻击",
+    incresePerLevel: 4,
+    heros: ["芬舍尔", "艾莉诺", "阿尔比", "雷克斯"],
+  },
+  {
+    name: "四季如花",
+    type: "攻击",
+    incresePerLevel: 4,
+    heros: ["帕拉斯", "貂蝉", "法蒂玛", "大乔"],
+  },
 ] as const satisfies Fate[];
 
 export const FATE_NAMES = fates.map((f) => f.name);

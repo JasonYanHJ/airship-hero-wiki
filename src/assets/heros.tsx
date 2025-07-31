@@ -212,6 +212,25 @@ const heros = [
     discovery_all: "穿透",
   },
   {
+    name: "瓦尔基里",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 100,
+    },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
+    element: "火",
+    job: "近战",
+    awakening: "穿透",
+    discovery_all: "暴击率",
+  },
+  {
     name: "米兰达",
     alias: [],
     initialRate: 3,
@@ -326,6 +345,25 @@ const heros = [
     discovery_all: "暴击率",
   },
   {
+    name: "杜莎利斯",
+    alias: ["美杜莎"],
+    initialRate: 3,
+    initialData: {
+      attack: 300,
+    },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
+    element: "火",
+    job: "远程",
+    awakening: "攻击",
+    discovery_all: "暴击率",
+  },
+  {
     name: "法比安",
     alias: [],
     initialRate: 3,
@@ -419,6 +457,25 @@ const heros = [
     job: "辅助",
     awakening: "穿透",
     discovery_all: "防御",
+  },
+  {
+    name: "帕拉斯",
+    alias: ["雅典娜"],
+    initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "暴击伤害", increment: 5 },
+    ],
+    element: "火",
+    job: "辅助",
+    awakening: "穿透",
+    discovery_all: "暴击抵抗率",
   },
   {
     name: "艾莉诺",
