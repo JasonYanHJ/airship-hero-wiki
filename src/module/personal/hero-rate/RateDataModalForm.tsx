@@ -21,7 +21,9 @@ import { useMemo, useRef, useState } from "react";
 import { ELEMENT_TYPES } from "../../../assets/consts";
 import { Hero } from "../../../assets/types";
 import {
+  calculateFateRelatedData,
   calculateRateRelatedData,
+  getFatesWithRate,
   getHerosWithRate,
   getNormalizedPersonalHeroRateData,
 } from "./rateDataService";
@@ -177,7 +179,9 @@ const RateDataModalForm = () => {
         return new Promise<boolean>((resolve) => {
           const normalizedData = getNormalizedPersonalHeroRateData(values);
           const herosWithRate = getHerosWithRate(normalizedData);
-          const relatedData = calculateRateRelatedData(herosWithRate);
+          const rateRelatedData = calculateRateRelatedData(herosWithRate);
+          const fatesWithRate = getFatesWithRate(herosWithRate);
+          const fateRelatedData = calculateFateRelatedData(fatesWithRate);
           Modal.confirm({
             title: "确认录入？",
             content: (
@@ -186,12 +190,17 @@ const RateDataModalForm = () => {
                   <Typography.Text strong>
                     英雄汇总信息如下，请与游戏中实际数值核对：
                   </Typography.Text>
-                  <li>觉醒英雄：{relatedData.awakenHerosCount}</li>
-                  <li>5星英雄：{relatedData.rate5HerosCount}</li>
-                  <li>4星英雄：{relatedData.rate4HerosCount}</li>
-                  <li>3星英雄：{relatedData.rate3HerosCount}</li>
+                  <li>觉醒英雄：{rateRelatedData.awakenHerosCount}</li>
+                  <li>5星英雄：{rateRelatedData.rate5HerosCount}</li>
+                  <li>4星英雄：{rateRelatedData.rate4HerosCount}</li>
+                  <li>3星英雄：{rateRelatedData.rate3HerosCount}</li>
                   <li>
-                    觉醒骑士持有效果-攻击：{relatedData.awakeningData["攻击"]}%
+                    觉醒骑士持有效果-攻击：
+                    {rateRelatedData.awakeningData["攻击"]}%
+                  </li>
+                  <li>
+                    缘分-攻击：
+                    {fateRelatedData.fateRateEffectData["攻击"]}%
                   </li>
                 </ul>
               </Typography.Paragraph>

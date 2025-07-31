@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.6.5 - 核对录入信息时添加攻击缘分核对",
+  },
+  {
     children: "v0.6.4 - 更新新英雄相关数据",
   },
   {
