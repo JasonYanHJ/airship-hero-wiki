@@ -20,7 +20,9 @@ const TipStyle: React.CSSProperties = {
 
 function FatePrioritySummary() {
   const {
-    calculatedData: { fatePriority },
+    calculatedData: {
+      fatePriorityResult: { data: fatePriority, loading },
+    },
   } = usePersonalData();
   const summary = useMemo(
     () =>
@@ -28,7 +30,7 @@ function FatePrioritySummary() {
         .map(
           (cost) =>
             fatePriority
-              .filter((p) => p.awakeningStonesCost === cost)
+              ?.filter((p) => p.awakeningStonesCost === cost)
               .sort((a, b) => b.priority - a.priority)[0]
         )
         .filter((s) => !!s)
@@ -101,6 +103,7 @@ function FatePrioritySummary() {
       <StyledProTable
         size="small"
         rowKey="awakeningStonesCost"
+        loading={loading}
         dataSource={summary}
         columns={columns}
         search={false}

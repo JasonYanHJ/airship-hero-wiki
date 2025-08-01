@@ -11,7 +11,6 @@ import {
   PersonalDataContext,
   PersonalDataContextType,
 } from "./usePersonalData";
-import { calculateFateRateUpPriorityData } from "../tool/fate/fateRateUpPriorityDataService";
 import {
   loadPersonalCriticalDamageData,
   savePersonalCriticalDamageData,
@@ -20,6 +19,7 @@ import {
   loadPersonalJadeChoiceData,
   savePersonalJadeChoiceData,
 } from "../tool/jade/jadeChoiceDataService";
+import { useFatePriorityCalculation } from "../tool/fate/useFatePriorityCalculation";
 
 export function PersonalDataProvider({ children }: { children: ReactNode }) {
   const [rateData, setRateData] = useState(loadPersonalHeroRateData);
@@ -55,15 +55,24 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
     () => calculateFateRelatedData(fatesWithRate),
     [fatesWithRate]
   );
-  const fatePriority = useMemo(
-    () =>
-      calculateFateRateUpPriorityData(
-        fatesWithRate,
-        rateRalated.awakeningData.攻击,
-        criticalDamage
-      ),
-    [criticalDamage, fatesWithRate, rateRalated.awakeningData.攻击]
-  );
+
+  // 使用 web worker 进行缘分优先级计算
+  const { calculate: fatePriorityCalculate, ...fatePriorityResult } =
+    useFatePriorityCalculation();
+
+  // 当依赖项变化时触发计算
+  useEffect(() => {
+    fatePriorityCalculate({
+      fatesWithRate,
+      awakeningAttack: rateRalated.awakeningData.攻击,
+      criticalDamage,
+    });
+  }, [
+    fatePriorityCalculate,
+    criticalDamage,
+    fatesWithRate,
+    rateRalated.awakeningData.攻击,
+  ]);
 
   const values: PersonalDataContextType = {
     personalHeroRateData: rateData,
@@ -75,7 +84,7 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
     calculatedData: {
       rateRalated,
       fateRalated,
-      fatePriority,
+      fatePriorityResult,
     },
   };
   return (

@@ -27,7 +27,11 @@ export type PersonalDataContextType = PersonalInputData & {
   calculatedData: {
     rateRalated: ReturnType<typeof calculateRateRelatedData>;
     fateRalated: ReturnType<typeof calculateFateRelatedData>;
-    fatePriority: ReturnType<typeof calculateFateRateUpPriorityData>;
+    fatePriorityResult: {
+      data: ReturnType<typeof calculateFateRateUpPriorityData> | null;
+      loading: boolean;
+      error: string | null;
+    };
   };
 };
 

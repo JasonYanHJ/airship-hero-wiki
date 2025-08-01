@@ -25,18 +25,23 @@ const StyledProTable = createStyledProTable<DataSourceType>();
 
 const FateToolTable = () => {
   const {
-    calculatedData: { fatePriority },
+    calculatedData: {
+      fatePriorityResult: { data: fatePriority, loading },
+    },
   } = usePersonalData();
   const createColumnSearchProps = useTableSearch();
 
   const [stoneCost, setStoneCost] = useState(5);
 
-  const dataSource: DataSourceType[] = fatePriority
-    .filter((f) => f.awakeningStonesCost === stoneCost)
-    .map((f) => ({
-      ...f,
-      names: f.targets.map((t) => `${t.name}*${t.targetRate - t.rate}`).join(),
-    }));
+  const dataSource: DataSourceType[] =
+    fatePriority
+      ?.filter((f) => f.awakeningStonesCost === stoneCost)
+      .map((f) => ({
+        ...f,
+        names: f.targets
+          .map((t) => `${t.name}*${t.targetRate - t.rate}`)
+          .join(),
+      })) ?? [];
 
   const columns: ProColumnType<DataSourceType>[] = [
     {
@@ -166,6 +171,7 @@ const FateToolTable = () => {
       rowKey="names"
       sortDirections={["descend", "ascend"]}
       search={false}
+      loading={loading}
       dataSource={dataSource}
       columns={columns}
       columnsState={{
