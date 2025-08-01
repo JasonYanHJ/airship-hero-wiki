@@ -55,22 +55,11 @@ export function calculateFateRateUpPriorityData(
   return stepsPriorityData;
 }
 
-export function generateDataByTargets(
-  targets: TargetFate[],
-  awakeningAttack: number,
-  criticalDamage: number
-): FateRateUpPriorityData {
-  if (targets.some((t) => t.targetRate > 10))
-    return {
-      targets,
-      herosToRateUp: [],
-      heroRateUpEffect: [],
-      fateRateUpEffect: [],
-      damageEffect: 1,
-      awakeningStonesCost: 0,
-      priority: -1,
-    };
-
+// 轻量级预检查，返回觉醒石消耗和英雄升级信息
+function calculateCostAndHeros(targets: TargetFate[]): {
+  awakeningStonesCost: number;
+  herosToRateUp: (HeroWithRate & { toRateUp: number })[];
+} {
   const heroRateUpTargets = targets
     .flatMap((t) =>
       t.heros.map((hero) => ({
@@ -92,6 +81,21 @@ export function generateDataByTargets(
       toRateUp: targetRate - hero.rate,
     }));
 
+  const awakeningStonesCost = sum(
+    herosToRateUp.map((hero) => hero.toRateUp * 5)
+  );
+
+  return { awakeningStonesCost, herosToRateUp };
+}
+
+// 基于已计算的英雄信息，完成剩余计算
+function calculateFullPriorityDataFromHeros(
+  targets: TargetFate[],
+  herosToRateUp: (HeroWithRate & { toRateUp: number })[],
+  awakeningAttack: number,
+  criticalDamage: number,
+  awakeningStonesCost: number
+): FateRateUpPriorityData {
   const heroRateUpEffect: {
     type: string;
     increment: number;
@@ -135,10 +139,6 @@ export function generateDataByTargets(
     criticalDamage;
   const damageEffect =
     fateAttackEffect * heroAwakeningAttackEffect * heroAwakeningCriticalEffect;
-
-  const awakeningStonesCost = sum(
-    herosToRateUp.map((hero) => hero.toRateUp * 5)
-  );
 
   const priority =
     Math.pow(damageEffect, 1 / (awakeningStonesCost / 5)) * 100 - 100;
@@ -201,12 +201,19 @@ function processCombinationsWithIterator(
     const mergedTargets = mergeTargets(combination);
     if (!isValidTargets(mergedTargets)) continue;
 
-    const priorityData = generateDataByTargets(
+    // 第一步：轻量级预检查
+    const { awakeningStonesCost, herosToRateUp } =
+      calculateCostAndHeros(mergedTargets);
+    if (awakeningStonesCost > 30) continue;
+
+    // 第二步：完整计算（复用herosToRateUp）
+    const priorityData = calculateFullPriorityDataFromHeros(
       mergedTargets,
+      herosToRateUp,
       awakeningAttack,
-      criticalDamage
+      criticalDamage,
+      awakeningStonesCost
     );
-    if (priorityData.awakeningStonesCost > 30) continue;
 
     if (topResults.size() < 50) {
       topResults.push(priorityData);
