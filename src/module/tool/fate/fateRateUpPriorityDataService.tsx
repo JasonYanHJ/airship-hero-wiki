@@ -43,7 +43,7 @@ export function calculateFateRateUpPriorityData(
     }));
 
   let step = 1;
-  const result: FateRateUpPriorityData[] = [];
+  const result: Record<string, FateRateUpPriorityData> = {};
   while (true) {
     // 使用迭代器 + 最小堆，边生成边处理，使用验证器进行剪枝
     const nStepPriorityData = processCombinationsWithIterator(
@@ -52,13 +52,22 @@ export function calculateFateRateUpPriorityData(
       criticalDamage
     );
 
-    result.push(...nStepPriorityData);
+    for (const data of nStepPriorityData) {
+      // 使用需要觉醒的英雄作为key来更新result
+      // 从而避免出现以下情况：
+      // 提升英雄H能同时提示缘分F1、F2，列表中出现三条数据，“F1-H”、“F2-H”、“F1、F2-H”
+      const nameKey = data.herosToRateUp
+        .sort((a, b) => (a.name < b.name ? 1 : -1))
+        .map((h) => `${h.name}*${h.toRateUp}`)
+        .join("_");
+      result[nameKey] = data;
+    }
 
     if (nStepPriorityData.length !== 0) step++;
     else break;
   }
 
-  return result;
+  return Object.values(result);
 }
 
 // 使用迭代器和最小堆处理组合，优化内存和性能
