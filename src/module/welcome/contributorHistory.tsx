@@ -3,7 +3,6 @@ import dongdongdetuoImg from "./assets/avatar_dongdongdetuo.jpg";
 import yanyanaImg from "./assets/avatar_yanyana.jpg";
 import ffImg from "./assets/avatar_ff.jpg";
 import aoleiliyaImg from "./assets/avatar_aoleiliya.jpg";
-import ningjiImg from "./assets/avatar_ningji.jpg";
 
 export const contributorHistory: {
   name: string;
@@ -11,8 +10,8 @@ export const contributorHistory: {
   description: string;
 }[] = [
   {
-    name: "柠季",
-    avatar: ningjiImg,
+    name: "芬利",
+    avatar: fenliImg,
     description: "提供新角色缘分数据 🎉 | 2025-07-31",
   },
   {

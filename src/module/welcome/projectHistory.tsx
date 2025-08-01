@@ -2,6 +2,15 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.6.7 - 修复缘分优先级计算未考虑不关联缘分的问题",
+  },
+  {
+    children: "v0.6.6 - 后台计算缘分优先级，避免界面卡顿",
+  },
+  {
+    children: <span style={{ color: "grey" }}>——— 2025-08-01 ———</span>,
+  },
+  {
     children: "v0.6.5 - 核对录入信息时添加攻击缘分核对",
   },
   {
