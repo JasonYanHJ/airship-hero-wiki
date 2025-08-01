@@ -42,9 +42,9 @@ export function calculateFateRateUpPriorityData(
     .flatMap((_, index) => {
       const step = index + 1;
 
-      // 使用迭代器 + 最小堆，边生成边处理
+      // 使用迭代器 + 最小堆，边生成边处理，使用验证器进行剪枝
       const nStepPriorityData = processCombinationsWithIterator(
-        generateCombinations(notMaxTargetsList, step),
+        generateCombinations(notMaxTargetsList, step, combinationValidator),
         awakeningAttack,
         criticalDamage
       );
@@ -198,15 +198,14 @@ function processCombinationsWithIterator(
   );
 
   for (const combination of combinationsIterator) {
+    // 由于choiceValidator已经进行了剪枝，这里的组合都是有效的
     const mergedTargets = mergeTargets(combination);
-    if (!isValidTargets(mergedTargets)) continue;
 
-    // 第一步：轻量级预检查
+    // 计算觉醒石消耗和英雄升级信息
     const { awakeningStonesCost, herosToRateUp } =
       calculateCostAndHeros(mergedTargets);
-    if (awakeningStonesCost > 30) continue;
 
-    // 第二步：完整计算（复用herosToRateUp）
+    // 完整计算优先级数据
     const priorityData = calculateFullPriorityDataFromHeros(
       mergedTargets,
       herosToRateUp,
@@ -248,4 +247,22 @@ function mergeTargets(combination: TargetFate[]): TargetFate[] {
 // 验证等级上限
 function isValidTargets(targets: TargetFate[]): boolean {
   return targets.every((target) => target.targetRate <= 10);
+}
+
+// 组合验证器，在构建过程中进行剪枝
+function combinationValidator(
+  current: TargetFate[],
+  next: TargetFate
+): boolean {
+  // 合并当前部分组合
+  const partialTargets = mergeTargets([...current, next]);
+
+  // 检查等级上限
+  if (!isValidTargets(partialTargets)) return false;
+
+  // 检查觉醒石消耗
+  const { awakeningStonesCost } = calculateCostAndHeros(partialTargets);
+  if (awakeningStonesCost > 30) return false;
+
+  return true;
 }
