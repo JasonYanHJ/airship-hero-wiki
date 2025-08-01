@@ -1,4 +1,5 @@
 import { groupBy, sum, sumBy } from "lodash";
+import { Heap } from "heap-js";
 import { getAwakeningIncrement } from "../../../assets/heros";
 import { FateWithRate, HeroWithRate } from "../../../assets/types";
 
@@ -41,46 +42,12 @@ export function calculateFateRateUpPriorityData(
     .flatMap((_, index) => {
       const step = index + 1;
 
-      // nStep中所有可能的组合情况，使用`generateCombinations`生成组合情况
-      const nStepCombinations = generateCombinations(notMaxTargetsList, step);
-
-      // 合并targets中重复出现的缘分，将其targetRate设为对应数量
-      const nStepTargetsList: TargetFate[][] = nStepCombinations
-        .map((steps) =>
-          steps.reduce((list, cur) => {
-            if (list.length === 0) {
-              list.push(cur);
-              return list;
-            }
-
-            const lastItem = list[list.length - 1];
-            if (lastItem.name === cur.name) {
-              list[list.length - 1] = {
-                ...lastItem,
-                targetRate: lastItem.targetRate + 1,
-              };
-              return list;
-            } else {
-              list.push(cur);
-              return list;
-            }
-          }, [] as TargetFate[])
-        )
-        // 过滤掉超过等级上限的组合方案
-        .filter((targets) =>
-          targets.every((target) => target.targetRate <= 10)
-        );
-
-      // 根据targets方案计算对应的消耗与收益
-      const nStepPriorityData = nStepTargetsList
-        .map((targets) =>
-          generateDataByTargets(targets, awakeningAttack, criticalDamage)
-        )
-        // 只考虑觉醒石消耗数量小于等于30的所有组合方案
-        .filter((data) => data.awakeningStonesCost <= 30)
-        .sort((a, b) => b.priority - a.priority)
-        // 组合情况只考虑最优的50种
-        .slice(0, 50);
+      // 使用迭代器 + 最小堆，边生成边处理
+      const nStepPriorityData = processCombinationsWithIterator(
+        generateCombinations(notMaxTargetsList, step),
+        awakeningAttack,
+        criticalDamage
+      );
 
       return nStepPriorityData;
     });
@@ -188,19 +155,17 @@ export function generateDataByTargets(
 }
 
 // 生成从list中挑选n个元素的所有"合法"组合, 由choiceValidator检查挑选方法的合法性
-function generateCombinations<T>(
+function* generateCombinations<T>(
   list: T[],
   n: number,
   choiceValidator: (list: T[], item: T) => boolean = () => true
-) {
-  const result: T[][] = [];
+): Generator<T[]> {
   const current: T[] = [];
 
-  // 回溯法
-  function backtrack(start: number = 0) {
-    // 如果当前组合长度等于n，添加到结果中
+  function* backtrack(start: number = 0): Generator<T[]> {
+    // 如果当前组合长度等于n，生成一个组合
     if (current.length === n) {
-      result.push([...current]);
+      yield [...current];
       return;
     }
 
@@ -213,11 +178,67 @@ function generateCombinations<T>(
       if (!choiceValidator(current, list[i])) continue;
 
       current.push(list[i]);
-      backtrack(i);
+      yield* backtrack(i);
       current.pop();
     }
   }
 
-  backtrack(0);
-  return result;
+  yield* backtrack(0);
+}
+
+// 使用迭代器和最小堆处理组合，优化内存和性能
+function processCombinationsWithIterator(
+  combinationsIterator: Generator<TargetFate[]>,
+  awakeningAttack: number,
+  criticalDamage: number
+): FateRateUpPriorityData[] {
+  // 最小堆，保持最大的50个priority值
+  const topResults = new Heap<FateRateUpPriorityData>(
+    (a, b) => a.priority - b.priority
+  );
+
+  for (const combination of combinationsIterator) {
+    const mergedTargets = mergeTargets(combination);
+    if (!isValidTargets(mergedTargets)) continue;
+
+    const priorityData = generateDataByTargets(
+      mergedTargets,
+      awakeningAttack,
+      criticalDamage
+    );
+    if (priorityData.awakeningStonesCost > 30) continue;
+
+    if (topResults.size() < 50) {
+      topResults.push(priorityData);
+    } else if (priorityData.priority > topResults.peek()!.priority) {
+      topResults.pushpop(priorityData); // 原子操作：push后pop最小值
+    }
+  }
+
+  // 转换为从大到小排序的数组
+  return topResults.toArray().sort((a, b) => b.priority - a.priority);
+}
+
+// 合并重复缘分，保持关注点分离
+function mergeTargets(combination: TargetFate[]): TargetFate[] {
+  const merged: TargetFate[] = [];
+
+  for (const current of combination) {
+    const lastItem = merged[merged.length - 1];
+
+    if (lastItem?.name === current.name) {
+      // 合并同名缘分
+      lastItem.targetRate += 1;
+    } else {
+      // 添加新缘分
+      merged.push({ ...current });
+    }
+  }
+
+  return merged;
+}
+
+// 验证等级上限
+function isValidTargets(targets: TargetFate[]): boolean {
+  return targets.every((target) => target.targetRate <= 10);
 }
