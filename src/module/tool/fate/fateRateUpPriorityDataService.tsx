@@ -3,7 +3,10 @@ import { Heap } from "heap-js";
 import { getAwakeningIncrement } from "../../../assets/heros";
 import { FateWithRate, HeroWithRate } from "../../../assets/types";
 
-export const MAX_FATE_STEP = 4;
+// 每组step至多保留的最优结果数
+const HEAP_MAX_SIZE = 50;
+// 最大计算到的觉醒石消耗数量
+const MAX_STONE_COST = 30;
 
 type TargetFate = FateWithRate & {
   targetRate: number;
@@ -25,6 +28,7 @@ export type FateRateUpPriorityData = {
   priority: number;
 };
 
+// 主入口函数
 export function calculateFateRateUpPriorityData(
   fatesWitheRate: FateWithRate[],
   awakeningAttack: number,
@@ -37,22 +41,137 @@ export function calculateFateRateUpPriorityData(
       ...fate,
       targetRate: fate.rate + 1,
     }));
-  const stepsPriorityData = new Array(MAX_FATE_STEP)
-    .fill(undefined)
-    .flatMap((_, index) => {
-      const step = index + 1;
 
-      // 使用迭代器 + 最小堆，边生成边处理，使用验证器进行剪枝
-      const nStepPriorityData = processCombinationsWithIterator(
-        generateCombinations(notMaxTargetsList, step, combinationValidator),
-        awakeningAttack,
-        criticalDamage
-      );
+  let step = 1;
+  const result: FateRateUpPriorityData[] = [];
+  while (true) {
+    // 使用迭代器 + 最小堆，边生成边处理，使用验证器进行剪枝
+    const nStepPriorityData = processCombinationsWithIterator(
+      generateCombinations(notMaxTargetsList, step, combinationValidator),
+      awakeningAttack,
+      criticalDamage
+    );
 
-      return nStepPriorityData;
-    });
+    result.push(...nStepPriorityData);
 
-  return stepsPriorityData;
+    if (nStepPriorityData.length !== 0) step++;
+    else break;
+  }
+
+  return result;
+}
+
+// 使用迭代器和最小堆处理组合，优化内存和性能
+function processCombinationsWithIterator(
+  combinationsIterator: Generator<TargetFate[]>,
+  awakeningAttack: number,
+  criticalDamage: number
+): FateRateUpPriorityData[] {
+  // 最大堆
+  const topResults = new Heap<FateRateUpPriorityData>(
+    (a, b) => a.priority - b.priority
+  );
+
+  for (const combination of combinationsIterator) {
+    // 由于choiceValidator已经进行了剪枝，这里的组合都是有效的
+    const mergedTargets = mergeTargets(combination);
+
+    // 计算觉醒石消耗和英雄升级信息
+    const { awakeningStonesCost, herosToRateUp } =
+      calculateCostAndHeros(mergedTargets);
+
+    // 完整计算优先级数据
+    const priorityData = calculateFullPriorityDataFromHeros(
+      mergedTargets,
+      herosToRateUp,
+      awakeningAttack,
+      criticalDamage,
+      awakeningStonesCost
+    );
+
+    if (topResults.size() < HEAP_MAX_SIZE) {
+      topResults.push(priorityData);
+    } else if (priorityData.priority > topResults.peek()!.priority) {
+      topResults.pushpop(priorityData); // 原子操作：push后pop最小值
+    }
+  }
+
+  // 转换为从大到小排序的数组
+  return topResults.toArray().sort((a, b) => b.priority - a.priority);
+}
+
+// 生成从list中挑选n个元素的所有"合法"组合, 由choiceValidator检查挑选方法的合法性
+function* generateCombinations<T>(
+  list: T[],
+  n: number,
+  choiceValidator: (list: T[], item: T) => boolean = () => true
+): Generator<T[]> {
+  const current: T[] = [];
+
+  function* backtrack(start: number = 0): Generator<T[]> {
+    // 如果当前组合长度等于n，生成一个组合
+    if (current.length === n) {
+      yield [...current];
+      return;
+    }
+
+    // 从start位置开始遍历
+    for (let i = start; i < list.length; i++) {
+      // 剪枝：如果剩余元素不足以完成组合，提前结束
+      if (list.length - i < n - current.length) break;
+
+      // 当组合方式不符合要求时，跳过这个选择
+      if (!choiceValidator(current, list[i])) continue;
+
+      current.push(list[i]);
+      yield* backtrack(i);
+      current.pop();
+    }
+  }
+
+  yield* backtrack(0);
+}
+
+// 组合验证器，在构建过程中进行剪枝
+function combinationValidator(
+  current: TargetFate[],
+  next: TargetFate
+): boolean {
+  // 合并当前部分组合
+  const partialTargets = mergeTargets([...current, next]);
+
+  // 检查等级上限
+  if (!isValidTargets(partialTargets)) return false;
+
+  // 检查觉醒石消耗
+  const { awakeningStonesCost } = calculateCostAndHeros(partialTargets);
+  if (awakeningStonesCost > MAX_STONE_COST) return false;
+
+  return true;
+}
+
+// 合并重复缘分，保持关注点分离
+function mergeTargets(combination: TargetFate[]): TargetFate[] {
+  const merged: TargetFate[] = [];
+
+  for (const current of combination) {
+    const lastItem = merged[merged.length - 1];
+
+    if (lastItem?.name === current.name) {
+      // 合并同名缘分
+      lastItem.targetRate += 1;
+    } else {
+      // 添加新缘分
+      merged.push({ ...current });
+    }
+  }
+
+  return merged;
+}
+
+// 验证等级上限
+function isValidTargets(targets: TargetFate[]): boolean {
+  return targets.every((target) => target.targetRate <= 10);
 }
 
 // 轻量级预检查，返回觉醒石消耗和英雄升级信息
@@ -152,117 +271,4 @@ function calculateFullPriorityDataFromHeros(
     awakeningStonesCost,
     priority,
   };
-}
-
-// 生成从list中挑选n个元素的所有"合法"组合, 由choiceValidator检查挑选方法的合法性
-function* generateCombinations<T>(
-  list: T[],
-  n: number,
-  choiceValidator: (list: T[], item: T) => boolean = () => true
-): Generator<T[]> {
-  const current: T[] = [];
-
-  function* backtrack(start: number = 0): Generator<T[]> {
-    // 如果当前组合长度等于n，生成一个组合
-    if (current.length === n) {
-      yield [...current];
-      return;
-    }
-
-    // 从start位置开始遍历
-    for (let i = start; i < list.length; i++) {
-      // 剪枝：如果剩余元素不足以完成组合，提前结束
-      if (list.length - i < n - current.length) break;
-
-      // 当组合方式不符合要求时，跳过这个选择
-      if (!choiceValidator(current, list[i])) continue;
-
-      current.push(list[i]);
-      yield* backtrack(i);
-      current.pop();
-    }
-  }
-
-  yield* backtrack(0);
-}
-
-// 使用迭代器和最小堆处理组合，优化内存和性能
-function processCombinationsWithIterator(
-  combinationsIterator: Generator<TargetFate[]>,
-  awakeningAttack: number,
-  criticalDamage: number
-): FateRateUpPriorityData[] {
-  // 最小堆，保持最大的50个priority值
-  const topResults = new Heap<FateRateUpPriorityData>(
-    (a, b) => a.priority - b.priority
-  );
-
-  for (const combination of combinationsIterator) {
-    // 由于choiceValidator已经进行了剪枝，这里的组合都是有效的
-    const mergedTargets = mergeTargets(combination);
-
-    // 计算觉醒石消耗和英雄升级信息
-    const { awakeningStonesCost, herosToRateUp } =
-      calculateCostAndHeros(mergedTargets);
-
-    // 完整计算优先级数据
-    const priorityData = calculateFullPriorityDataFromHeros(
-      mergedTargets,
-      herosToRateUp,
-      awakeningAttack,
-      criticalDamage,
-      awakeningStonesCost
-    );
-
-    if (topResults.size() < 50) {
-      topResults.push(priorityData);
-    } else if (priorityData.priority > topResults.peek()!.priority) {
-      topResults.pushpop(priorityData); // 原子操作：push后pop最小值
-    }
-  }
-
-  // 转换为从大到小排序的数组
-  return topResults.toArray().sort((a, b) => b.priority - a.priority);
-}
-
-// 合并重复缘分，保持关注点分离
-function mergeTargets(combination: TargetFate[]): TargetFate[] {
-  const merged: TargetFate[] = [];
-
-  for (const current of combination) {
-    const lastItem = merged[merged.length - 1];
-
-    if (lastItem?.name === current.name) {
-      // 合并同名缘分
-      lastItem.targetRate += 1;
-    } else {
-      // 添加新缘分
-      merged.push({ ...current });
-    }
-  }
-
-  return merged;
-}
-
-// 验证等级上限
-function isValidTargets(targets: TargetFate[]): boolean {
-  return targets.every((target) => target.targetRate <= 10);
-}
-
-// 组合验证器，在构建过程中进行剪枝
-function combinationValidator(
-  current: TargetFate[],
-  next: TargetFate
-): boolean {
-  // 合并当前部分组合
-  const partialTargets = mergeTargets([...current, next]);
-
-  // 检查等级上限
-  if (!isValidTargets(partialTargets)) return false;
-
-  // 检查觉醒石消耗
-  const { awakeningStonesCost } = calculateCostAndHeros(partialTargets);
-  if (awakeningStonesCost > 30) return false;
-
-  return true;
 }
