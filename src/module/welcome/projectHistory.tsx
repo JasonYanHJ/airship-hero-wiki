@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.6.8 - 优化缘分优先级计算性能",
+  },
+  {
     children: "v0.6.7 - 修复缘分优先级计算未考虑不关联缘分的问题",
   },
   {
