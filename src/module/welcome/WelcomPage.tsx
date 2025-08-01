@@ -5,6 +5,7 @@ import mashuImg from "./assets/avatar_mashu.png";
 import unionImg from "./assets/union.jpg";
 import styled from "styled-components";
 import { PageContainer } from "@ant-design/pro-components";
+import { version } from "../../../package.json";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -17,6 +18,9 @@ const WelcomePage = () => {
     <PageContainer title={false}>
       <Card>
         <Title level={2}>欢迎使用飞艇Wiki ✨🎉✨</Title>
+        <Paragraph>
+          <blockquote>当前版本：v{version}</blockquote>
+        </Paragraph>
 
         <Title level={3}>介绍</Title>
         <Paragraph>
