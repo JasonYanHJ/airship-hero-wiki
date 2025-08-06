@@ -5,7 +5,10 @@ import { PersonalInputData, usePersonalData } from "./usePersonalData";
 import { useMemo, useState } from "react";
 import { validatePersonalHeroRateData } from "./hero-rate/rateDataService";
 import { validatePersonalCriticalDamageData } from "../tool/fate/criticalDamageDataService";
-import { validatePersonalJadeChoiceData } from "../tool/jade/jadeChoiceDataService";
+import {
+  migratePersonalJadeChoice,
+  validatePersonalJadeChoiceData,
+} from "../tool/jade/jadeChoiceDataService";
 
 // 添加新的个人数据种类后，需要在此文件修改三处：数据验证、数据设置、数据获取
 
@@ -23,7 +26,9 @@ function parsePersonalData(dataString: string): PersonalInputData | undefined {
       throw Error(`英雄爆伤数据错误 ${err instanceof Error && err.message}`);
     }
     try {
-      validatePersonalJadeChoiceData(data?.personalJadeChoiceData);
+      validatePersonalJadeChoiceData(
+        migratePersonalJadeChoice(data?.personalJadeChoiceData)
+      );
     } catch (err) {
       throw Error(`玉石方案数据错误 ${err instanceof Error && err.message}`);
     }
@@ -59,7 +64,9 @@ const MigrateToPanel = () => {
 
       setPersonalHeroRateData(personalData.personalHeroRateData);
       setPersonalCriticalDamageData(personalData.personalCriticalDamageData);
-      setPersonalJadeChoiceData(personalData.personalJadeChoiceData);
+      setPersonalJadeChoiceData(
+        migratePersonalJadeChoice(personalData.personalJadeChoiceData)
+      );
 
       message.success("导入成功");
       setLoading(false);

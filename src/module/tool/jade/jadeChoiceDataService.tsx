@@ -1,4 +1,43 @@
-export type PersonalJadeChoiceData = { choices: [0 | 1, 0 | 1, 0 | 1][] };
+type PersonalJadeChoiceDataV1 = {
+  version: 1;
+  choices: [0 | 1, 0 | 1, 0 | 1][];
+};
+type PersonalJadeChoiceDataV2 = {
+  version: 2;
+  choices: [0 | 1, 0 | 1, 0 | 1][];
+  settings: { jades: number; rewardValues: Record<string, number> };
+};
+export type PersonalJadeChoiceMigrationData =
+  | PersonalJadeChoiceDataV1
+  | PersonalJadeChoiceDataV2;
+export type PersonalJadeChoiceData = PersonalJadeChoiceDataV2;
+
+const migrates: Record<
+  number,
+  (data: object) => PersonalJadeChoiceMigrationData
+> = {
+  1: (data): PersonalJadeChoiceDataV2 => ({
+    ...(data as PersonalJadeChoiceDataV1),
+    version: 2,
+    settings: {
+      jades: 0,
+      rewardValues: {
+        觉醒石: 1,
+        "3星骑士召集券": 1,
+        "3星灵魂自选": 1,
+        镐子: 1,
+        召集券: 1,
+        钻石: 1,
+      },
+    },
+  }),
+};
+const currentVersion = 2;
+const defaultData: PersonalJadeChoiceData = {
+  version: 2,
+  choices: new Array(60).fill(undefined).map(() => [0, 0, 0]),
+  settings: { jades: 0, rewardValues: {} },
+};
 
 export function savePersonalJadeChoiceData(data: PersonalJadeChoiceData) {
   localStorage.setItem("jade-choice-data", JSON.stringify(data));
@@ -6,14 +45,25 @@ export function savePersonalJadeChoiceData(data: PersonalJadeChoiceData) {
 
 export function loadPersonalJadeChoiceData(): PersonalJadeChoiceData {
   const data = localStorage.getItem("jade-choice-data");
-  return data
-    ? JSON.parse(data)
-    : { choices: new Array(60).fill(undefined).map(() => [0, 0, 0]) };
+  return data ? migratePersonalJadeChoice(JSON.parse(data)) : defaultData;
 }
 
 export function hasPersonalJadeChoiceData() {
   const data = localStorage.getItem("jade-choice-data");
   return !!data;
+}
+
+export function migratePersonalJadeChoice(
+  data: PersonalJadeChoiceMigrationData
+): PersonalJadeChoiceData {
+  const version = "version" in data ? data.version : 1;
+
+  let result = data;
+  for (let i = version; i < currentVersion; i++) {
+    result = migrates[i](result);
+  }
+
+  return result as PersonalJadeChoiceData;
 }
 
 export function validatePersonalJadeChoiceData(data: unknown) {
