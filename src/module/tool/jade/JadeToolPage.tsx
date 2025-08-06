@@ -9,6 +9,7 @@ import { useCallback } from "react";
 import { cloneDeep, sum } from "lodash";
 import JadeChoiceSummary from "./JadeChoiceSummary";
 import { RESOURCE_TAG_COLOR } from "../../../assets/consts";
+import BestJadeSolutionModal from "./BestJadeSolutionModal";
 
 const StyledCard = styled(Card)`
   .ant-card-body {
@@ -111,9 +112,26 @@ const JadeChoiceList = () => {
 };
 
 const JadeToolPage = () => {
+  const {
+    personalJadeChoiceData: {
+      choices,
+      settings: { rewardValues },
+    },
+  } = usePersonalData();
+
   return (
-    <PageContainer>
-      <JadeChoiceSummary />
+    <PageContainer extra={[<BestJadeSolutionModal key="best-solution" />]}>
+      <JadeChoiceSummary
+        choices={choices}
+        rewardValues={rewardValues}
+        style={{
+          position: "sticky",
+          top: 12,
+          zIndex: 2,
+          margin: "0 12px",
+          boxShadow: "0 6px 16px rgba(0, 0, 0, 0.15)",
+        }}
+      />
       <br />
       <JadeChoiceList />
     </PageContainer>
