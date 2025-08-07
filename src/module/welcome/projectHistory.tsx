@@ -2,6 +2,12 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.7.0 - 添加计算玉石最佳方案功能",
+  },
+  {
+    children: <span style={{ color: "grey" }}>——— 2025-08-06 ———</span>,
+  },
+  {
     children: "v0.6.9 - 过滤缘分优先级列表中的“缘分子集“",
   },
   {
