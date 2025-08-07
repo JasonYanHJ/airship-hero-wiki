@@ -12,6 +12,23 @@ export type PersonalJadeChoiceMigrationData =
   | PersonalJadeChoiceDataV2;
 export type PersonalJadeChoiceData = PersonalJadeChoiceDataV2;
 
+const currentVersion = 2;
+const defaultData: PersonalJadeChoiceData = {
+  version: 2,
+  choices: new Array(60).fill(undefined).map(() => [0, 0, 0]),
+  settings: {
+    jades: 399,
+    rewardValues: {
+      觉醒石: 15340,
+      "3星骑士召集券": 4908.8,
+      "3星灵魂自选": 61.36,
+      镐子: 400,
+      召集券: 270,
+      钻石: 1,
+    },
+  },
+};
+
 const migrates: Record<
   number,
   (data: object) => PersonalJadeChoiceMigrationData
@@ -19,24 +36,8 @@ const migrates: Record<
   1: (data): PersonalJadeChoiceDataV2 => ({
     ...(data as PersonalJadeChoiceDataV1),
     version: 2,
-    settings: {
-      jades: 0,
-      rewardValues: {
-        觉醒石: 1,
-        "3星骑士召集券": 1,
-        "3星灵魂自选": 1,
-        镐子: 1,
-        召集券: 1,
-        钻石: 1,
-      },
-    },
+    settings: defaultData.settings,
   }),
-};
-const currentVersion = 2;
-const defaultData: PersonalJadeChoiceData = {
-  version: 2,
-  choices: new Array(60).fill(undefined).map(() => [0, 0, 0]),
-  settings: { jades: 0, rewardValues: {} },
 };
 
 export function savePersonalJadeChoiceData(data: PersonalJadeChoiceData) {
