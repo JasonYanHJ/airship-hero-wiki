@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.7.3 - 补缘分时低于5星的英雄视作5星",
+  },
+  {
     children: "v0.7.2 - 玉石数据勘误",
   },
   {

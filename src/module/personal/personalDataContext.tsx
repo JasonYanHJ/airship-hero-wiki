@@ -63,7 +63,8 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
   // 当依赖项变化时触发计算
   useEffect(() => {
     fatePriorityCalculate({
-      fatesWithRate,
+      // 将低于5星的英雄视作5星
+      fatesWithRate: getFatesWithRate(getHerosWithRate(rateData, 5)),
       awakeningAttack: rateRalated.awakeningData.攻击,
       criticalDamage,
     });
@@ -72,6 +73,7 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
     criticalDamage,
     fatesWithRate,
     rateRalated.awakeningData.攻击,
+    rateData,
   ]);
 
   const values: PersonalDataContextType = {

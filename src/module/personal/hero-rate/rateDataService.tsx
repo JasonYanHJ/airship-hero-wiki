@@ -83,11 +83,16 @@ export function validatePersonalHeroRateData(data: unknown) {
 }
 
 export function getHerosWithRate(
-  personalHeroRateData: PersonalHeroRateData
+  personalHeroRateData: PersonalHeroRateData,
+  // 可选参数，设置英雄的最低星级
+  minRate?: number
 ): HeroWithRate[] {
   return heros.map((hero) => ({
     ...hero,
-    rate: personalHeroRateData[hero.name],
+    rate:
+      !minRate || personalHeroRateData[hero.name] > minRate
+        ? personalHeroRateData[hero.name]
+        : minRate,
   }));
 }
 
