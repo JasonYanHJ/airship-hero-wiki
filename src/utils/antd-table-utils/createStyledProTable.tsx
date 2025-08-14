@@ -6,7 +6,7 @@ export default function createStyledProTable<
 >() {
   return styled(ProTable<DataSourceType>)`
     // 内容过长时允许左右滑动
-    .ant-table-wrapper {
+    .ant-table-container {
       overflow-x: auto;
       overflow-y: hidden;
     }
