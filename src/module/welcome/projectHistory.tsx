@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.7.2 - 玉石数据勘误",
+  },
+  {
     children: "v0.7.1 - 修复一些ui显示问题",
   },
   {

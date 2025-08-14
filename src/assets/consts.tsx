@@ -72,8 +72,8 @@ export const JADES_TYPE = [
   "水枪",
   "星彩蓝宝石",
   "核心",
-  "新年宝箱",
-  "随机资源宝箱",
+  "派对盲盒",
+  "随机资源小袋",
 ] as const;
 export const RESOURCE_TAG_COLOR: { [key: string]: string } = {
   觉醒石: "purple",
