@@ -9,11 +9,12 @@ import {
   RATE_UP_TYPES,
   TYPE_TAG_COLOR,
 } from "../../assets/consts";
-import { StarFilled } from "@ant-design/icons";
+import { FilterOutlined, StarFilled } from "@ant-design/icons";
 import useTableSearch from "../../utils/antd-table-utils/useTableSearch";
 import createFixValuesFilterProps from "../../utils/antd-table-utils/createFixValuesFilterProps";
 import createStyledProTable from "../../utils/antd-table-utils/createStyledProTable";
-import { Space, Tag } from "antd";
+import { Space, Tag, Typography } from "antd";
+import NewbieTip from "../common/NewbieTip";
 
 const StyledProTable = createStyledProTable<Hero>();
 
@@ -154,6 +155,30 @@ const HeroEncyclopediaPage = () => {
 
   return (
     <PageContainer>
+      <NewbieTip
+        tipKey="hero-encyclopedia"
+        tipContent={
+          <Typography>
+            <Typography.Paragraph style={{ margin: 0 }}>
+              <ul style={{ margin: 0 }}>
+                <li>
+                  新手玩家应首先
+                  <b>
+                    培养阵容、提高魔石收益（活动加速、晋升效果）、补齐未满5星角色
+                  </b>
+                  ，然后再补缘分。
+                </li>
+                <li>
+                  如何查看有魔石加成的角色：点击“晋升效果”列旁的“
+                  <FilterOutlined />
+                  ”按钮，勾选“魔石获得量”后点击确定
+                </li>
+              </ul>
+            </Typography.Paragraph>
+          </Typography>
+        }
+      />
+      <br />
       <StyledProTable
         sortDirections={["descend", "ascend"]}
         dataSource={heros}

@@ -1,7 +1,7 @@
 import { PageContainer, ProColumnType } from "@ant-design/pro-components";
 import { usePersonalData } from "../../personal/usePersonalData";
 import { FateRateUpPriorityData } from "./fateRateUpPriorityDataService";
-import { InputNumber, Select, Space, Tag, Tooltip } from "antd";
+import { InputNumber, Select, Space, Tag, Tooltip, Typography } from "antd";
 import {
   AWAKENING_TYPES,
   ELEMENT_TAG_COLOR,
@@ -15,6 +15,7 @@ import createFixValuesFilterProps from "../../../utils/antd-table-utils/createFi
 import { HERO_NAMES } from "../../../assets/heros";
 import { useState } from "react";
 import FatePrioritySummaryList from "./FatePrioritySummary";
+import NewbieTip from "../../common/NewbieTip";
 
 // 添加names便于列搜索功能实现
 type DataSourceType = FateRateUpPriorityData & {
@@ -219,6 +220,29 @@ const FateToolPage = () => {
         />
       }
     >
+      <NewbieTip
+        tipKey="fate-tool"
+        tipContent={
+          <Typography>
+            <Typography.Paragraph style={{ margin: 0 }}>
+              <ul style={{ margin: 0 }}>
+                <li>
+                  新手玩家应首先
+                  <b>
+                    培养阵容、提高魔石收益（活动加速、晋升效果）、补齐未满5星角色
+                  </b>
+                  ，然后再补缘分。
+                </li>
+                <li>
+                  此工具针对补缘分阶段的玩家，根据个人情况，计算<b>觉醒石</b>
+                  的最大收益。由于角色低于5星时升星不消耗觉醒石，计算时将低于5星的角色视作5星。
+                </li>
+              </ul>
+            </Typography.Paragraph>
+          </Typography>
+        }
+      />
+      <br />
       <FatePrioritySummaryList />
       <br />
       <FateToolTable />
