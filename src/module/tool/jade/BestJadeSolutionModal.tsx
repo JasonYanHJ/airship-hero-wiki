@@ -156,7 +156,9 @@ function BestJadeSolutionModal() {
         name="jades"
         min={0}
         fieldProps={{ precision: 0 }}
-        formItemProps={{ rules: [{ required: true }] }}
+        formItemProps={{
+          rules: [{ required: true, message: "请输入玉石总数" }],
+        }}
       />
       {Object.keys(settings.rewardValues).map((key) => (
         <ProFormDigit
@@ -171,7 +173,9 @@ function BestJadeSolutionModal() {
           }
           name={["rewardValues", key]}
           min={0}
-          formItemProps={{ rules: [{ required: true }] }}
+          formItemProps={{
+            rules: [{ required: true, message: `请输入${key}价值` }],
+          }}
         />
       ))}
       <div style={{ textAlign: "center", marginBottom: 16 }}>

@@ -2,6 +2,12 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.7.1 - 修复一些ui显示问题",
+  },
+  {
+    children: <span style={{ color: "grey" }}>——— 2025-08-14 ———</span>,
+  },
+  {
     children: "v0.7.0 - 添加计算玉石最佳方案功能",
   },
   {
