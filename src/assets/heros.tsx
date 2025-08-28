@@ -1504,6 +1504,25 @@ const heros = [
     discovery_all: "生命",
   },
   {
+    name: "优森",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 50,
+    },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
+    element: "风",
+    job: "坦克",
+    awakening: "暴击伤害",
+    discovery_all: "暴击抵抗率",
+  },
+  {
     name: "雷克斯",
     alias: ["厨子"],
     initialRate: 3,
@@ -1827,6 +1846,25 @@ const heros = [
     discovery_all: "穿透",
   },
   {
+    name: "柳月",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 130,
+    },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
+    element: "风",
+    job: "远程",
+    awakening: "攻击速度",
+    discovery_all: "穿透",
+  },
+  {
     name: "风息幕",
     alias: ["风哪吒"],
     initialRate: 3,
@@ -1920,6 +1958,25 @@ const heros = [
     job: "辅助",
     awakening: "生命",
     discovery_all: "攻击",
+  },
+  {
+    name: "伊蕾莎",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 40,
+    },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "暴击伤害", increment: 5 },
+    ],
+    element: "风",
+    job: "辅助",
+    awakening: "攻击",
+    discovery_all: "暴击抵抗率",
   },
 ] as const satisfies Hero[];
 
