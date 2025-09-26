@@ -2,6 +2,12 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.7.6 - 更新新英雄、新缘分相关数据",
+  },
+  {
+    children: <span style={{ color: "grey" }}>——— 2025-09-26 ———</span>,
+  },
+  {
     children: "v0.7.5 - 更新新英雄相关数据",
   },
   {

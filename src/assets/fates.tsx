@@ -409,6 +409,78 @@ export const fates = [
     incresePerLevel: 3,
     heros: ["优森", "伊蕾莎", "柳月"],
   },
+  {
+    name: "G弦上的咏叹",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["巴赫一号", "巴赫二号", "巴赫四号"],
+  },
+  {
+    name: "数字管风琴",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["巴赫一号", "巴赫三号", "巴赫四号"],
+  },
+  {
+    name: "无缝卡农",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["巴赫二号", "巴赫三号", "巴赫四号"],
+  },
+  {
+    name: "烧烤丰收串",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["纳林", "露露", "玛莉"],
+  },
+  {
+    name: "三核进程",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["PQ", "让路易", "面珑"],
+  },
+  {
+    name: "琥珀之光",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["黄晶", "香草", "米兰达"],
+  },
+  {
+    name: "法安娜之枪",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["猎犬", "法比安", "安娜"],
+  },
+  {
+    name: "异乡人的慰藉",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["墨熙", "柯妮", "拉希德"],
+  },
+  {
+    name: "歪卜比卜",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["巴比尔", "紫丁香", "西亚信"],
+  },
+  {
+    name: "科伊巴汉堡",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["科拉汉得", "伊森", "巴比尔"],
+  },
+  {
+    name: "谜题终端",
+    type: "攻击",
+    incresePerLevel: 4,
+    heros: ["巴赫一号", "巴赫二号", "巴赫三号", "巴赫四号"],
+  },
+  {
+    name: "音符守卫",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["巴赫一号", "巴赫二号", "巴赫三号"],
+  },
 ] as const satisfies Fate[];
 
 export const FATE_NAMES = fates.map((f) => f.name);

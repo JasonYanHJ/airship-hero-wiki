@@ -789,7 +789,26 @@ const heros = [
       attack: 175,
     },
     rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
       { type: "生命", increment: 5 },
+    ],
+    element: "水",
+    job: "远程",
+    awakening: "攻击",
+    discovery_all: "暴击率",
+  },
+  {
+    name: "巴比尔",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 120,
+    },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
       { type: "防御", increment: 2 },
       { type: "生命", increment: 3 },
       { type: "防御", increment: 3 },
