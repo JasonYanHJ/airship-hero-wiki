@@ -32,7 +32,8 @@ export type FateRateUpPriorityData = {
 export function calculateFateRateUpPriorityData(
   fatesWitheRate: FateWithRate[],
   awakeningAttack: number,
-  criticalDamage: number
+  criticalDamage: number,
+  excludedHeros: string[]
 ): FateRateUpPriorityData[] {
   const notMaxTargetsList: TargetFate[] = fatesWitheRate
     .filter((fate) => fate.type === "攻击")
@@ -47,7 +48,9 @@ export function calculateFateRateUpPriorityData(
   while (true) {
     // 使用迭代器 + 最小堆，边生成边处理，使用验证器进行剪枝
     const nStepPriorityData = processCombinationsWithIterator(
-      generateCombinations(notMaxTargetsList, step, combinationValidator),
+      generateCombinations(notMaxTargetsList, step, (list, item) =>
+        combinationValidator(list, item, excludedHeros)
+      ),
       awakeningAttack,
       criticalDamage
     );
@@ -144,7 +147,8 @@ function* generateCombinations<T>(
 // 组合验证器，在构建过程中进行剪枝
 function combinationValidator(
   current: TargetFate[],
-  next: TargetFate
+  next: TargetFate,
+  excludedHeros: string[]
 ): boolean {
   // 合并当前部分组合
   const partialTargets = mergeTargets([...current, next]);
@@ -152,9 +156,12 @@ function combinationValidator(
   // 检查等级上限
   if (!isValidTargets(partialTargets)) return false;
 
+  const { awakeningStonesCost, herosToRateUp } =
+    calculateCostAndHeros(partialTargets);
   // 检查觉醒石消耗
-  const { awakeningStonesCost } = calculateCostAndHeros(partialTargets);
   if (awakeningStonesCost > MAX_STONE_COST) return false;
+  // 检查角色是被要求排除
+  if (herosToRateUp.some((h) => excludedHeros.includes(h.name))) return false;
 
   return true;
 }

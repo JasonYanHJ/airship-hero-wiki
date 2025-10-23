@@ -11,6 +11,7 @@ interface CalculationParams {
   fatesWithRate: FateWithRate[];
   awakeningAttack: number;
   criticalDamage: number;
+  excludedHeros: string[];
 }
 
 interface UseFatePriorityCalculationResult {

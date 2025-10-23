@@ -20,6 +20,8 @@ import {
   savePersonalJadeChoiceData,
 } from "../tool/jade/jadeChoiceDataService";
 import { useFatePriorityCalculation } from "../tool/fate/useFatePriorityCalculation";
+import { useAtomValue } from "jotai";
+import { excludedHerosAtom } from "../tool/fate/ExcludeHerosInput";
 
 export function PersonalDataProvider({ children }: { children: ReactNode }) {
   const [rateData, setRateData] = useState(loadPersonalHeroRateData);
@@ -59,7 +61,7 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
   // 使用 web worker 进行缘分优先级计算
   const { calculate: fatePriorityCalculate, ...fatePriorityResult } =
     useFatePriorityCalculation();
-
+  const excludedHeros = useAtomValue(excludedHerosAtom);
   // 当依赖项变化时触发计算
   useEffect(() => {
     fatePriorityCalculate({
@@ -67,6 +69,7 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
       fatesWithRate: getFatesWithRate(getHerosWithRate(rateData, 5)),
       awakeningAttack: rateRalated.awakeningData.攻击,
       criticalDamage,
+      excludedHeros,
     });
   }, [
     fatePriorityCalculate,
@@ -74,6 +77,7 @@ export function PersonalDataProvider({ children }: { children: ReactNode }) {
     fatesWithRate,
     rateRalated.awakeningData.攻击,
     rateData,
+    excludedHeros,
   ]);
 
   const values: PersonalDataContextType = {

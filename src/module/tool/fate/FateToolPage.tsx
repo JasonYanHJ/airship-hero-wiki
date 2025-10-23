@@ -16,6 +16,7 @@ import { HERO_NAMES } from "../../../assets/heros";
 import { useState } from "react";
 import FatePrioritySummaryList from "./FatePrioritySummary";
 import NewbieTip from "../../common/NewbieTip";
+import ExcludeHerosInput from "./ExcludeHerosInput";
 
 // 添加names便于列搜索功能实现
 type DataSourceType = FateRateUpPriorityData & {
@@ -242,6 +243,8 @@ const FateToolPage = () => {
           </Typography>
         }
       />
+      <br />
+      <ExcludeHerosInput />
       <br />
       <FatePrioritySummaryList />
       <br />

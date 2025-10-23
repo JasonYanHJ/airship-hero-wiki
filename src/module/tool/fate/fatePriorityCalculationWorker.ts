@@ -13,6 +13,7 @@ export interface CalculateMessage {
     fatesWithRate: FateWithRate[];
     awakeningAttack: number;
     criticalDamage: number;
+    excludedHeros: string[];
   };
 }
 
@@ -40,7 +41,8 @@ self.onmessage = function (e: MessageEvent<WorkerMessage>) {
       const result = calculateFateRateUpPriorityData(
         data.fatesWithRate,
         data.awakeningAttack,
-        data.criticalDamage
+        data.criticalDamage,
+        data.excludedHeros
       );
 
       const response: ResultMessage = {
