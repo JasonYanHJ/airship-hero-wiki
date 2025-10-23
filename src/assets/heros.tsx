@@ -1181,6 +1181,25 @@ const heros = [
     discovery_all: "暴击率",
   },
   {
+    name: "风铃草",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 120,
+    },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "生命", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
+    element: "土",
+    job: "近战",
+    awakening: "攻击",
+    discovery_all: "暴击率",
+  },
+  {
     name: "尖牙",
     alias: [],
     initialRate: 3,
