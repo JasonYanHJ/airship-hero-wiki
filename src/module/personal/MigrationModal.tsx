@@ -3,7 +3,10 @@ import { ModalForm } from "@ant-design/pro-components";
 import { Button, Input, message, Space, Tabs, Typography } from "antd";
 import { PersonalInputData, usePersonalData } from "./usePersonalData";
 import { useMemo, useState } from "react";
-import { validatePersonalHeroRateData } from "./hero-rate/rateDataService";
+import {
+  getNormalizedPersonalHeroRateData,
+  validatePersonalHeroRateData,
+} from "./hero-rate/rateDataService";
 import { validatePersonalCriticalDamageData } from "../tool/fate/criticalDamageDataService";
 import {
   migratePersonalJadeChoice,
@@ -62,7 +65,9 @@ const MigrateToPanel = () => {
         return;
       }
 
-      setPersonalHeroRateData(personalData.personalHeroRateData);
+      setPersonalHeroRateData(
+        getNormalizedPersonalHeroRateData(personalData.personalHeroRateData)
+      );
       setPersonalCriticalDamageData(personalData.personalCriticalDamageData);
       setPersonalJadeChoiceData(
         migratePersonalJadeChoice(personalData.personalJadeChoiceData)

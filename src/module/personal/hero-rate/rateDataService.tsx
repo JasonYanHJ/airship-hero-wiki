@@ -45,13 +45,6 @@ export function validatePersonalHeroRateData(data: unknown) {
 
   const dataKeys = Object.keys(objectData);
 
-  // 检查无效的键
-  for (const key of dataKeys) {
-    if (!(HERO_NAMES as string[]).includes(key)) {
-      throw Error(`无效的键: "${key}"`);
-    }
-  }
-
   // 检查值的类型
   for (const key of dataKeys) {
     if (typeof objectData[key] !== "number" || isNaN(objectData[key])) {
@@ -68,7 +61,7 @@ export function validatePersonalHeroRateData(data: unknown) {
     const rate = objectData[key] as number;
     const hero = heros.find((h) => h.name === key)!;
     if (
-      (rate !== 0 && rate < hero.initialRate) ||
+      (rate !== 0 && rate < (hero?.initialRate ?? 3)) ||
       rate < 0 ||
       rate > 10 ||
       !Number.isInteger(rate)
@@ -76,10 +69,8 @@ export function validatePersonalHeroRateData(data: unknown) {
       throw Error(`"${key}" 的星级不符合要求，当前值: ${objectData[key]}`);
   }
 
-  // 检查是否包含所有英雄名称
-  if (dataKeys.length !== HERO_NAMES.length) {
-    throw Error("英雄名称不全");
-  }
+  // 设置数据时会调用 getNormalizedPersonalHeroRateData
+  // 因此无需检查key的数据，解决出现新英雄后的版本不兼容问题
 }
 
 export function getHerosWithRate(

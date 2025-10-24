@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.7.9 - 数据迁移时允许缺少英雄数据，增强版本兼容性",
+  },
+  {
     children: "v0.7.8 - 缘分自查表可以排除特定英雄",
   },
   {
