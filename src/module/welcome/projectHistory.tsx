@@ -2,6 +2,9 @@ import { TimelineItemProps } from "antd";
 
 export const projectHistory: TimelineItemProps[] = [
   {
+    children: "v0.7.10 - 更新新英雄、新缘分相关数据",
+  },
+  {
     children: "v0.7.9 - 数据迁移时允许缺少英雄数据，增强版本兼容性",
   },
   {

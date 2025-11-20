@@ -493,6 +493,24 @@ export const fates = [
     incresePerLevel: 3,
     heros: ["风铃草", "克努特", "路德威"],
   },
+  {
+    name: "缚地之泽",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["耶梦加得", "泰西斯", "黎露"],
+  },
+  {
+    name: "无序波澜",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["伊莉丝", "耶梦加得", "霜夜"],
+  },
+  {
+    name: "无形切割",
+    type: "攻击",
+    incresePerLevel: 3,
+    heros: ["耶梦加得", "泰西斯", "伊莉丝"],
+  },
 ] as const satisfies Fate[];
 
 export const FATE_NAMES = fates.map((f) => f.name);

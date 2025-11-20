@@ -31,6 +31,9 @@ const ExcludeHerosInput = () => {
           { value: "杜莎利斯" },
           { value: "瓦尔基里" },
           { value: "帕拉斯" },
+          { value: "耶梦加得" },
+          { value: "泰西斯" },
+          { value: "伊莉丝" },
         ]}
       />
     </div>

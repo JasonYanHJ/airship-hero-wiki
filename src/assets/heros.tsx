@@ -706,6 +706,25 @@ const heros = [
     discovery_all: "穿透",
   },
   {
+    name: "耶梦加得",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 80,
+    },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
+    element: "水",
+    job: "近战",
+    awakening: "攻击",
+    discovery_all: "暴击抵抗率",
+  },
+  {
     name: "雪儿",
     alias: [],
     initialRate: 3,
@@ -839,6 +858,25 @@ const heros = [
     discovery_all: "暴击率",
   },
   {
+    name: "泰西斯",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 80,
+    },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
+    element: "水",
+    job: "远程",
+    awakening: "攻击",
+    discovery_all: "暴击率",
+  },
+  {
     name: "莫里斯",
     alias: [],
     initialRate: 1,
@@ -950,6 +988,25 @@ const heros = [
     element: "水",
     job: "辅助",
     awakening: "生命",
+    discovery_all: "暴击抵抗率",
+  },
+  {
+    name: "伊莉丝",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 80,
+    },
+    rateUpEffects: [
+      { type: "攻击", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "生命", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "暴击伤害", increment: 5 },
+    ],
+    element: "水",
+    job: "辅助",
+    awakening: "穿透",
     discovery_all: "暴击抵抗率",
   },
   {
