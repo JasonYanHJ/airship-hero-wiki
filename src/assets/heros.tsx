@@ -345,6 +345,25 @@ const heros = [
     discovery_all: "暴击率",
   },
   {
+    name: "拉布琳",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 65,
+    },
+    rateUpEffects: [
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 5 },
+      { type: "防御", increment: 3 },
+      { type: "魔石获得量", increment: 10 },
+    ],
+    element: "火",
+    job: "远程",
+    awakening: "攻击",
+    discovery_all: "穿透",
+  },
+  {
     name: "杜莎利斯",
     alias: ["美杜莎"],
     initialRate: 3,
@@ -1768,6 +1787,25 @@ const heros = [
     job: "近战",
     awakening: "防御",
     discovery_all: "攻击",
+  },
+  {
+    name: "卡玛尔",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 150,
+    },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+    ],
+    element: "风",
+    job: "近战",
+    awakening: "攻击速度",
+    discovery_all: "穿透",
   },
   {
     name: "薇笑",
