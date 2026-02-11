@@ -26,6 +26,7 @@ const Layout = () => {
     <StyledProLayout
       // 使用HashRouter时的功能适配
       location={{ pathname: window.location.hash.slice(1) }}
+      logo={<img src="https://h5-res.sjzt2020.com/20250619/origin/role_info.png" alt="logo" style={{ height: 32 }} />}
       title="飞艇Wiki"
       route={route}
       menuItemRender={(item, dom) => (

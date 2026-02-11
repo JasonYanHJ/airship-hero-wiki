@@ -34,6 +34,8 @@ const ExcludeHerosInput = () => {
           { value: "耶梦加得" },
           { value: "泰西斯" },
           { value: "伊莉丝" },
+          { value: "小乔" },
+          { value: "周瑜" },
         ]}
       />
     </div>

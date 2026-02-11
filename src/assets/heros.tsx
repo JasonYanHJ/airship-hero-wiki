@@ -1105,6 +1105,25 @@ const heros = [
     discovery_all: "生命",
   },
   {
+    name: "周瑜",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 110,
+    },
+    rateUpEffects: [
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 2 },
+      { type: "生命", increment: 3 },
+      { type: "防御", increment: 3 },
+      { type: "生命", increment: 5 },
+    ],
+    element: "土",
+    job: "坦克",
+    awakening: "生命",
+    discovery_all: "攻击",
+  },
+  {
     name: "克莉丝汀",
     alias: ["土剑"],
     initialRate: 3,
@@ -1578,6 +1597,25 @@ const heros = [
     job: "辅助",
     awakening: "穿透",
     discovery_all: "防御",
+  },
+  {
+    name: "小乔",
+    alias: [],
+    initialRate: 3,
+    initialData: {
+      attack: 145,
+    },
+    rateUpEffects: [
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "攻击", increment: 5 },
+      { type: "穿透", increment: 3 },
+      { type: "暴击伤害", increment: 5 },
+    ],
+    element: "土",
+    job: "辅助",
+    awakening: "攻击",
+    discovery_all: "暴击率",
   },
   {
     name: "奥蕾利亚",
